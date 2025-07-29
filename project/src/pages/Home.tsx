@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Shield, Zap, Users, Award } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Users, Award, FileText, Layout, Code2, CheckCircle, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Tilt from 'react-parallax-tilt';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import awsImage from '../assets/AWS.jpg';
 import ecotechLogo from '../assets/ecotech-logo.png';
@@ -190,6 +193,154 @@ const Home = () => {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 🔹 Work Process Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+              Our Work <span className="text-blue-600">Process</span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto font-medium">
+              A proven methodology to deliver high-quality solutions on time and on budget.
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+            {[
+              {
+                icon: <FileText className="w-10 h-10" />,
+                title: 'Requirement Analysis',
+                desc: 'We collaborate with stakeholders to understand goals, scope, and constraints.',
+              },
+              {
+                icon: <Layout className="w-10 h-10 text-blue-600" />,
+                title: 'Planning & Design',
+                desc: 'Our architects craft a scalable design and detailed project roadmap.',
+              },
+              {
+                icon: <Code2 className="w-10 h-10 text-blue-600" />,
+                title: 'Development',
+                desc: 'Agile sprints turn designs into robust, maintainable code.',
+              },
+              {
+                icon: <CheckCircle className="w-10 h-10 text-blue-600" />,
+                title: 'Testing & QA',
+                desc: 'Comprehensive testing guarantees reliability, performance, and security.',
+              },
+              {
+                icon: <Rocket className="w-10 h-10 text-blue-600" />,
+                title: 'Deployment & Support',
+                desc: 'We launch, monitor, and continuously improve your solution.',
+              },
+            ].map((step, index, arr) => (
+              <Fragment key={index}>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className={`relative flex flex-col items-center text-center ${index===2? 'bg-blue-600 text-white':'bg-white'} rounded-full w-40 h-40 lg:w-48 lg:h-48 shadow-xl`}
+              >
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                  {step.icon}
+                </div>
+                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                  {step.desc}
+                </p>
+              </motion.div>
+              {index < arr.length - 1 && (
+                <div className="hidden lg:block mx-4">
+                  <svg width="80" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 15 H100" stroke="#3b82f6" strokeWidth="2" strokeDasharray="4 6" />
+                    <path d="M100 15 L110 5 M100 15 L110 25" stroke="#3b82f6" strokeWidth="2" />
+                  </svg>
+                </div>
+              )}
+              </Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 🔹 Our Valued Customers Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Valued Customers
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Trusted by leading companies across various industries
+            </p>
+          </div>
+
+          <div className="relative">
+            <Slider
+              dots={false}
+              infinite={true}
+              slidesToShow={6}
+              slidesToScroll={1}
+              autoplay={true}
+              autoplaySpeed={2000}
+              speed={1000}
+              pauseOnHover={false}
+              arrows={false}
+              responsive={[
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 4,
+                  },
+                },
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 3,
+                  },
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 2,
+                  },
+                },
+              ]}
+              className="customer-logos"
+            >
+              {[
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoft/microsoft-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netflix/netflix-original-wordmark.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spotify/spotify-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/uber/uber-original.svg',
+                'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/airbnb/airbnb-original-wordmark.svg',
+              ].map((logo, index) => (
+                <div key={index} className="px-4">
+                  <motion.div
+                    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                    className="h-24 bg-white rounded-lg flex items-center justify-center p-4 shadow-sm hover:shadow-md transition-all"
+                  >
+                    <img 
+                      src={logo} 
+                      alt={`Client ${index + 1}`} 
+                      className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                  </motion.div>
+                </div>
+              ))}
+            </Slider>
           </div>
         </div>
       </section>
