@@ -1,55 +1,109 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Code2, ChevronDown, ChevronUp, ArrowRight, Cloud, Server, Database, Cpu, BookOpen, FileText, Headphones } from 'lucide-react';
+import { Menu, X, Code2, ChevronDown, ChevronUp, ChevronRight } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
+  const [mobileNestedDropdown, setMobileNestedDropdown] = useState<string | null>(null);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const servicesItems = [
+  type MenuItem = {
+    title: string;
+    href: string;
+    items?: Omit<MenuItem, 'items'>[];
+  };
+
+  const servicesItems: MenuItem[] = [
     { 
-      icon: <Cloud className="w-5 h-5 text-blue-500" />, 
-      title: 'Cloud Solutions', 
-      description: 'Scalable cloud infrastructure and services',
-      href: '/services/cloud'
+      title: 'Security Solutions',
+      href: '/security_solutions',
+      items: [
+        { title: 'End Point Security', href: '/security_solutions/end_point_security' },
+        { title: 'Email Security', href: '/security_solutions/email_security' },
+        { title: 'managed EDR & XDR Solutions', href: '/security_solutions/managed_edr_xdr' },
+        { title: 'Next Gen Firewalls', href: '/security_solutions/next_gen_firewalls' },
+        { title: 'Network Access Control', href: '/security_solutions/network_access_control' },
+        { title: 'NMS (Network Management Solutions)', href: '/security_solutions/nms' },
+        { title: 'IT & OT Security', href: '/security_solutions/it_ot_security' },
+        { title: 'SIEM, SOAR & SOC Solutions', href: '/security_solutions/siem_soar_soc' },
+      ]
     },
     { 
-      icon: <Server className="w-5 h-5 text-green-500" />, 
-      title: 'DevOps', 
-      description: 'CI/CD pipelines and automation',
-      href: '/services/devops'
+      title: 'Cloud Services',
+      href: '/cloud_services',
+      items: [
+        { title: 'Google Cloud Platform (GCP)', href: '/cloud_services/gcp' },
+        { title: 'Amazon Web Services (AWS)', href: '/cloud_services/aws' },
+        { title: 'Microsoft Azure', href: '/cloud_services/azure' }
+      ]
     },
     { 
-      icon: <Database className="w-5 h-5 text-purple-500" />, 
-      title: 'Data Analytics', 
-      description: 'Data-driven insights and visualization',
-      href: '/services/data-analytics'
+      title: 'IT Infrastructure Solutions',
+      href: '/it_infrastructure_solutions',
+      items: [
+        { title: 'Networking', href: '/services/consulting/strategy' },
+        { title: 'Data Backup', href: '/services/consulting/digital' },
+      ]
     },
     { 
-      icon: <Cpu className="w-5 h-5 text-orange-500" />, 
-      title: 'AI/ML Services', 
-      description: 'Intelligent solutions powered by AI',
-      href: '/services/ai-ml'
+      title: 'Software Licensing Solutions',
+      href: '/software_licensing_solutions',
+      items: [
+        { title: 'Microsoft', href: '/software_licensing_solutions/microsoft' },
+        { title: 'Adobe', href: '/software_licensing_solutions/adobe' },
+        { title: 'Autodesk', href: '/software_licensing_solutions/autodesk' },
+        { title: 'EViews', href: '/software_licensing_solutions/eviews' },
+        { title: 'Corel', href: '/software_licensing_solutions/corel' },
+      ]
     },
+    { 
+      title: 'Email & Collaboration Solutions',
+      href: '/email_collaboration_solutions',
+      items: [
+        { title: 'Google Workspace', href: '/email_collaboration_solutions/google_workspace' },
+        { title: 'Microsoft 365', href: '/email_collaboration_solutions/microsoft_365' },
+        { title: 'Zoho Email', href: '/email_collaboration_solutions/zoho_email' },
+        { title: 'Rediffmail', href: '/email_collaboration_solutions/rediffmail' },
+      ]
+    },
+    {
+      title: 'Audio Visual Solutions',
+      href: '/audio_visual_solutions',
+      items: [
+        { title: 'Board Room Integrations', href: '/audio_visual_solutions/board_room_integrations' },
+        { title: 'Active LED & Video Wall', href: '/audio_visual_solutions/active_led_video_wall' },
+      ]
+    },
+    {
+      title: 'Managed Services Solutions',
+      href: '/managed_services_solutions',
+      items: [
+        { title: 'IT Consulting Services', href: '/managed_services_solutions/it_consulting_services' },
+        { title: 'Network Managed Services', href: '/managed_services_solutions/network_managed_services' },
+        { title: 'Security Solutions', href: '/managed_services_solutions/security_solutions' },
+        { title: 'Email & Collaboration Services', href: '/managed_services_solutions/email_collaboration_services' },
+        
+      ]
+    }
+
   ];
 
-  const resourcesItems = [
+  const resourcesItems: MenuItem[] = [
     {
-      icon: <BookOpen className="w-5 h-5 text-blue-400" />,
-      title: 'Documentation',
-      href: '/resources/docs'
-    },
-    {
-      icon: <FileText className="w-5 h-5 text-green-400" />,
       title: 'Case Studies',
-      href: '/resources/case-studies'
+      href: '/case_studies',
+      
     },
     {
-      icon: <Headphones className="w-5 h-5 text-purple-400" />,
-      title: 'Support Center',
-      href: '/support'
+      title: 'Blogs',
+      href: '/blogs',
+    },
+    {
+      title: 'Support Desk',
+      href: '/support',
     }
   ];
 
@@ -57,12 +111,7 @@ const Header = () => {
     label: string;
     path: string;
     hasDropdown?: boolean;
-    items?: Array<{
-      icon: JSX.Element;
-      title: string;
-      description?: string;
-      href: string;
-    }>;
+    items?: MenuItem[];
   };
 
   const navItems: NavItem[] = [
@@ -103,7 +152,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-900 via-blue-800 to-gray-900 text-white shadow-xl backdrop-blur-md border-b border-blue-700/30">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent text-white backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo with hover effect */}
@@ -140,33 +189,45 @@ const Header = () => {
                     
                     {/* Dropdown Menu */}
                     {activeDropdown === item.label && (
-                      <div className="absolute left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl overflow-hidden border border-blue-100/20 backdrop-blur-xl bg-white/95">
-                        <div className="p-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-                          <h3 className="font-bold text-lg">{item.label}</h3>
-                        </div>
-                        <div className="p-2">
-                          {item.items?.map((subItem, idx) => (
-                            <Link
-                              key={idx}
-                              to={subItem.href}
-                              className="group flex items-center p-3 rounded-lg hover:bg-blue-50 transition-colors duration-200"
-                              onClick={() => setActiveDropdown(null)}
-                            >
-                              <div className="p-2 bg-blue-50 rounded-lg mr-3 group-hover:bg-blue-100 transition-colors">
-                                {subItem.icon}
-                              </div>
-                              <div className="flex-1">
-                                <div className="font-medium text-gray-900 group-hover:text-blue-600">
-                                  {subItem.title}
+                      <div 
+                        className="absolute left-0 mt-2 w-64 bg-white/95 rounded-lg shadow-2xl overflow-visible backdrop-blur-md border border-white/20"
+                        onMouseLeave={() => setActiveDropdown(null)}
+                      >
+                        {item.items?.map((subItem, idx) => (
+                          <div key={idx} className="relative group">
+                            {subItem.items ? (
+                              <div className="relative">
+                                <div className="flex justify-between items-center px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                                  <span className="font-medium">{subItem.title}</span>
+                                  <ChevronRight className="h-4 w-4 text-gray-400 group-hover:translate-x-1 transition-transform" />
                                 </div>
-                                {subItem.description && (
-                                  <p className="text-sm text-gray-500">{subItem.description}</p>
-                                )}
+                                <div className="invisible opacity-0 group-hover:opacity-100 group-hover:visible absolute left-full top-0 ml-1 w-64 bg-white/95 rounded-lg shadow-2xl overflow-hidden border border-white/20 z-50 transition-all duration-200 ease-in-out">
+                                  <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    {subItem.title}
+                                  </div>
+                                  {subItem.items.map((nestedItem, nestedIdx) => (
+                                    <Link
+                                      key={nestedIdx}
+                                      to={nestedItem.href}
+                                      className="block px-5 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 text-sm"
+                                      onClick={() => setActiveDropdown(null)}
+                                    >
+                                      {nestedItem.title}
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
-                              <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-500 ml-2" />
-                            </Link>
-                          ))}
-                        </div>
+                            ) : (
+                              <Link
+                                to={subItem.href}
+                                className="block px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                {subItem.title}
+                              </Link>
+                            )}
+                          </div>
+                        ))}
                       </div>
                     )}
                   </>
@@ -208,25 +269,61 @@ const Header = () => {
                   <div key={item.label} className="space-y-1">
                     {item.hasDropdown ? (
                       <div className="space-y-1">
-                            <div className="px-4 py-3 text-base font-medium text-blue-100">
-                              {item.label}
-                            </div>
-                            <div className="pl-6 space-y-1">
-                              {item.items?.map((subItem, idx) => (
-                                <Link
-                                  key={idx}
-                                  to={subItem.href}
-                                  className="flex items-center px-4 py-2 text-sm rounded-md text-blue-100 hover:bg-white/10"
-                                  onClick={() => setIsMenuOpen(false)}
-                                >
-                                  <span className="mr-3">
-                                    {subItem.icon}
-                                  </span>
-                                  {subItem.title}
-                                </Link>
-                              ))}
-                            </div>
+                        <button
+                          className="w-full flex justify-between items-center px-4 py-3 text-base font-medium text-blue-100"
+                          onClick={() => {
+                            setMobileOpenDropdown(mobileOpenDropdown === item.label ? null : item.label);
+                            setMobileNestedDropdown(null); // Reset nested dropdown when parent is toggled
+                          }}
+                        >
+                          {item.label}
+                          <ChevronDown className={`h-4 w-4 transform transition-transform ${mobileOpenDropdown === item.label ? 'rotate-180' : ''}`} />
+                        </button>
+                        <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-200 ${mobileOpenDropdown === item.label ? 'max-h-[2000px]' : 'max-h-0'}`}>
+                          {item.items?.map((subItem, idx) => (
+                            <div key={idx} className="relative">
+                              {subItem.items ? (
+                                <div>
+                                  <button
+                                    className="w-full flex justify-between items-center px-4 py-2 text-sm rounded-md text-blue-100 hover:bg-white/10"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setMobileNestedDropdown(mobileNestedDropdown === subItem.title ? null : subItem.title);
+                                    }}
+                                  >
+                                    {subItem.title}
+                                    <ChevronRight className={`h-4 w-4 transform transition-transform ${mobileNestedDropdown === subItem.title ? 'rotate-90' : ''}`} />
+                                  </button>
+                                  <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-200 ${mobileNestedDropdown === subItem.title ? 'max-h-[1000px]' : 'max-h-0'}`}>
+                                    {subItem.items.map((nestedItem, nestedIdx) => (
+                                      <Link
+                                        key={nestedIdx}
+                                        to={nestedItem.href}
+                                        className="block px-4 py-2 text-sm rounded-md text-blue-100 hover:bg-white/10"
+                                        onClick={() => {
+                                          setIsMenuOpen(false);
+                                          setMobileOpenDropdown(null);
+                                          setMobileNestedDropdown(null);
+                                        }}
+                                      >
+                                        {nestedItem.title}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                            ) : (
+                              <Link
+                                to={subItem.href}
+                                className="block px-4 py-2 text-sm rounded-md text-blue-100 hover:bg-white/10"
+                                onClick={() => setIsMenuOpen(false)}
+                              >
+                                {subItem.title}
+                              </Link>
+                            )}
                           </div>
+                        ))}
+                      </div>
+                    </div>
                     ) : (
                       <Link
                         to={item.path}
