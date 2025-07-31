@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import Industries from './pages/Industries';
 import Technologies from './pages/Technologies';
 import Contact from './pages/Contact';
+import EndpointSecurity from './pages/EndpointSecurity';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/industries" element={<Industries />} />
             <Route path="/technologies" element={<Technologies />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/endpoint-security" element={<EndpointSecurity />} />
           </Routes>
         </main>
         <Footer />

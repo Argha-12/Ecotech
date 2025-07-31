@@ -21,7 +21,7 @@ const Header = () => {
       title: 'Security Solutions',
       href: '/security_solutions',
       items: [
-        { title: 'End Point Security', href: '/security_solutions/end_point_security' },
+        { title: 'End Point Security', href: '/endpoint-security' },
         { title: 'Email Security', href: '/security_solutions/email_security' },
         { title: 'managed EDR & XDR Solutions', href: '/security_solutions/managed_edr_xdr' },
         { title: 'Next Gen Firewalls', href: '/security_solutions/next_gen_firewalls' },
@@ -190,18 +190,39 @@ const Header = () => {
                     {/* Dropdown Menu */}
                     {activeDropdown === item.label && (
                       <div 
-                        className="absolute left-0 mt-2 w-64 bg-white/95 rounded-lg shadow-2xl overflow-visible backdrop-blur-md border border-white/20"
-                        onMouseLeave={() => setActiveDropdown(null)}
+                        className="absolute left-0 mt-2 w-64 bg-white/95 rounded-lg shadow-2xl overflow-visible backdrop-blur-md border border-white/20 z-50"
+                        onMouseLeave={() => {
+                          // Add a small delay to allow for moving to nested dropdown
+                          setTimeout(() => {
+                            const isHoveringNested = document.querySelector('.nested-dropdown:hover');
+                            if (!isHoveringNested) {
+                              setActiveDropdown(null);
+                            }
+                          }, 200);
+                        }}
                       >
                         {item.items?.map((subItem, idx) => (
-                          <div key={idx} className="relative group">
+                          <div key={idx} className="relative group" onClick={(e) => e.stopPropagation()}>
                             {subItem.items ? (
                               <div className="relative">
-                                <div className="flex justify-between items-center px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                                <div 
+                                  className="flex justify-between items-center px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
+                                  onMouseEnter={() => {
+                                    // Keep the parent dropdown open when hovering over nested items
+                                    setActiveDropdown(item.label);
+                                  }}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                  }}
+                                >
                                   <span className="font-medium">{subItem.title}</span>
                                   <ChevronRight className="h-4 w-4 text-gray-400 group-hover:translate-x-1 transition-transform" />
                                 </div>
-                                <div className="invisible opacity-0 group-hover:opacity-100 group-hover:visible absolute left-full top-0 ml-1 w-64 bg-white/95 rounded-lg shadow-2xl overflow-hidden border border-white/20 z-50 transition-all duration-200 ease-in-out">
+                                <div 
+                                  className="nested-dropdown invisible opacity-0 group-hover:opacity-100 group-hover:visible absolute left-full top-0 ml-1 w-64 bg-white/95 rounded-lg shadow-2xl overflow-hidden border border-white/20 z-50 transition-all duration-200 ease-in-out"
+                                  onMouseLeave={() => setActiveDropdown(null)}
+                                >
                                   <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                     {subItem.title}
                                   </div>
@@ -218,13 +239,18 @@ const Header = () => {
                                 </div>
                               </div>
                             ) : (
-                              <Link
-                                to={subItem.href}
-                                className="block px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
-                                onClick={() => setActiveDropdown(null)}
-                              >
-                                {subItem.title}
-                              </Link>
+                              <div className="w-full" onClick={(e) => e.stopPropagation()}>
+                                <Link
+                                  to={subItem.href}
+                                  className="block w-full px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActiveDropdown(null);
+                                  }}
+                                >
+                                  {subItem.title}
+                                </Link>
+                              </div>
                             )}
                           </div>
                         ))}
