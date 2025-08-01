@@ -9,6 +9,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import awsImage from '../assets/AWS.jpg';
 import heroBanner from '../assets/hero-banner.png';
+import Timeline from '../components/Timeline';
 
 const Home = () => {
   const services = [
@@ -256,6 +257,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* 🔹 Our Journey Timeline */}
+      <Timeline />
 
       {/* 🔹 Our Valued Customers Section */}
       <section className="py-20 bg-gray-50">
