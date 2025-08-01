@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Shield, Zap, Users, Award, FileText, Layout, Code2, CheckCircle, Rocket } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Users, Award, FileText, Layout, Code2, CheckCircle, Rocket, Smartphone, Cloud } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Tilt from 'react-parallax-tilt';
 import Slider from 'react-slick';
@@ -8,28 +8,27 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import awsImage from '../assets/AWS.jpg';
-import ecotechLogo from '../assets/ecotech-logo.png';
 import heroBanner from '../assets/hero-banner.png';
 
 const Home = () => {
   const services = [
     {
-      icon: '/assets/webdev-3d.png',
+      icon: <Layout className="w-12 h-12 mb-4 text-blue-600 mx-auto" />,
       title: 'Web Development',
       description: 'Custom web applications built with modern technologies',
     },
     {
-      icon: '/assets/mobile-3d.png',
+      icon: <Smartphone className="w-12 h-12 mb-4 text-green-600 mx-auto" />,
       title: 'Mobile Apps',
       description: 'Native and cross-platform mobile applications',
     },
     {
-      icon: '/assets/cloud-3d.png',
+      icon: <Cloud className="w-12 h-12 mb-4 text-purple-600 mx-auto" />,
       title: 'Cloud Solutions',
       description: 'Scalable cloud infrastructure and migration services',
     },
     {
-      icon: '/assets/marketing-3d.png',
+      icon: <Zap className="w-12 h-12 mb-4 text-yellow-600 mx-auto" />,
       title: 'Digital Marketing',
       description: 'Data-driven marketing strategies and campaigns',
     },
@@ -104,20 +103,14 @@ const Home = () => {
               <div key={index} className="flip-card w-full h-80">
                 <div className="flip-card-inner shadow-xl border border-gray-200 rounded-2xl">
                   <div className="flip-card-front">
-                    <img src={service.icon} alt={service.title} className="w-16 h-16 mb-4" />
+                    {service.icon}
                     <h3 className="text-xl font-semibold text-center mb-2">{service.title}</h3>
                     <p className="text-center">{service.description}</p>
                   </div>
-                  <div className="flip-card-back">
-                    <img
-                      src="/assets/aws-coverage.png"
-                      alt="AWS Coverage"
-                      className="w-28 h-28 mb-4 object-contain"
-                    />
-                    <h3 className="text-lg font-bold text-gray-800">Welcome to Ecotech</h3>
-                    <p className="text-sm text-gray-500 mt-2">
-                      Your trusted AWS Premier Partner
-                    </p>
+                  <div className="flip-card-back flex flex-col items-center justify-center">
+                    {service.icon}
+                    <h3 className="text-lg font-bold text-gray-800 mt-2">{service.title}</h3>
+                    <p className="text-sm text-gray-500 mt-2 text-center">{service.description}</p>
                   </div>
                 </div>
               </div>
@@ -214,7 +207,7 @@ const Home = () => {
               {
                 icon: <FileText className="w-10 h-10" />,
                 title: 'Requirement Analysis',
-                desc: 'We collaborate with stakeholders to understand goals, scope, and constraints.',
+                desc: 'We collaborate with stakeholders to understand goals, and constraints.',
               },
               {
                 icon: <Layout className="w-10 h-10 text-blue-600" />,
@@ -229,7 +222,7 @@ const Home = () => {
               {
                 icon: <CheckCircle className="w-10 h-10 text-blue-600" />,
                 title: 'Testing & QA',
-                desc: 'Comprehensive testing guarantees reliability, performance, and security.',
+                desc: 'Comprehensive testing for reliability, performance, and security.',
               },
               {
                 icon: <Rocket className="w-10 h-10 text-blue-600" />,
@@ -244,26 +237,20 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative flex flex-col items-center text-center ${index===2? 'bg-blue-600 text-white':'bg-white'} rounded-full w-40 h-40 lg:w-48 lg:h-48 shadow-xl`}
+                className={`relative flex flex-col items-center justify-center text-center bg-white rounded-full w-56 h-56 aspect-square shadow-xl transition-transform duration-300 border border-gray-200 hover:scale-105 hover:shadow-2xl hover:border-blue-700 hover:bg-blue-700 group`}
+
               >
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
                   {step.icon}
                 </div>
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-base md:text-lg font-semibold mb-2 text-blue-900 group-hover:text-white transition-colors duration-300">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                <p className="text-xs md:text-sm leading-tight text-gray-600 group-hover:text-blue-100 transition-colors duration-300 px-2">
                   {step.desc}
                 </p>
               </motion.div>
-              {index < arr.length - 1 && (
-                <div className="hidden lg:block mx-4">
-                  <svg width="80" height="30" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 15 H100" stroke="#3b82f6" strokeWidth="2" strokeDasharray="4 6" />
-                    <path d="M100 15 L110 5 M100 15 L110 25" stroke="#3b82f6" strokeWidth="2" />
-                  </svg>
-                </div>
-              )}
+              
               </Fragment>
             ))}
           </div>
