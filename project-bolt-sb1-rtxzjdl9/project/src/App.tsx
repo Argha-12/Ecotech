@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop'; // ✅ Auto-scroll handler
@@ -22,14 +22,15 @@ import Contact from './pages/Contact';
 // import ITOTSecurity from './pages/Solutions/SecuritySolutions/IT_OT_Security';
 // import SIEM_SORE_SOC from './pages/Solutions/SecuritySolutions/SIEM_SORE_SOC';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-white">
-        <Header />
-        <main className="flex-grow pt-16">
-          <Routes>
+    <div className="flex flex-col min-h-screen bg-white">
+      <Header />
+      <main className={`flex-grow ${isHomePage ? '' : 'pt-20'}`}>
+        <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
@@ -52,6 +53,14 @@ const App: React.FC = () => {
         </main>
         <Footer />
       </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppContent />
     </Router>
   );
 };

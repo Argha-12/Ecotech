@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import logo from '../assets/logo.png';
@@ -6,7 +6,34 @@ import logo from '../assets/logo.png';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSolutionOpenMobile, setIsSolutionOpenMobile] = useState(false);
+  const [headerOpacity, setHeaderOpacity] = useState(0);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  useEffect(() => {
+    // Reset to transparent when navigating to homepage
+    if (isHomePage) {
+      setHeaderOpacity(0);
+      
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        // Gradually increase opacity from 0 to 1 over the first 300px of scroll
+        const opacity = Math.min(scrollPosition / 300, 1);
+        setHeaderOpacity(opacity);
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      // Call it once to set initial state
+      handleScroll();
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    } else {
+      // On other pages, header is always opaque
+      setHeaderOpacity(1);
+    }
+  }, [isHomePage, location.pathname]);
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -30,8 +57,24 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  // Determine if header should be transparent
+  const isTransparent = isHomePage && headerOpacity === 0;
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-800 via-blue-900 to-gray-900 text-white shadow-lg backdrop-blur-md">
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out"
+      style={{
+        background: isTransparent 
+          ? 'transparent' 
+          : isHomePage 
+            ? `linear-gradient(to right, rgba(30, 58, 138, ${headerOpacity}), rgba(29, 78, 216, ${headerOpacity}), rgba(17, 24, 39, ${headerOpacity}))`
+            : 'linear-gradient(to right, rgb(30, 58, 138), rgb(29, 78, 216), rgb(17, 24, 39))',
+        backgroundColor: isTransparent ? 'transparent' : undefined,
+        backdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !isHomePage ? 1 : 0)}px)`,
+        boxShadow: isTransparent ? 'none' : (headerOpacity > 0.5 || !isHomePage ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none'),
+        WebkitBackdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !isHomePage ? 1 : 0)}px)`,
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -88,7 +131,14 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-gradient-to-b from-blue-800 via-blue-900 to-gray-900 border-t border-blue-700 animate-slide-down">
+          <div 
+            className="md:hidden border-t border-blue-700 animate-slide-down"
+            style={{
+              background: isHomePage 
+                ? `linear-gradient(to bottom, rgba(30, 58, 138, ${Math.max(headerOpacity, 0.95)}), rgba(29, 78, 216, ${Math.max(headerOpacity, 0.95)}), rgba(17, 24, 39, ${Math.max(headerOpacity, 0.95)}))`
+                : 'linear-gradient(to bottom, rgba(30, 58, 138, 0.95), rgba(29, 78, 216, 0.95), rgba(17, 24, 39, 0.95))'
+            }}
+          >
             <nav className="py-4 space-y-1 px-4">
               {navItems.map((item) => (
                 <Link
