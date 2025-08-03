@@ -1,14 +1,44 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Code2, ChevronDown, ChevronUp, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import logo from '../assets/logo.png';
+import EndpointSecurity from '../pages/EndpointSecurity';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const [mobileNestedDropdown, setMobileNestedDropdown] = useState<string | null>(null);
+  const [headerOpacity, setHeaderOpacity] = useState(0);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const isHomePage = location.pathname === '/';
+
+  useEffect(() => {
+    // Reset to transparent when navigating to homepage
+    if (isHomePage) {
+      setHeaderOpacity(0);
+      
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        // Gradually increase opacity from 0 to 1 over the first 300px of scroll
+        const opacity = Math.min(scrollPosition / 300, 1);
+        setHeaderOpacity(opacity);
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      // Call it once to set initial state
+      handleScroll();
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    } else {
+      // On other pages, header is always opaque
+      setHeaderOpacity(1);
+    }
+  }, [isHomePage, location.pathname]);
 
   type MenuItem = {
     title: string;
@@ -21,7 +51,7 @@ const Header = () => {
       title: 'Security Solutions',
       href: '/security_solutions',
       items: [
-        { title: 'End Point Security', href: '/endpoint-security' },
+        { title: 'End Point Security', href: '/about' },
         { title: 'Email Security', href: '/security_solutions/email_security' },
         { title: 'managed EDR & XDR Solutions', href: '/security_solutions/managed_edr_xdr' },
         { title: 'Next Gen Firewalls', href: '/security_solutions/next_gen_firewalls' },
@@ -151,109 +181,141 @@ const Header = () => {
     setActiveDropdown(activeDropdown === label ? null : label);
   };
 
+  // Close dropdown when route changes
+  useEffect(() => {
+    setActiveDropdown(null);
+    setActiveSubmenu(null);
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // Check if click is on the dropdown button itself
+      const clickedElement = event.target as HTMLElement;
+      const isDropdownButton = clickedElement.closest('button')?.hasAttribute('data-dropdown-toggle');
+      
+      if (!isDropdownButton && dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null);
+        setActiveSubmenu(null);
+      }
+    };
+
+    // Use 'click' instead of 'mousedown' to allow link navigation
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+
+
+  // Determine if header should be transparent
+  const isTransparent = isHomePage && headerOpacity === 0;
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent text-white backdrop-blur-md">
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out"
+      style={{
+        background: isTransparent 
+          ? 'transparent' 
+          : isHomePage 
+            ? `linear-gradient(to right, rgba(30, 58, 138, ${headerOpacity}), rgba(29, 78, 216, ${headerOpacity}), rgba(17, 24, 39, ${headerOpacity}))`
+            : 'linear-gradient(to right, rgb(30, 58, 138), rgb(29, 78, 216), rgb(17, 24, 39))',
+        backgroundColor: isTransparent ? 'transparent' : undefined,
+        backdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !isHomePage ? 1 : 0)}px)`,
+        boxShadow: isTransparent ? 'none' : (headerOpacity > 0.5 || !isHomePage ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none'),
+        WebkitBackdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !isHomePage ? 1 : 0)}px)`,
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo with hover effect */}
-          <Link to="/" className="flex items-center space-x-4 group">
-            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform duration-300">
-              <Code2 className="w-7 h-7 text-blue-700" />
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-4">
+            <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-md overflow-hidden">
+              <img src={logo} alt="Company Logo" className="w-9 h-9 object-contain" />
             </div>
-            <span className="text-3xl font-extrabold tracking-wide leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-              Ecotech <span className="text-blue-300">Global</span>
+            <span className="text-3xl font-extrabold tracking-wide leading-tight">
+              Ecotech <span className="text-blue-300">Global services</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-1 items-center relative">
+          <nav className="hidden md:flex space-x-8 items-center relative">
             {navItems.map((item) => (
-              <div key={item.label} className="relative" ref={dropdownRef}>
+              <div key={item.label} className="relative">
                 {item.hasDropdown ? (
                   <>
                     <button
+                      data-dropdown-toggle
                       onClick={() => toggleDropdown(item.label)}
-                      className={`flex items-center px-4 py-3 text-base font-semibold rounded-lg transition-all duration-200 ${
-                        activeDropdown === item.label 
-                          ? 'text-white bg-white/20' 
+                      className={`flex items-center gap-1 text-base font-semibold px-3 py-2 rounded-md transition duration-200 ${
+                        activeDropdown === item.label
+                          ? 'bg-white text-blue-800 shadow-sm'
                           : 'text-blue-100 hover:text-white hover:bg-white/10'
                       }`}
                     >
                       {item.label}
-                      {activeDropdown === item.label ? (
-                        <ChevronUp className="ml-1 h-4 w-4" />
-                      ) : (
-                        <ChevronDown className="ml-1 h-4 w-4" />
-                      )}
+                      <ChevronDown className={`w-4 h-4 transform transition ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
                     </button>
                     
                     {/* Dropdown Menu */}
                     {activeDropdown === item.label && (
                       <div 
-                        className="absolute left-0 mt-2 w-64 bg-white/95 rounded-lg shadow-2xl overflow-visible backdrop-blur-md border border-white/20 z-50"
-                        onMouseLeave={() => {
-                          // Add a small delay to allow for moving to nested dropdown
-                          setTimeout(() => {
-                            const isHoveringNested = document.querySelector('.nested-dropdown:hover');
-                            if (!isHoveringNested) {
-                              setActiveDropdown(null);
-                            }
-                          }, 200);
-                        }}
+                        ref={dropdownRef}
+                        className="absolute left-0 mt-2 bg-white/95 rounded-lg shadow-2xl overflow-visible backdrop-blur-md border border-white/20 z-50"
+                        style={{ width: activeSubmenu ? '500px' : '250px' }}
                       >
-                        {item.items?.map((subItem, idx) => (
-                          <div key={idx} className="relative group" onClick={(e) => e.stopPropagation()}>
-                            {subItem.items ? (
-                              <div className="relative">
-                                <div 
-                                  className="flex justify-between items-center px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
-                                  onMouseEnter={() => {
-                                    // Keep the parent dropdown open when hovering over nested items
-                                    setActiveDropdown(item.label);
-                                  }}
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                  }}
-                                >
-                                  <span className="font-medium">{subItem.title}</span>
-                                  <ChevronRight className="h-4 w-4 text-gray-400 group-hover:translate-x-1 transition-transform" />
-                                </div>
-                                <div 
-                                  className="nested-dropdown invisible opacity-0 group-hover:opacity-100 group-hover:visible absolute left-full top-0 ml-1 w-64 bg-white/95 rounded-lg shadow-2xl overflow-hidden border border-white/20 z-50 transition-all duration-200 ease-in-out"
-                                  onMouseLeave={() => setActiveDropdown(null)}
-                                >
-                                  <div className="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        <div className="flex">
+                          {/* First level dropdown items */}
+                          <div className="w-[250px]">
+                            {item.items?.map((subItem, idx) => (
+                              <div key={idx}>
+                                {subItem.items ? (
+                                  // Has nested items - show as clickable item
+                                  <button
+                                    className="w-full flex justify-between items-center px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 cursor-pointer text-left"
+                                    onClick={() => {
+                                      setActiveSubmenu(activeSubmenu === subItem.title ? null : subItem.title);
+                                    }}
+                                  >
+                                    <span className="font-medium">{subItem.title}</span>
+                                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                                  </button>
+                                ) : (
+                                  // No nested items - direct link
+                                  <Link
+                                    to={subItem.href}
+                                    className="block w-full px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                                    onClick={(e) => {
+                                      console.log('Direct link clicked:', subItem.title, subItem.href);
+                                      console.log('Event default prevented?', e.defaultPrevented);
+                                    }}
+                                  >
                                     {subItem.title}
-                                  </div>
-                                  {subItem.items.map((nestedItem, nestedIdx) => (
-                                    <Link
-                                      key={nestedIdx}
-                                      to={nestedItem.href}
-                                      className="block px-5 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 text-sm"
-                                      onClick={() => setActiveDropdown(null)}
-                                    >
-                                      {nestedItem.title}
-                                    </Link>
-                                  ))}
-                                </div>
+                                  </Link>
+                                )}
                               </div>
-                            ) : (
-                              <div className="w-full" onClick={(e) => e.stopPropagation()}>
+                            ))}
+                          </div>
+                          
+                          {/* Second level dropdown items */}
+                          {activeSubmenu && (
+                            <div className="w-[250px] border-l border-gray-200">
+                              {item.items?.find(sub => sub.title === activeSubmenu)?.items?.map((nestedItem, nestedIdx) => (
                                 <Link
-                                  to={subItem.href}
-                                  className="block w-full px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                                  key={nestedIdx}
+                                  to={nestedItem.href}
+                                  className="block px-5 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 text-sm"
                                   onClick={(e) => {
-                                    e.stopPropagation();
-                                    setActiveDropdown(null);
+                                    console.log('Nested link clicked:', nestedItem.title, nestedItem.href);
+                                    console.log('Event default prevented?', e.defaultPrevented);
                                   }}
                                 >
-                                  {subItem.title}
+                                  {nestedItem.title}
                                 </Link>
-                              </div>
-                            )}
-                          </div>
-                        ))}
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     )}
                   </>
