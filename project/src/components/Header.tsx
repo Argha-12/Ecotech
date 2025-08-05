@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import logo from '../assets/logo.png';
-import EndpointSecurity from '../pages/EndpointSecurity';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,10 +13,12 @@ const Header = () => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const isHomePage = location.pathname === '/';
+  const isAboutPage = location.pathname === '/about';
+  const hasTransparentHeader = isHomePage || isAboutPage;
 
   useEffect(() => {
-    // Reset to transparent when navigating to homepage
-    if (isHomePage) {
+    // Reset to transparent when navigating to homepage or about page
+    if (hasTransparentHeader) {
       setHeaderOpacity(0);
       
       const handleScroll = () => {
@@ -38,7 +39,7 @@ const Header = () => {
       // On other pages, header is always opaque
       setHeaderOpacity(1);
     }
-  }, [isHomePage, location.pathname]);
+  }, [hasTransparentHeader, location.pathname]);
 
   type MenuItem = {
     title: string;
@@ -209,21 +210,32 @@ const Header = () => {
 
 
   // Determine if header should be transparent
-  const isTransparent = isHomePage && headerOpacity === 0;
+  const isTransparent = hasTransparentHeader && headerOpacity === 0;
+  
+  // Debug logging
+  console.log('Header Debug:', {
+    pathname: location.pathname,
+    isHomePage,
+    isAboutPage,
+    hasTransparentHeader,
+    headerOpacity,
+    isTransparent
+  });
 
   return (
     <header 
-      className="fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out"
+      className={`fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out ${isTransparent ? '' : ''}`}
       style={{
         background: isTransparent 
-          ? 'transparent' 
-          : isHomePage 
+          ? 'none' 
+          : hasTransparentHeader 
             ? `linear-gradient(to right, rgba(30, 58, 138, ${headerOpacity}), rgba(29, 78, 216, ${headerOpacity}), rgba(17, 24, 39, ${headerOpacity}))`
             : 'linear-gradient(to right, rgb(30, 58, 138), rgb(29, 78, 216), rgb(17, 24, 39))',
         backgroundColor: isTransparent ? 'transparent' : undefined,
-        backdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !isHomePage ? 1 : 0)}px)`,
-        boxShadow: isTransparent ? 'none' : (headerOpacity > 0.5 || !isHomePage ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none'),
-        WebkitBackdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !isHomePage ? 1 : 0)}px)`,
+        backgroundImage: isTransparent ? 'none' : undefined,
+        backdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !hasTransparentHeader ? 1 : 0)}px)`,
+        boxShadow: isTransparent ? 'none' : (headerOpacity > 0.5 || !hasTransparentHeader ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none'),
+        WebkitBackdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !hasTransparentHeader ? 1 : 0)}px)`,
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

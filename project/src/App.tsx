@@ -14,11 +14,13 @@ import PlaceholderPage from './pages/PlaceholderPage';
 const AppContent: React.FC = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isAboutPage = location.pathname === '/about';
+  const hasTransparentHeader = isHomePage || isAboutPage;
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className={`flex-grow ${isHomePage ? '' : 'pt-20'}`}>
+      <main className={`flex-grow ${hasTransparentHeader ? '' : 'pt-20'}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
