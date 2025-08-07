@@ -15,8 +15,25 @@ const Header = () => {
   const isHomePage = location.pathname === '/';
   const isAboutPage = location.pathname === '/about';
   const hasTransparentHeader = isHomePage || isAboutPage;
+  
+  // Check if current page should have blue header
+  const isServicesPage = location.pathname.startsWith('/services');
+  const isContactPage = location.pathname.startsWith('/contact');
+  const isResourcesPage = location.pathname.startsWith('/resources');
+  const hasBlueHeader = isServicesPage || isContactPage || isResourcesPage;
+  
+  // Debug logging
+  console.log('Current path:', location.pathname);
+  console.log('Has blue header:', hasBlueHeader);
+  console.log('Is resources page:', isResourcesPage);
 
   useEffect(() => {
+    // Immediately set opacity for blue header pages
+    if (hasBlueHeader) {
+      setHeaderOpacity(1);
+      return; // Exit early for blue header pages
+    }
+    
     // Reset to transparent when navigating to homepage or about page
     if (hasTransparentHeader) {
       setHeaderOpacity(0);
@@ -39,7 +56,7 @@ const Header = () => {
       // On other pages, header is always opaque
       setHeaderOpacity(1);
     }
-  }, [hasTransparentHeader, location.pathname]);
+  }, [hasTransparentHeader, hasBlueHeader, location.pathname]);
 
   type MenuItem = {
     title: string;
@@ -210,7 +227,8 @@ const Header = () => {
 
 
   // Determine if header should be transparent
-  const isTransparent = hasTransparentHeader && headerOpacity === 0;
+  // Blue header pages should never be transparent regardless of opacity state
+  const isTransparent = hasTransparentHeader && headerOpacity === 0 && !hasBlueHeader;
   
   // Debug logging
   console.log('Header Debug:', {
@@ -218,231 +236,282 @@ const Header = () => {
     isHomePage,
     isAboutPage,
     hasTransparentHeader,
+    hasBlueHeader,
     headerOpacity,
     isTransparent
   });
 
-  return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out ${isTransparent ? '' : ''}`}
-      style={{
-        background: isTransparent 
-          ? 'none' 
-          : hasTransparentHeader 
-            ? `linear-gradient(to right, rgba(30, 58, 138, ${headerOpacity}), rgba(29, 78, 216, ${headerOpacity}), rgba(17, 24, 39, ${headerOpacity}))`
-            : 'linear-gradient(to right, rgb(30, 58, 138), rgb(29, 78, 216), rgb(17, 24, 39))',
-        backgroundColor: isTransparent ? 'transparent' : undefined,
-        backgroundImage: isTransparent ? 'none' : undefined,
-        backdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !hasTransparentHeader ? 1 : 0)}px)`,
-        boxShadow: isTransparent ? 'none' : (headerOpacity > 0.5 || !hasTransparentHeader ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none'),
-        WebkitBackdropFilter: isTransparent ? 'none' : `blur(${8 * Math.max(headerOpacity, !hasTransparentHeader ? 1 : 0)}px)`,
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-4">
-            <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-md overflow-hidden">
-              <img src={logo} alt="Company Logo" className="w-9 h-9 object-contain" />
-            </div>
-            <span className="text-3xl font-extrabold tracking-wide leading-tight">
-              Ecotech <span className="text-blue-300">Global services</span>
-            </span>
-          </Link>
+  // Extract header content to avoid duplication
+  const renderHeaderContent = () => (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center h-20">
+        {/* Logo */}
+        <Link to="/" className="flex items-center space-x-4">
+          <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-md overflow-hidden">
+            <img src={logo} alt="Company Logo" className="w-9 h-9 object-contain" />
+          </div>
+          <span className="text-3xl font-extrabold tracking-wide leading-tight">
+            Ecotech <span className="text-blue-300">Global services</span>
+          </span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8 items-center relative">
-            {navItems.map((item) => (
-              <div key={item.label} className="relative">
-                {item.hasDropdown ? (
-                  <>
-                    <button
-                      data-dropdown-toggle
-                      onClick={() => toggleDropdown(item.label)}
-                      className={`flex items-center gap-1 text-base font-semibold px-3 py-2 rounded-md transition duration-200 ${
-                        activeDropdown === item.label
-                          ? 'bg-white text-blue-800 shadow-sm'
-                          : 'text-blue-100 hover:text-white hover:bg-white/10'
-                      }`}
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-8" ref={dropdownRef}>
+          {/* Rest of navigation content */}
+          <Link to="/" className="hover:text-blue-300 transition-colors">
+            Home
+          </Link>
+          <Link to="/about" className="hover:text-blue-300 transition-colors">
+            About Us
+          </Link>
+          
+          {/* Services Dropdown */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setActiveDropdown('services')}
+            onMouseLeave={() => {
+              setActiveDropdown(null);
+              setActiveSubmenu(null);
+            }}
+          >
+            <Link 
+              to="/services" 
+              className="hover:text-blue-300 transition-colors flex items-center gap-1"
+            >
+              Services <ChevronDown className="w-4 h-4" />
+            </Link>
+            {activeDropdown === 'services' && (
+              <div className="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+                <div className="py-1">
+                  {servicesItems.map((item) => (
+                    <div
+                      key={item.title}
+                      className="relative"
+                      onMouseEnter={() => item.items && setActiveSubmenu(item.title)}
+                      onMouseLeave={() => setActiveSubmenu(null)}
                     >
-                      {item.label}
-                      <ChevronDown className={`w-4 h-4 transform transition ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
-                    </button>
-                    
-                    {/* Dropdown Menu */}
-                    {activeDropdown === item.label && (
-                      <div 
-                        ref={dropdownRef}
-                        className="absolute left-0 mt-2 bg-white/95 rounded-lg shadow-2xl overflow-visible backdrop-blur-md border border-white/20 z-50"
-                        style={{ width: activeSubmenu ? '500px' : '250px' }}
+                      <Link
+                        to={item.href}
+                        className="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                       >
-                        <div className="flex">
-                          {/* First level dropdown items */}
-                          <div className="w-[250px]">
-                            {item.items?.map((subItem, idx) => (
-                              <div key={idx}>
-                                {subItem.items ? (
-                                  // Has nested items - show as clickable item
-                                  <button
-                                    className="w-full flex justify-between items-center px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 cursor-pointer text-left"
-                                    onClick={() => {
-                                      setActiveSubmenu(activeSubmenu === subItem.title ? null : subItem.title);
-                                    }}
-                                  >
-                                    <span className="font-medium">{subItem.title}</span>
-                                    <ChevronRight className="h-4 w-4 text-gray-400" />
-                                  </button>
-                                ) : (
-                                  // No nested items - direct link
-                                  <Link
-                                    to={subItem.href}
-                                    className="block w-full px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
-                                    onClick={(e) => {
-                                      console.log('Direct link clicked:', subItem.title, subItem.href);
-                                      console.log('Event default prevented?', e.defaultPrevented);
-                                    }}
-                                  >
-                                    {subItem.title}
-                                  </Link>
-                                )}
-                              </div>
+                        {item.title}
+                        {item.items && <ChevronRight className="w-4 h-4" />}
+                      </Link>
+                      {item.items && activeSubmenu === item.title && (
+                        <div className="absolute left-full top-0 ml-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                          <div className="py-1">
+                            {item.items.map((subItem) => (
+                              <Link
+                                key={subItem.title}
+                                to={subItem.href}
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                              >
+                                {subItem.title}
+                              </Link>
                             ))}
                           </div>
-                          
-                          {/* Second level dropdown items */}
-                          {activeSubmenu && (
-                            <div className="w-[250px] border-l border-gray-200">
-                              {item.items?.find(sub => sub.title === activeSubmenu)?.items?.map((nestedItem, nestedIdx) => (
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Resources Dropdown */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setActiveDropdown('resources')}
+            onMouseLeave={() => {
+              setActiveDropdown(null);
+              setActiveSubmenu(null);
+            }}
+          >
+            <Link 
+              to="/resources" 
+              className="hover:text-blue-300 transition-colors flex items-center gap-1"
+            >
+              Resources <ChevronDown className="w-4 h-4" />
+            </Link>
+            {activeDropdown === 'resources' && (
+              <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+                <div className="py-1">
+                  {resourcesItems.map((item) => (
+                    <Link
+                      key={item.title}
+                      to={item.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <Link to="/contact" className="hover:text-blue-300 transition-colors">
+            Contact Us
+          </Link>
+        </nav>
+
+        {/* Mobile menu button */}
+        <button
+          className="lg:hidden text-white hover:text-blue-300 transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="lg:hidden py-4 border-t border-gray-700">
+          <div className="flex flex-col space-y-2">
+            <Link 
+              to="/" 
+              className="px-2 py-2 hover:bg-gray-800 rounded transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/about" 
+              className="px-2 py-2 hover:bg-gray-800 rounded transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About Us
+            </Link>
+            
+            {/* Mobile Services Dropdown */}
+            <div>
+              <button
+                className="w-full text-left px-2 py-2 hover:bg-gray-800 rounded transition-colors flex items-center justify-between"
+                onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'services' ? null : 'services')}
+              >
+                Services
+                <ChevronDown className={`w-4 h-4 transition-transform ${
+                  mobileOpenDropdown === 'services' ? 'rotate-180' : ''
+                }`} />
+              </button>
+              {mobileOpenDropdown === 'services' && (
+                <div className="pl-4 mt-2 space-y-1">
+                  {servicesItems.map((item) => (
+                    <div key={item.title}>
+                      {item.items ? (
+                        <>
+                          <button
+                            className="w-full text-left px-2 py-2 hover:bg-gray-800 rounded transition-colors flex items-center justify-between text-sm"
+                            onClick={() => setMobileNestedDropdown(mobileNestedDropdown === item.title ? null : item.title)}
+                          >
+                            {item.title}
+                            <ChevronDown className={`w-3 h-3 transition-transform ${
+                              mobileNestedDropdown === item.title ? 'rotate-180' : ''
+                            }`} />
+                          </button>
+                          {mobileNestedDropdown === item.title && (
+                            <div className="pl-4 mt-1 space-y-1">
+                              {item.items.map((subItem) => (
                                 <Link
-                                  key={nestedIdx}
-                                  to={nestedItem.href}
-                                  className="block px-5 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 text-sm"
-                                  onClick={(e) => {
-                                    console.log('Nested link clicked:', nestedItem.title, nestedItem.href);
-                                    console.log('Event default prevented?', e.defaultPrevented);
-                                  }}
+                                  key={subItem.title}
+                                  to={subItem.href}
+                                  className="block px-2 py-1 hover:bg-gray-800 rounded transition-colors text-sm"
+                                  onClick={() => setIsMenuOpen(false)}
                                 >
-                                  {nestedItem.title}
+                                  {subItem.title}
                                 </Link>
                               ))}
                             </div>
                           )}
-                        </div>
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className={`px-4 py-3 text-base font-semibold rounded-lg transition-all duration-200 ${
-                      isActive(item.path)
-                        ? 'text-white bg-gradient-to-r from-blue-600 to-blue-500 shadow-md'
-                        : 'text-blue-100 hover:text-white hover:bg-white/10'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </nav>
-
-          {/* Mobile Toggle Button */}
-          <button
-            className="md:hidden p-2 rounded-lg text-blue-100 hover:text-white hover:bg-white/10 transition-all transform hover:scale-110"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden bg-gradient-to-b from-blue-900 via-blue-800 to-gray-900 border-t border-blue-700/30 animate-slide-down">
-              <nav className="py-2 space-y-1 px-2">
-                {navItems.map((item) => (
-                  <div key={item.label} className="space-y-1">
-                    {item.hasDropdown ? (
-                      <div className="space-y-1">
-                        <button
-                          className="w-full flex justify-between items-center px-4 py-3 text-base font-medium text-blue-100"
-                          onClick={() => {
-                            setMobileOpenDropdown(mobileOpenDropdown === item.label ? null : item.label);
-                            setMobileNestedDropdown(null); // Reset nested dropdown when parent is toggled
-                          }}
+                        </>
+                      ) : (
+                        <Link
+                          to={item.href}
+                          className="block px-2 py-2 hover:bg-gray-800 rounded transition-colors text-sm"
+                          onClick={() => setIsMenuOpen(false)}
                         >
-                          {item.label}
-                          <ChevronDown className={`h-4 w-4 transform transition-transform ${mobileOpenDropdown === item.label ? 'rotate-180' : ''}`} />
-                        </button>
-                        <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-200 ${mobileOpenDropdown === item.label ? 'max-h-[2000px]' : 'max-h-0'}`}>
-                          {item.items?.map((subItem, idx) => (
-                            <div key={idx} className="relative">
-                              {subItem.items ? (
-                                <div>
-                                  <button
-                                    className="w-full flex justify-between items-center px-4 py-2 text-sm rounded-md text-blue-100 hover:bg-white/10"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      setMobileNestedDropdown(mobileNestedDropdown === subItem.title ? null : subItem.title);
-                                    }}
-                                  >
-                                    {subItem.title}
-                                    <ChevronRight className={`h-4 w-4 transform transition-transform ${mobileNestedDropdown === subItem.title ? 'rotate-90' : ''}`} />
-                                  </button>
-                                  <div className={`pl-4 space-y-1 overflow-hidden transition-all duration-200 ${mobileNestedDropdown === subItem.title ? 'max-h-[1000px]' : 'max-h-0'}`}>
-                                    {subItem.items.map((nestedItem, nestedIdx) => (
-                                      <Link
-                                        key={nestedIdx}
-                                        to={nestedItem.href}
-                                        className="block px-4 py-2 text-sm rounded-md text-blue-100 hover:bg-white/10"
-                                        onClick={() => {
-                                          setIsMenuOpen(false);
-                                          setMobileOpenDropdown(null);
-                                          setMobileNestedDropdown(null);
-                                        }}
-                                      >
-                                        {nestedItem.title}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </div>
-                            ) : (
-                              <Link
-                                to={subItem.href}
-                                className="block px-4 py-2 text-sm rounded-md text-blue-100 hover:bg-white/10"
-                                onClick={() => setIsMenuOpen(false)}
-                              >
-                                {subItem.title}
-                              </Link>
-                            )}
-                          </div>
-                        ))}
-                      </div>
+                          {item.title}
+                        </Link>
+                      )}
                     </div>
-                    ) : (
-                      <Link
-                        to={item.path}
-                        className={`block px-4 py-3 text-base font-medium rounded-md transition-all ${
-                          isActive(item.path)
-                            ? 'bg-white text-blue-800 shadow-md'
-                            : 'text-blue-100 hover:text-white hover:bg-white/10'
-                        }`}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </nav>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
-      </div>
+
+            {/* Mobile Resources Dropdown */}
+            <div>
+              <button
+                className="w-full text-left px-2 py-2 hover:bg-gray-800 rounded transition-colors flex items-center justify-between"
+                onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'resources' ? null : 'resources')}
+              >
+                Resources
+                <ChevronDown className={`w-4 h-4 transition-transform ${
+                  mobileOpenDropdown === 'resources' ? 'rotate-180' : ''
+                }`} />
+              </button>
+              {mobileOpenDropdown === 'resources' && (
+                <div className="pl-4 mt-2 space-y-1">
+                  {resourcesItems.map((item) => (
+                    <Link
+                      key={item.title}
+                      to={item.href}
+                      className="block px-2 py-2 hover:bg-gray-800 rounded transition-colors text-sm"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link 
+              to="/contact" 
+              className="px-2 py-2 hover:bg-gray-800 rounded transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
+  // Use separate rendering logic for blue header pages to avoid timing issues
+  if (hasBlueHeader) {
+    return (
+      <header 
+        className="fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out"
+        style={{
+          background: 'rgb(59, 130, 246)',
+          backgroundColor: 'rgb(59, 130, 246)',
+          backgroundImage: 'none',
+          backdropFilter: 'none',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+          WebkitBackdropFilter: 'none',
+        }}
+      >
+        {renderHeaderContent()}
+      </header>
+    );
+  }
+
+  return (
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out"
+      style={{
+        background: hasTransparentHeader 
+          ? `linear-gradient(to right, rgba(30, 58, 138, ${headerOpacity}), rgba(29, 78, 216, ${headerOpacity}), rgba(17, 24, 39, ${headerOpacity}))`
+          : 'linear-gradient(to right, rgb(30, 58, 138), rgb(29, 78, 216), rgb(17, 24, 39))',
+        backdropFilter: `blur(${8 * Math.max(headerOpacity, !hasTransparentHeader ? 1 : 0)}px)`,
+        boxShadow: headerOpacity > 0.5 || !hasTransparentHeader ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none',
+        WebkitBackdropFilter: `blur(${8 * Math.max(headerOpacity, !hasTransparentHeader ? 1 : 0)}px)`,
+      }}
+    >
+      {renderHeaderContent()}
     </header>
   );
 };
