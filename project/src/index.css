@@ -52,3 +52,112 @@
   transform: rotateY(180deg);
   text-align: center;
 }
+/* Section Styling */
+.testimonials {
+  background: radial-gradient(circle at top left, #0d1117, #000);
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.testimonials h2 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.testimonials p {
+  max-width: 750px;
+  margin: 15px auto 50px;
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Cards Container */
+.testimonial-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Individual Card */
+.testimonial-card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 20px;
+  padding: 25px;
+  width: 310px;
+  text-align: left;
+  position: relative;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 35px rgba(0, 170, 255, 0.4);
+}
+
+/* Quote Icon */
+.quote {
+  font-size: 40px;
+  color: #4facfe;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Review Text */
+.testimonial-card p {
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+/* Stars */
+.stars {
+  color: gold;
+  font-size: 1.3rem;
+  margin: 15px 0;
+}
+
+/* Client Info */
+.client {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.client img {
+  border-radius: 50%;
+  border: 2px solid #4facfe;
+  margin-right: 12px;
+  transition: transform 0.3s ease;
+}
+
+.client img:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
+.client strong {
+  font-size: 1rem;
+}
+
+.client small {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.client a {
+  color: #4facfe;
+  text-decoration: none;
+}
+
+.client a:hover {
+  text-decoration: underline;
+}

@@ -1,140 +1,181 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Code2, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import React from "react";
+import {
+  Code2,
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  ChevronUp,
+} from "lucide-react";
+import logo from '../assets/logo.png';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Code2 className="w-5 h-5 text-white" />
+    <footer className="bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white relative overflow-hidden shadow-lg">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div
+          className="absolute top-0 right-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+          style={{ animationDelay: "4s" }}
+        ></div>
+      </div>
+
+      {/* Geometric Pattern Overlay */}
+      <div className="absolute inset-0 opacity-10">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        ></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Main Footer Content */}
+        <div className="py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        {/* Company Info */}
+        <div className="lg:col-span-2">
+          <div className="flex items-center space-x-3 mb-6">
+            <img 
+              src={logo}
+              alt="Ecotech Global Services Logo" 
+              className="w-12 h-12 rounded-2xl shadow-lg shadow-blue-600/25 object-contain bg-white p-1" 
+            />
+            
+            <span className="text-3xl font-bold text-white">
+              Ecotech Global Services
+            </span>
+          </div>
+          <p className="text-white text-lg leading-relaxed mb-8 max-w-md">
+            Empowering businesses through innovative IT solutions and
+            cutting-edge technology services. We transform ideas into digital
+            reality.
+          </p>
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                <a
+                  href="https://facebook.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:bg-blue-600 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-600/25"
+                >
+                  <Facebook className="w-6 h-6 text-white group-hover:text-white transition-colors" />
+                </a>
+                <a
+                  href="https://twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:bg-sky-500 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-sky-500/25"
+                >
+                  <Twitter className="w-6 h-6 text-white group-hover:text-white transition-colors" />
+                </a>
+                <a
+                  href="https://linkedin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:bg-blue-500 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
+                >
+                  <Linkedin className="w-6 h-6 text-white group-hover:text-white transition-colors" />
+                </a>
+                <a
+                  href="https://instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:bg-pink-500 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
+                >
+                  <Instagram className="w-6 h-6 text-white group-hover:text-white transition-colors" />
+                </a>
               </div>
-              <span className="text-xl font-bold">Ecotech Global</span>
             </div>
-            <p className="text-gray-400 text-sm mb-4">
-              Empowering businesses through innovative IT solutions and cutting-edge technology services.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-xl font-bold text-white mb-6 relative">
+                Quick Links
+                <div className="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+              </h3>
+              <ul className="space-y-4">
+                {[
+                  { href: "/", label: "Home" },
+                  { href: "/about", label: "About Us" },
+                  { href: "/industries", label: "Industries" },
+                  { href: "/technologies", label: "Technologies" },
+                ].map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.href}
+                      className="group text-white hover:text-blue-400 transition-all duration-300 flex items-center"
+                    >
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/industries" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Industries
-                </Link>
-              </li>
-              <li>
-                <Link to="/technologies" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Technologies
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Web Development
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Mobile Apps
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Cloud Solutions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  IT Consulting
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Digital Marketing
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 text-blue-400 mt-0.5" />
-                <span className="text-gray-400 text-sm">
-                  123 Business District, Tech City,<br />
-                  Mumbai, India 400001
-                </span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-400 text-sm">+91 98765 43210</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-400 text-sm">info@ecotechglobal.in</span>
-              </li>
-            </ul>
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-xl font-bold text-white mb-6 relative">
+                Contact Info
+                <div className="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"></div>
+              </h3>
+              <ul className="space-y-6">
+                <li className="flex items-start space-x-4 group">
+                  <div className="p-2 bg-blue-600/20 rounded-lg group-hover:bg-blue-600/30 transition-colors">
+                    <MapPin className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <a
+                    href="https://www.google.com/maps?q=4+Fairlie+Place,+HMP+House,+2nd+Floor,+Room+No+228,+Kolkata+700001"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white group-hover:text-blue-400 transition-colors"
+                  >
+                    4 Fairlie Place, HMP House, 2nd Floor, Room No 228 Kolkata 700001
+                  </a>
+                </li>
+                <li className="flex items-center space-x-4 group">
+                  <div className="p-2 bg-green-600/20 rounded-lg group-hover:bg-green-600/30 transition-colors">
+                    <Phone className="w-5 h-5 text-green-400" />
+                  </div>
+                  <span className="text-white group-hover:text-green-400 transition-colors">
+                    +91 9836044007
+                  </span>
+                </li>
+                <li className="flex items-center space-x-4 group">
+                  <div className="p-2 bg-purple-600/20 rounded-lg group-hover:bg-purple-600/30 transition-colors">
+                    <Mail className="w-5 h-5 text-purple-400" />
+                  </div>
+                  <span className="text-white group-hover:text-purple-400 transition-colors">
+                    info@ecotechglobal.in
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 Ecotech Global. All rights reserved.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                Terms of Service
-              </a>
-            </div>
-          </div>
+        {/* Back to Top Button */}
+        <div className="flex justify-center pb-8">
+          <button
+            onClick={scrollToTop}
+            className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:shadow-lg hover:shadow-blue-600/25 transition-all duration-300 hover:scale-110"
+          >
+            <ChevronUp className="w-6 h-6 text-white" />
+          </button>
         </div>
       </div>
     </footer>
