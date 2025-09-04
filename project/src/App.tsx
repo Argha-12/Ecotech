@@ -27,11 +27,8 @@ import Softwarelicensingsolutions from './pages/Softwarelicensingsolutions';
 import EndpointSecurity from './pages/EndpointSecurity';
 import Audiovisualsolutions from './pages/Audiovisualsolutions';
 import Webappdevelopment from './pages/Webappdevelopment';
-import Managedservicessolutions from './pages/Webappdevelopment';
-
-
-
-
+import Managedservicessolutions from './pages/Managedservicessolutions';
+import CaseStudies from './pages/case-studies';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -107,7 +104,7 @@ const AppContent: React.FC = () => {
           <Route path="/Web_App_Development" element={<Webappdevelopment />} />
 
           {/* Resources Routes */}
-          <Route path="/resources/case_studies" element={<PlaceholderPage />} />
+          <Route path="/resources/case_studies" element={<CaseStudies />} />
           <Route path="/resources/whitepapers" element={<PlaceholderPage />} />
           <Route path="/resources/blog" element={<PlaceholderPage />} />
           <Route path="/resources/events" element={<PlaceholderPage />} />
