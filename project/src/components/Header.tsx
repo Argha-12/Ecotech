@@ -101,9 +101,9 @@ const Header = () => {
   ];
 
   const resourcesItems: MenuItem[] = [
-    { title: 'Case Studies', href: '/case_studies' },
-    { title: 'Blogs', href: '/blogs' },
-    { title: 'Support Desk', href: '/support' }
+    { title: 'Case Studies', href: '/resources/case_studies' },
+    { title: 'Blogs', href: '/resources/blog' },
+    { title: 'Support Desk', href: '/resources/support' }
   ];
 
   type NavItem = {
