@@ -1,100 +1,156 @@
 import React from "react";
+import { Link } from "react-router-dom"; // ✅ Import Link
 
-const ITInfrastructurePage: React.FC = () => {
+const SoftwareLicensingPage: React.FC = () => {
+  const offerings = [
+    {
+      title: "Microsoft",
+      description:
+        "Office, Windows, Server, and cloud-based licensing for every business size.",
+      icon: "💻",
+    },
+    {
+      title: "Adobe",
+      description:
+        "Creative Cloud, Document Cloud, and enterprise design solutions.",
+      icon: "🎨",
+    },
+    {
+      title: "Autodesk",
+      description:
+        "Industry-leading CAD, engineering, and design software.",
+      icon: "🏗️",
+    },
+    {
+      title: "EViews",
+      description:
+        "Advanced econometric and statistical analysis tools.",
+      icon: "📊",
+    },
+    {
+      title: "Nitro",
+      description:
+        "Document productivity, PDF, and e-signature solutions.",
+      icon: "📝",
+    },
+    {
+      title: "Corel",
+      description:
+        "Graphics, design, and productivity software for creative professionals.",
+      icon: "🌐",
+    },
+  ];
+
+  const whyChoose = [
+    {
+      text: "ISO-Certified Processes for quality and compliance",
+      icon: "🏆",
+    },
+    {
+      text: "Cost Optimization Strategies to reduce your software spend",
+      icon: "💰",
+    },
+    {
+      text: "Genuine Licensing Guarantee with vendor-authorized distribution",
+      icon: "✅",
+    },
+    {
+      text: "End-to-End Support from procurement to deployment and renewal",
+      icon: "⚙️",
+    },
+    {
+      text: "Volume & Enterprise Licensing Expertise for large organizations",
+      icon: "📦",
+    },
+  ];
+
   return (
-    <div className="relative min-h-screen bg-gray-900 text-white py-16 px-6">
+    <div className="relative min-h-screen bg-stone-900 text-white py-16 px-6">
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Title Section */}
         <section className="mb-20 text-center">
-          <h1 className="text-5xl font-extrabold mb-6 text-white">
-            Email & Collaboration Solutions
+          <h1 className="text-4xl font-extrabold mb-6 text-white">
+            Software Licensing The Right Tools Licensed Right
           </h1>
           <p className="text-xl text-gray-300 mb-4 italic">
-            "Empowering Teams. Anywhere. Anytime."
+            "Empowering Your Business with Genuine, Compliant Software."
           </p>
           <p className="mb-8 text-lg max-w-3xl mx-auto text-gray-300 leading-relaxed">
-            At Ecotech Global Services, we deliver secure, scalable, and
-            high-performance email and collaboration platforms to keep your
-            teams connected and productive — wherever they are. Our
-            partnerships with Google Workspace, Microsoft 365, Zoho Email, QLC
-            Email, and Rediffmail enable us to provide solutions that combine
-            enterprise-grade reliability, advanced security, and intuitive user
-            experiences.
+            At Ecotech Global Services, we help enterprises access, deploy, and
+            manage the world’s most trusted software solutions — ensuring you
+            have the right licenses, the right compliance, and the right support
+            to maximize productivity. We partner with global leaders like
+            Microsoft, Adobe, Autodesk, EViews, Nitro, and Corel to deliver
+            authentic, up-to-date, and cost-optimized software licensing
+            solutions for every industry.
           </p>
         </section>
 
         {/* Offerings */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-6 text-center text-white">
-            Our Email & Collaboration Offerings
+          <h2 className="text-3xl font-bold mb-12 text-center text-white">
+            Our Software Licensing Offerings
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white bg-opacity-10 p-6 rounded-xl shadow-lg">
-              <h3 className="text-xl font-bold mb-2">Google Workspace</h3>
-              <p>
-                A complete suite of cloud-based productivity tools — Gmail, Drive,
-                Docs, Meet — built for modern teamwork.
-              </p>
-            </div>
-            <div className="bg-white bg-opacity-10 p-6 rounded-xl shadow-lg">
-              <h3 className="text-xl font-bold mb-2">Microsoft 365</h3>
-              <p>
-                Enterprise-class email, Office apps, and cloud services for seamless
-                communication and document collaboration.
-              </p>
-            </div>
-            <div className="bg-white bg-opacity-10 p-6 rounded-xl shadow-lg">
-              <h3 className="text-xl font-bold mb-2">Zoho Email</h3>
-              <p>
-                Feature-rich, ad-free, and highly secure business email hosting with
-                powerful collaboration tools.
-              </p>
-            </div>
-            <div className="bg-white bg-opacity-10 p-6 rounded-xl shadow-lg">
-              <h3 className="text-xl font-bold mb-2">QLC Email</h3>
-              <p>
-                Reliable, secure, and customizable corporate email platform for
-                On-Prem & Cloud deployments.
-              </p>
-            </div>
-            <div className="bg-white bg-opacity-10 p-6 rounded-xl shadow-lg">
-              <h3 className="text-xl font-bold mb-2">Rediffmail</h3>
-              <p>
-                Robust, cost-effective email hosting tailored for growing businesses.
-              </p>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {offerings.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition duration-300 border border-gray-700 text-center"
+              >
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Why Choose Us */}
-        <section className="mb-20 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-white">
-            Why Choose Ecotech for Email & Collaboration?
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold mb-12 text-center text-white">
+            Why Choose Ecotech for Licensing?
           </h2>
-          <ul className="space-y-4 text-lg text-gray-300 max-w-3xl mx-auto">
-            <li>• ISO-Certified Implementation Standards ensuring security and compliance</li>
-            <li>• Seamless Migration Services from legacy systems to modern platforms</li>
-            <li>• Advanced Security with anti-spam, anti-phishing, and encryption controls</li>
-            <li>• 24/7 Support for uninterrupted productivity</li>
-          </ul>
-          <p className="mt-6 text-xl font-semibold text-white">
-            "Whether you’re a startup or a global enterprise, we connect your people
-            with the tools they need to succeed — securely and efficiently."
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {whyChoose.map((item, idx) => (
+              <div
+                key={idx}
+                className={`bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-700 flex items-start gap-4
+                  ${idx === whyChoose.length - 1 ? "md:col-span-2 md:mx-auto md:w-1/2" : ""}`}
+              >
+                <div className="text-3xl">{item.icon}</div>
+                <p className="text-lg text-gray-300">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-10 text-xl font-semibold text-center text-white">
+            💡 "The right software fuels productivity. The right licensing protects it."
           </p>
         </section>
 
+
         {/* CTA */}
-        <div className="text-center mt-12">
-          <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold shadow-lg mr-4">
-            📩 Request a Demo
-          </button>
-          <button className="px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold shadow-lg">
-            📞 Talk to a Collaboration Expert
-          </button>
+        <div className="text-center mt-16">
+          <Link
+            to="/GetQuote"
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block mr-4"
+          >
+            📩 Get a Licensing Quote
+          </Link>
+
+          <Link
+            to="/Contact"
+            className="px-8 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block"
+          >
+            📞 Talk to a Licensing Specialist
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default ITInfrastructurePage;
+export default SoftwareLicensingPage;

@@ -11,6 +11,7 @@ interface Service {
   bgColor: string;
   points: string[];
   link?: string;
+  customClass?: string;
 }
 
 const Home = () => {
@@ -241,81 +242,87 @@ const services: Service[] = [
   };
 
   return (
-    <div className="min-h-screen">
-      {/* 🔹 Dynamic Hero Banner Section */}
-      <section className="relative h-[90vh] bg-black flex items-center justify-center overflow-hidden">
-        {/* Dynamic Background - Gradient or Image */}
-        {currentContent.backgroundType === "gradient" ? (
-          // Original gradient background for first slide
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-indigo-900 to-black">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-          </div>
-        ) : (
-          // Background image with overlay for other slides
-          <>
-            <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
-              style={{ backgroundImage: `url(${currentContent.backgroundImage})` }}
+<div className="min-h-screen">
+  {/* 🔹 Dynamic Hero Banner Section */}
+  <section className="relative min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] bg-black flex items-center justify-center overflow-hidden">
+    {/* Dynamic Background - Gradient or Image */}
+    {currentContent.backgroundType === "gradient" ? (
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-indigo-900 to-black">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+      </div>
+    ) : (
+      <>
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
+          style={{ backgroundImage: `url(${currentContent.backgroundImage})` }}
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-black/50 to-indigo-900/30"></div>
+      </>
+    )}
+
+    {/* Floating Icons */}
+    <div className="absolute inset-0 overflow-hidden hidden md:block">
+      <Shield className="absolute top-20 left-20 w-8 h-8 text-blue-500 opacity-20 animate-pulse" />
+      <Cloud className="absolute top-40 right-32 w-6 h-6 text-blue-500 opacity-30 animate-bounce" />
+      <Zap className="absolute bottom-32 left-32 w-10 h-10 text-blue-500 opacity-25 animate-pulse" />
+    </div>
+
+    {/* Content */}
+    <div className="relative z-10 max-w-4xl md:max-w-5xl px-4 text-center space-y-6 md:space-y-8 pt-28 md:pt-32 lg:pt-40">
+      {/* Headline */}
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight hero-text-animation">
+        <span className="text-white drop-shadow-lg">{currentContent.title}</span>{" "}
+        <span className="text-blue-400 drop-shadow-lg">
+          {currentContent.highlight}
+        </span>
+      </h1>
+
+      {/* Subheadline */}
+      <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl md:max-w-3xl mx-auto hero-subtitle-animation drop-shadow-md">
+        {currentContent.subtitle}
+      </p>
+
+      {/* Trust Indicators */}
+      <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-xs sm:text-sm md:text-base text-gray-300 hero-indicators-animation">
+        {currentContent.trustIndicators.map((indicator, index) => (
+          <span
+            key={index}
+            className="flex items-center gap-2 hover:text-blue-300 transition-colors bg-black/20 backdrop-blur-sm px-3 py-2 rounded-full"
+          >
+            {indicator.icon}
+            {indicator.text}
+          </span>
+        ))}
+      </div>
+
+      {/* 🔹 Wrap Progress + CTA separately for spacing */}
+      <div className="flex flex-col items-center gap-6 mt-10">
+        {/* Progress indicators */}
+        <div className="flex justify-center space-x-2">
+          {heroContent.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentHero(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentHero
+                  ? "bg-blue-400 scale-110 shadow-lg shadow-blue-400/50"
+                  : "bg-gray-500 hover:bg-gray-400"
+              }`}
             />
-            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-black/50 to-indigo-900/30"></div>
-          </>
-        )}
-
-        {/* Floating Icons */}
-        <div className="absolute inset-0 overflow-hidden">
-          <Shield className="absolute top-20 left-20 w-8 h-8 text-blue-500 opacity-20 animate-pulse" />
-          <Cloud className="absolute top-40 right-32 w-6 h-6 text-blue-500 opacity-30 animate-bounce" />
-          <Zap className="absolute bottom-32 left-32 w-10 h-10 text-blue-500 opacity-25 animate-pulse" />
+          ))}
         </div>
 
-        {/* Content - with fade transition */}
-        <div className="relative z-10 max-w-5xl px-4 text-center space-y-8">
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight hero-text-animation">
-            <span className="text-white drop-shadow-lg">{currentContent.title}</span>{' '}
-            <span className="text-blue-400 drop-shadow-lg">{currentContent.highlight}</span>
-          </h1>
+        {/* CTA Button */}
+        <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg text-sm sm:text-base md:text-lg">
+          Get Started Today
+          <ArrowRight className="w-5 h-5" />
+        </button>
+      </div>
+    </div>
+  </section>
 
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto hero-subtitle-animation drop-shadow-md">
-            {currentContent.subtitle}
-          </p>
 
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-300 hero-indicators-animation">
-            {currentContent.trustIndicators.map((indicator, index) => (
-              <span key={index} className="flex items-center gap-2 hover:text-blue-300 transition-colors bg-black/20 backdrop-blur-sm px-3 py-2 rounded-full">
-                {indicator.icon}
-                {indicator.text}
-              </span>
-            ))}
-          </div>
-
-          {/* Progress indicators */}
-          <div className="flex justify-center space-x-2 mt-8">
-            {heroContent.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentHero(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentHero
-                    ? 'bg-blue-400 scale-110 shadow-lg shadow-blue-400/50'
-                    : 'bg-gray-500 hover:bg-gray-400'
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="pt-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg">
-              Get Started Today
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      </section>
 
 {/* 🔹 Services Section */}
 <section className="py-20 bg-gradient-to-b from-[#0B0F19] to-[#0B1220]">
