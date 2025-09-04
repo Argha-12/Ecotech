@@ -269,7 +269,7 @@ const services: Service[] = [
     </div>
 
     {/* Content */}
-    <div className="relative z-10 max-w-4xl md:max-w-5xl px-4 text-center space-y-6 md:space-y-8 pt-28 md:pt-32 lg:pt-40">
+    <div className="relative z-10 max-w-4xl md:max-w-5xl px-4 text-center space-y-6 md:space-y-8 pt-20 md:pt-27 lg:pt-35">
       {/* Headline */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight hero-text-animation">
         <span className="text-white drop-shadow-lg">{currentContent.title}</span>{" "}

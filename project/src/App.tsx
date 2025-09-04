@@ -27,7 +27,7 @@ import Softwarelicensingsolutions from './pages/Softwarelicensingsolutions';
 import EndpointSecurity from './pages/EndpointSecurity';
 import Audiovisualsolutions from './pages/Audiovisualsolutions';
 import Webappdevelopment from './pages/Webappdevelopment';
-import Managedservicessolutions from './pages/Webappdevelopment';
+import Managedservicessolutions from './pages/Managedservicessolutions';
 import CaseStudies from './pages/case-studies';
 
 

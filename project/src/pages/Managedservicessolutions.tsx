@@ -52,41 +52,63 @@ const ManagedServiceSolutions = () => {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Hero Section */}
-      <section className="bg-gray-900 text-white py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.h1
-            className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 to-indigo-500 text-transparent bg-clip-text"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Managed Service Solutions — Reliable. Scalable. Always-On.
-          </motion.h1>
+      <section className="relative bg-gray-900 text-white py-24 px-6">
+  <div className="max-w-6xl mx-auto text-center">
+    {/* Heading */}
+    <motion.h1
+      className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      Managed Service Solutions
+      <span className="block text-2xl md:text-3xl font-light mt-4 opacity-80">
+        Reliable • Scalable • Always-On
+      </span>
+    </motion.h1>
 
-          <motion.p
-            className="text-xl md:text-2xl text-yellow-400 font-semibold mb-6 italic"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            "Focus on Your Business, While We Manage Your IT."
-          </motion.p>
+    {/* Tagline */}
+    <motion.p
+      className="text-xl md:text-2xl font-medium mb-10 italic opacity-90"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      "Focus on Your Business, While We Manage Your IT."
+    </motion.p>
 
-          <motion.p
-            className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            At <span className="font-semibold text-white">Ecotech Global Services</span>, we provide{" "}
-            <span className="text-blue-400 font-semibold">end-to-end managed services</span> that ensure your
-            technology infrastructure runs smoothly, securely, and cost-effectively — 24/7. <br />
-            Our ISO-certified processes, expert teams, and proactive monitoring help you{" "}
-            <span className="text-green-400 font-semibold">reduce downtime, improve performance, and optimize costs</span>{" "}
-            while freeing your internal teams to focus on innovation.
-          </motion.p>
-        </div>
-      </section>
+    {/* Description */}
+    <motion.p
+      className="text-lg md:text-xl max-w-4xl mx-auto leading-relaxed opacity-80"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+    >
+      At <span className="font-semibold">Ecotech Global Services</span>, we provide{" "}
+      <span className="font-semibold">end-to-end managed services</span> that ensure your
+      technology infrastructure runs smoothly, securely, and cost-effectively — 24/7. <br />
+      Our ISO-certified processes, expert teams, and proactive monitoring help you{" "}
+      <span className="font-semibold">reduce downtime, improve performance, and optimize costs</span>{" "}
+      while freeing your internal teams to focus on innovation.
+    </motion.p>
+
+    {/* Call to Action */}
+    <motion.div
+      className="mt-12"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.6 }}
+    >
+      <a
+        href="/contact"
+        className="inline-block bg-white text-gray-900 font-semibold px-8 py-3 rounded-2xl shadow-lg hover:bg-gray-200 transition"
+      >
+        Get Started
+      </a>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* Services Portfolio */}
       <section className="py-20 px-4">
