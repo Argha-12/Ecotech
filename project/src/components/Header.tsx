@@ -85,7 +85,7 @@ const Header = () => {
     },
     {
       title: 'Managed Services Solutions',
-      href: '/managed_services_solutions',
+      href: '/Managed_services_solutions',
       // items: [
       //   { title: 'IT Consulting Services', href: '/managed_services_solutions/it_consulting_services' },
       //   { title: 'Network Managed Services', href: '/managed_services_solutions/network_managed_services' },

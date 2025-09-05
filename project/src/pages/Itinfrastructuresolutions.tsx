@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom"; // ✅ Import Link
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ITInfrastructurePage: React.FC = () => {
   const capabilities = [
@@ -42,22 +43,10 @@ const ITInfrastructurePage: React.FC = () => {
   ];
 
   const whyChooseFeatures = [
-    {
-      title: "ISO-Certified Quality & Security Standards",
-      icon: "🏆",
-    },
-    {
-      title: "Expert Implementation & Managed Services",
-      icon: "⚙️",
-    },
-    {
-      title: "Tailored Architectures for Your Business Needs",
-      icon: "🎯",
-    },
-    {
-      title: "24/7 Support & Proactive Maintenance",
-      icon: "🔧",
-    },
+    { title: "ISO-Certified Quality & Security Standards", icon: "🏆" },
+    { title: "Expert Implementation & Managed Services", icon: "⚙️" },
+    { title: "Tailored Architectures for Your Business Needs", icon: "🎯" },
+    { title: "24/7 Support & Proactive Maintenance", icon: "🔧" },
   ];
 
   const partners = [
@@ -72,7 +61,7 @@ const ITInfrastructurePage: React.FC = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black text-white">
+    <div className="relative min-h-screen bg-black text-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -85,8 +74,13 @@ const ITInfrastructurePage: React.FC = () => {
 
       {/* Wrapper */}
       <div className="relative z-10 max-w-6xl mx-auto py-16 px-6">
-        {/* ========== Hero Section ========== */}
-        <section className="mb-20 text-center">
+        {/* Hero Section */}
+        <motion.section
+          className="mb-20 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <h1 className="text-5xl font-extrabold mb-6">
             IT Infrastructure Solutions
           </h1>
@@ -94,24 +88,21 @@ const ITInfrastructurePage: React.FC = () => {
             "Build, Scale, and Secure Your Enterprise with Precision."
           </div>
           <p className="mb-8 text-lg max-w-4xl mx-auto leading-relaxed">
-            At <span className="font-semibold">Ecotech Global Services</span>,
-            we deliver enterprise-grade IT infrastructure solutions that combine{" "}
+            At <span className="font-semibold">Ecotech Global Services</span>, we
+            deliver enterprise-grade IT infrastructure solutions that combine {" "}
             <span className="font-semibold">
               performance, reliability, and scalability
             </span>
-            . Partnering with global leaders like{" "}
+            . Partnering with global leaders like {" "}
             <span className="font-semibold">
               Cisco, HP, Dell, Allied Telesis, and Juniper Networks
             </span>
             , we create robust, future-ready architectures for organizations of
             all sizes.
           </p>
-        </section>
+        </motion.section>
 
-        {/* Divider */}
-        <div className="h-px w-full bg-white/20 my-16"></div>
-
-        {/* ========== Core Capabilities Section ========== */}
+        {/* Core Capabilities */}
         <section className="mb-20">
           <h2 className="text-4xl font-extrabold mb-12 text-center">
             Our Core Capabilities
@@ -119,9 +110,13 @@ const ITInfrastructurePage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {capabilities.map((capability, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 hover:scale-105 border border-gray-700"
+                className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
                 <div className="flex items-center mb-4">
                   <div className="text-2xl mr-4 p-2 rounded-full bg-gray-800">
@@ -130,35 +125,32 @@ const ITInfrastructurePage: React.FC = () => {
                   <h3 className="text-xl font-bold">{capability.title}</h3>
                 </div>
                 <p className="leading-relaxed">{capability.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Divider */}
-        <div className="h-px w-full bg-white/20 my-16"></div>
 
-        {/* ========== Partners Section ========== */}
+        {/* Partners */}
         <section className="mb-20 text-center">
-          <h2 className="text-4xl font-bold mb-12">
-            Trusted Technology Partners
-          </h2>
+          <h2 className="text-4xl font-bold mb-12">Trusted Technology Partners</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {partners.map((partner, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-gray-900/60 p-6 rounded-xl hover:bg-gray-800 transition-all duration-300 hover:scale-105 border border-gray-700"
+                className="bg-gray-900/60 p-6 rounded-xl border border-gray-700 hover:bg-gray-800 transition-all"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
                 <span className="font-bold text-lg">{partner}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Divider */}
-        <div className="h-px w-full bg-white/20 my-16"></div>
-
-        {/* ========== Why Choose Section ========== */}
+        {/* Why Choose */}
         <section className="mb-20">
           <h2 className="text-4xl font-extrabold mb-12 text-center">
             Why Choose Ecotech?
@@ -166,41 +158,53 @@ const ITInfrastructurePage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             {whyChooseFeatures.map((feature, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 hover:scale-105 border border-gray-700 text-center"
+                className="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700 text-center"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
                 <div className="text-3xl mb-4 p-3 rounded-full inline-block bg-gray-800">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold">{feature.title}</h3>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
 
-        {/* ========== Quote Section ========== */}
-        <section className="mb-20 text-center">
+        {/* Quote */}
+        <motion.section
+          className="mb-20 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="bg-gray-900 p-8 rounded-2xl border border-gray-700 max-w-4xl mx-auto">
             <blockquote className="text-2xl font-bold mb-4">
-              "Your IT infrastructure should accelerate your business — not slow
-              it down. With Ecotech, you get a foundation engineered for growth."
+              "Your IT infrastructure should accelerate your business — not slow it down. With Ecotech, you get a foundation engineered for growth."
             </blockquote>
           </div>
-        </section>
+        </motion.section>
 
-        {/* ========== CTA Section ========== */}
-        <section className="text-center">
+        {/* CTA */}
+        <motion.section
+          className="text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-3xl font-bold mb-6">
             Ready to Transform Your Infrastructure?
           </h2>
           <p className="mb-8 text-lg max-w-2xl mx-auto">
-            Get started with enterprise-grade solutions tailored to your
-            business needs.
+            Get started with enterprise-grade solutions tailored to your business
+            needs.
           </p>
 
           <div className="flex flex-col md:flex-row justify-center gap-6">
-            {/* Styled Link as Button */}
             <Link
               to="/GetQuote"
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block text-white"
@@ -215,10 +219,10 @@ const ITInfrastructurePage: React.FC = () => {
               📞 Talk to an Expert
             </Link>
           </div>
-        </section>
+        </motion.section>
       </div>
     </div>
   );
-}
+};
 
 export default ITInfrastructurePage;

@@ -1,68 +1,137 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { Shield, Eye, BarChart3, Settings, Send, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
-export default function IntelligentPerimeterProtection() {
+export default function NextGenFirewalls() {
+  const features = [
+    {
+      title: "Advanced Threat Intelligence",
+      description:
+        "Integrated with global threat feeds to proactively block known and emerging attacks.",
+      icon: Shield,
+    },
+    {
+      title: "SSL Inspection",
+      description:
+        "Comprehensive scanning for encrypted traffic to uncover hidden threats.",
+      icon: Eye,
+    },
+    {
+      title: "Application-Aware Traffic",
+      description:
+        "Intelligent control of applications for optimized security and bandwidth management.",
+      icon: BarChart3,
+    },
+    {
+      title: "Unified Security Policies",
+      description:
+        "Enforce consistent policies across distributed locations with simplified security management.",
+      icon: Settings,
+    },
+  ];
+
   return (
-    <section className="bg-blue-900 text-white py-16 px-6">
-      <div className="max-w-6xl mx-auto text-center">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white px-6 py-20 overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.15),transparent_70%)]" />
+
+      <div className="relative z-10 max-w-6xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
+        >
           Intelligent Perimeter Protection
-        </h2>
+        </motion.h2>
 
         {/* Subheading */}
-        <p className="text-lg italic text-blue-300 mb-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed italic"
+        >
           "Stopping Threats Before They Reach You."
-        </p>
+        </motion.p>
 
         {/* Description */}
-        <p className="text-base md:text-lg mb-12 max-w-3xl mx-auto text-gray-200">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-12 text-lg leading-relaxed text-gray-200 max-w-3xl mx-auto"
+        >
           Our next-generation firewalls from{" "}
-          <span className="text-blue-300 font-semibold">Fortinet</span>,{" "}
-          <span className="text-blue-300 font-semibold">Sophos</span>,{" "}
-          <span className="text-blue-300 font-semibold">SonicWall</span>, and{" "}
-          <span className="text-blue-300 font-semibold">Palo Alto</span> offer
-          deep packet inspection, intrusion prevention, and application control
-          for maximum network security.
-        </p>
+          <span className="font-semibold text-white">Fortinet</span>,{" "}
+          <span className="font-semibold text-white">Sophos</span>,{" "}
+          <span className="font-semibold text-white">SonicWall</span>, and{" "}
+          <span className="font-semibold text-white">Palo Alto</span> offer deep
+          packet inspection, intrusion prevention, and application control for
+          maximum network security.
+        </motion.p>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white text-gray-900 p-6 rounded-2xl shadow-lg text-center">
-            <h3 className="text-xl font-bold mb-3">
-              Advanced Threat Intelligence
-            </h3>
-            <p>
-              Integrated with global threat feeds to proactively block known and
-              emerging attacks.
-            </p>
-          </div>
-
-          <div className="bg-white text-gray-900 p-6 rounded-2xl shadow-lg text-center">
-            <h3 className="text-xl font-bold mb-3">SSL Inspection</h3>
-            <p>
-              Comprehensive scanning for encrypted traffic to uncover hidden
-              threats.
-            </p>
-          </div>
-
-          <div className="bg-white text-gray-900 p-6 rounded-2xl shadow-lg text-center">
-            <h3 className="text-xl font-bold mb-3">
-              Application-Aware Traffic
-            </h3>
-            <p>
-              Intelligent control of applications for optimized security and
-              bandwidth management.
-            </p>
-          </div>
-
-          <div className="bg-white text-gray-900 p-6 rounded-2xl shadow-lg text-center">
-            <h3 className="text-xl font-bold mb-3">Unified Security Policies</h3>
-            <p>
-              Enforce consistent policies across distributed locations with
-              simplified security management.
-            </p>
-          </div>
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 gap-8 text-center">
+          {features.map((feature, idx) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.2, duration: 0.6 }}
+                className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg hover:shadow-cyan-400/40 transition duration-300"
+              >
+                <Icon className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-gray-300">{feature.description}</p>
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-20"
+        >
+          <div className="bg-gradient-to-r from-cyan-600 to-blue-700 py-16 px-6 rounded-2xl shadow-lg text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
+              Strengthen Your Perimeter Security
+            </h2>
+            <p className="text-lg md:text-xl mb-10 text-gray-200 max-w-3xl mx-auto">
+              Safeguard your business with next-gen firewalls & perimeter
+              protection. Talk to our experts today.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Link
+                to="/GetQuote"
+                className="inline-flex items-center gap-3 bg-black text-cyan-400 px-8 py-3 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300"
+              >
+                <Send className="w-5 h-5 text-cyan-400" />
+                <span>Request a Demo</span>
+              </Link>
+
+              <Link
+                to="/Contact"
+                className="inline-flex items-center gap-3 bg-white text-blue-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition duration-300"
+              >
+                <Phone className="w-5 h-5 text-blue-700" />
+                <span>Speak to a Security Expert</span>
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

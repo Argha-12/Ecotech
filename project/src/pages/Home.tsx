@@ -442,7 +442,7 @@ const services: Service[] = [
         {
           icon: <BookOpen className="w-10 h-10 text-white" />,
           title: 'Project Handover & Documentation',
-          desc: 'Complete documentation & knowledge transfer for seamless transition.',
+          desc: 'Complete documentation for seamless transition.',
           color: 'from-cyan-500 to-blue-500',
         },
       ].map((step, index) => (
@@ -496,13 +496,13 @@ const services: Service[] = [
             </p>
             <div className="stars">★★★★★</div>
             <div className="client">
-              <img src="https://i.pravatar.cc/60?img=5" alt="Rajesh Kumar" />
+              <img src="" alt="Sujit Chandra" />
               <div>
-                <strong>Rajesh Kumar</strong>
+                <strong>Sujit Chandra</strong>
                 <br />
-                <small>IT Director</small>
+                <small>IT Head</small>
                 <br />
-                <a href="#">Government of Orissa</a>
+                <a href="#">ST. Xavier's College</a>
               </div>
             </div>
           </div>
@@ -518,13 +518,13 @@ const services: Service[] = [
             </p>
             <div className="stars">★★★★★</div>
             <div className="client">
-              <img src="https://i.pravatar.cc/60?img=12" alt="Priya Sharma" />
+              <img src="https://i.pravatar.cc/60?img=12" alt="Kunal Chakraborty" />
               <div>
-                <strong>Priya Sharma</strong>
+                <strong>Kunal Chakraborty</strong>
                 <br />
                 <small>CTO</small>
                 <br />
-                <a href="#">Healthcare Solutions Ltd</a>
+                <a href="#">GKB Opticals</a>
               </div>
             </div>
           </div>
@@ -540,13 +540,13 @@ const services: Service[] = [
             </p>
             <div className="stars">★★★★★</div>
             <div className="client">
-              <img src="https://i.pravatar.cc/60?img=20" alt="Amit Patel" />
+              <img src="https://i.pravatar.cc/60?img=20" alt="Satyajit Roy Chowdhury" />
               <div>
-                <strong>Amit Patel</strong>
+                <strong>Satyajit Roy Chowdhury</strong>
                 <br />
-                <small>Operations Manager</small>
+                <small>CFO</small>
                 <br />
-                <a href="#">Manufacturing Corp</a>
+                <a href="#">Nexval.ai</a>
               </div>
             </div>
           </div>
