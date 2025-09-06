@@ -1,175 +1,217 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import {
+  Code2,
+  Smartphone,
+  Building2,
+  Zap,
+  ShieldCheck,
+  Target,
+  Layers,
+  RefreshCw,
+  Headphones,
+  Globe,
+} from "lucide-react";
 
-const WebAppDevelopment = () => {
+const WebAppDevelopmentPage: React.FC = () => {
+  const heroTitle =
+    "Web & App Development — Digital Experiences Built for Growth";
+  const heroSub =
+    '"From Concept to Code, We Deliver Business-Driven Digital Solutions."';
+  const intro =
+    "At Ecotech Global Services, we create custom web and mobile applications that combine sleek design, robust performance, and enterprise-grade security. Our development approach focuses on user experience, scalability, and ROI, ensuring your digital platforms not only look great but also deliver measurable business results.";
+
   const services = [
     {
-      title: "Custom Web Development",
-      description: "Build scalable websites and web applications tailored to your business needs. From corporate sites to complex e-commerce platforms.",
-      features: ["Responsive Design", "CMS Integration", "API Development", "Performance Optimization"]
+      title: "Web Development",
+      description:
+        "Custom corporate websites, e-commerce platforms, and web portals — built for speed, responsiveness, and SEO readiness.",
+      details:
+        "Specialties: CMS integration, secure hosting, custom UI/UX design, API integrations.",
+      icon: <Code2 className="w-6 h-6 text-blue-400" />,
     },
     {
-      title: "Mobile Applications",
-      description: "Native iOS and Android apps, plus cross-platform solutions that deliver exceptional user experiences across all devices.",
-      features: ["React Native", "Flutter", "Native Development", "App Store Deployment"]
+      title: "Mobile App Development",
+      description:
+        "Native and cross-platform mobile apps designed for iOS and Android — ensuring seamless performance and user engagement.",
+      details: "Specialties: Flutter, React Native, Swift, Kotlin.",
+      icon: <Smartphone className="w-6 h-6 text-green-400" />,
     },
     {
-      title: "Enterprise Solutions",
-      description: "Custom business applications that streamline operations and integrate seamlessly with your existing systems.",
-      features: ["CRM Systems", "Workflow Automation", "Dashboard Analytics", "System Integration"]
+      title: "Enterprise Applications",
+      description:
+        "Tailored business applications for operations, CRM, ERP, and workflow automation — integrating with your existing systems for efficiency gains.",
+      icon: <Building2 className="w-6 h-6 text-purple-400" />,
     },
     {
-      title: "Progressive Web Apps",
-      description: "Combine the best of web and mobile apps with PWAs that work offline and provide native-like experiences.",
-      features: ["Offline Functionality", "Push Notifications", "Fast Loading", "Cross-Platform"]
-    }
+      title: "Progressive Web Apps (PWA)",
+      description:
+        "Fast, installable web apps that work offline and feel like native mobile applications — ideal for businesses seeking lightweight, powerful solutions.",
+      icon: <Zap className="w-6 h-6 text-yellow-400" />,
+    },
+    {
+      title: "Secure Development Practices",
+      description:
+        "ISO 27001-aligned coding standards, penetration testing, and compliance-driven architecture.",
+      icon: <ShieldCheck className="w-6 h-6 text-red-400" />,
+    },
   ];
 
-  const advantages = [
-    "Agile development methodology for faster time-to-market",
-    "Modern tech stack with proven frameworks and tools",
-    "Comprehensive testing and quality assurance processes",
-    "Ongoing support and maintenance after launch",
-    "Scalable architecture designed for future growth"
+  const whyChoose = [
+    {
+      text: "Business-Centric Approach — Solutions aligned with your growth objectives",
+      icon: <Target className="w-6 h-6 text-pink-400" />,
+    },
+    {
+      text: "Future-Ready Tech Stack — Latest frameworks and platforms for long-term scalability",
+      icon: <Layers className="w-6 h-6 text-indigo-400" />,
+    },
+    {
+      text: "Agile Development Model — Faster delivery with continuous improvement",
+      icon: <Zap className="w-6 h-6 text-yellow-400" />,
+    },
+    {
+      text: "Full Lifecycle Support — From planning to deployment and post-launch maintenance",
+      icon: <RefreshCw className="w-6 h-6 text-cyan-400" />,
+    },
+    {
+      text: "Multi-Industry Experience — Expertise across finance, manufacturing, education, retail, and more",
+      icon: <Globe className="w-6 h-6 text-green-400" />,
+    },
   ];
+
+  const quote =
+    '💡 "We don’t just build apps and websites — we build growth engines for your business."';
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      {/* Hero Section */}
-      <section className="bg-gray-900 text-white py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.h1
-            className="text-5xl md:text-6xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Web & App Development
-          </motion.h1>
-          <motion.p
-            className="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Digital solutions that drive business growth
-          </motion.p>
-          <motion.p
-            className="text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            We create custom web and mobile applications that combine intuitive design with powerful functionality. 
-            Our team focuses on delivering solutions that not only meet your current needs but scale with your business.
-          </motion.p>
-        </div>
-      </section>
+    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+      </div>
 
-      {/* Services Grid */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-white mb-16">Our Development Services</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
+      <div className="relative z-10 max-w-6xl mx-auto py-16 px-6">
+        {/* Hero */}
+        <motion.section
+          className="mb-20 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-5xl font-extrabold mb-6">{heroTitle}</h1>
+          <div className="text-2xl font-bold mb-4">{heroSub}</div>
+          <p className="mb-8 text-lg max-w-4xl mx-auto leading-relaxed">
+            {intro}
+          </p>
+        </motion.section>
+
+        {/* Services */}
+        <section className="mb-20">
+          <h2 className="text-4xl font-extrabold mb-12 text-center">
+            Our Development Services
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((s, idx) => (
               <motion.div
-                key={index}
-                className="bg-gray-800 rounded-lg shadow-lg p-8 border-l-4 border-blue-600 hover:shadow-xl transition-shadow duration-300"
+                key={idx}
+                className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+              >
+                <div className="flex items-center mb-4">
+                  <div className="p-3 rounded-full bg-gray-800 mr-3">
+                    {s.icon}
+                  </div>
+                  <h3 className="text-xl font-bold">{s.title}</h3>
+                </div>
+                <p className="leading-relaxed mb-2">{s.description}</p>
+                {s.details && (
+                  <p className="text-sm opacity-80">{s.details}</p>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Why Choose */}
+        <section className="mb-20">
+          <h2 className="text-4xl font-extrabold mb-12 text-center">
+            Why Choose Ecotech for Web & App Development?
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {whyChoose.map((item, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700 flex flex-col items-center text-center"
+                whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <h3 className="text-2xl font-semibold text-white mb-4">{service.title}</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">{service.description}</p>
-                <div className="space-y-2">
-                  {service.features.map((feature, i) => (
-                    <div key={i} className="flex items-center text-sm text-gray-400">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                      {feature}
-                    </div>
-                  ))}
+                <div className="p-3 rounded-full bg-gray-800 mb-4">
+                  {item.icon}
                 </div>
+                <p className="text-lg">{item.text}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Why Choose Us */}
-      <section className="bg-gray-800 py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-white mb-16">Why Partner With Us</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <ul className="space-y-4">
-                {advantages.map((advantage, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-start"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <svg className="w-6 h-6 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-300 leading-relaxed">{advantage}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-            
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl font-semibold text-white mb-4">Ready to Start Your Project?</h3>
-              <p className="text-gray-300 mb-6">
-                Let's discuss how we can help bring your digital vision to life. Our team is ready to 
-                guide you through every step of the development process.
-              </p>
-              
-              <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex">
-                <button className="w-full sm:w-auto bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
-                  Start Your Project
-                </button>
-                <button className="w-full sm:w-auto border border-gray-600 text-gray-300 px-8 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors duration-200">
-                  View Our Work
-                </button>
-              </div>
-            </div>
+        {/* Quote */}
+        <motion.section
+          className="mb-20 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="bg-gray-900 p-8 rounded-2xl border border-gray-700 max-w-4xl mx-auto">
+            <blockquote className="text-2xl font-bold mb-0">{quote}</blockquote>
           </div>
-        </div>
-      </section>
+        </motion.section>
 
-      {/* Tech Stack Preview */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-8">Technologies We Use</h2>
-          <p className="text-gray-300 mb-12 max-w-3xl mx-auto">
-            We work with cutting-edge technologies and frameworks to ensure your applications 
-            are built on solid, future-proof foundations.
-          </p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {['React', 'Vue.js', 'Node.js', 'Python', 'Flutter', 'Swift'].map((tech, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-700 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="text-2xl font-semibold text-white">{tech}</div>
-              </motion.div>
-            ))}
+        {/* CTA */}
+        <motion.section
+          className="text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+            <Link
+              to="/GetQuote"
+              className="px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block text-white"
+            >
+              📩 [Request a Project Consultation]
+            </Link>
+
+            <span className="opacity-70 hidden md:inline">|</span>
+
+            <Link
+              to="/Contact"
+              className="px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block text-white"
+            >
+              📞 [Talk to a Development Expert]
+            </Link>
           </div>
-        </div>
-      </section>
+        </motion.section>
+      </div>
     </div>
   );
 };
 
-export default WebAppDevelopment;
+export default WebAppDevelopmentPage;

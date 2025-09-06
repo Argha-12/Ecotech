@@ -31,6 +31,10 @@ import Webappdevelopment from './pages/Webappdevelopment';
 import Managedservicessolutions from './pages/Managedservicessolutions';
 import CaseStudies from './pages/case-studies';
 
+
+
+
+
 const AppContent: React.FC = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
