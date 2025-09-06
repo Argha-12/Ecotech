@@ -1,16 +1,14 @@
-// src/App.tsx
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-function App() {
-  return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        {/* your routes */}
-      </Routes>
-    </Router>
-  );
-}
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
 
-export default App;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
+export default ScrollToTop;
