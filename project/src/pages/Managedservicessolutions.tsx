@@ -53,143 +53,155 @@ const ManagedServiceSolutions = () => {
     <div className="min-h-screen bg-gray-900">
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white py-24 px-6">
-  <div className="max-w-6xl mx-auto text-center">
-    {/* Heading */}
-    <motion.h1
-      className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      Managed Service Solutions
-      <span className="block text-2xl md:text-3xl font-light mt-4 opacity-80">
-        Reliable • Scalable • Always-On
-      </span>
-    </motion.h1>
+        <div className="max-w-6xl mx-auto text-center">
+          {/* Heading */}
+          <motion.h1
+            className="text-3xl md:text-5xl font-extrabold tracking-tight mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Managed Service Solutions
+            <span className="block text-2xl md:text-3xl font-light mt-4 opacity-80">
+              Reliable • Scalable • Always-On
+            </span>
+          </motion.h1>
 
-    {/* Tagline */}
-    <motion.p
-      className="text-xl md:text-2xl font-medium mb-10 italic opacity-90"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-    >
-      "Focus on Your Business, While We Manage Your IT."
-    </motion.p>
+          {/* Tagline */}
+          <motion.p
+            className="text-xl md:text-2xl font-medium mb-10 italic opacity-90"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            "Focus on Your Business, While We Manage Your IT."
+          </motion.p>
 
-    {/* Description */}
-    <motion.p
-      className="text-lg md:text-xl max-w-4xl mx-auto leading-relaxed opacity-80"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.4 }}
-    >
-      At <span className="font-semibold">Ecotech Global Services</span>, we provide{" "}
-      <span className="font-semibold">end-to-end managed services</span> that ensure your
-      technology infrastructure runs smoothly, securely, and cost-effectively — 24/7. <br />
-      Our ISO-certified processes, expert teams, and proactive monitoring help you{" "}
-      <span className="font-semibold">reduce downtime, improve performance, and optimize costs</span>{" "}
-      while freeing your internal teams to focus on innovation.
-    </motion.p>
+          {/* Description */}
+          <motion.p
+            className="text-lg md:text-xl max-w-4xl mx-auto leading-relaxed opacity-80"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            At <span className="font-semibold">Ecotech Global Services</span>, we
+            provide{" "}
+            <span className="font-semibold">end-to-end managed services</span> that
+            ensure your technology infrastructure runs smoothly, securely, and
+            cost-effectively — 24/7. <br />
+            Our ISO-certified processes, expert teams, and proactive monitoring help
+            you{" "}
+            <span className="font-semibold">
+              reduce downtime, improve performance, and optimize costs
+            </span>{" "}
+            while freeing your internal teams to focus on innovation.
+          </motion.p>
 
-    {/* Call to Action */}
-    <motion.div
-      className="mt-12"
+          {/* Call to Action */}
+          <motion.div
+            className="mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <a
+              href="/contact"
+              className="inline-block bg-white text-gray-900 font-semibold px-8 py-3 rounded-2xl shadow-lg hover:bg-gray-200 transition"
+            >
+              Get Started
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Portfolio */}
+  <section className="py-20 px-4">
+  <div className="max-w-6xl mx-auto">
+    <motion.h2
+      className="text-4xl font-bold text-center text-white mb-16"
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.6 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
     >
-      <a
-        href="/contact"
-        className="inline-block bg-white text-gray-900 font-semibold px-8 py-3 rounded-2xl shadow-lg hover:bg-gray-200 transition"
-      >
-        Get Started
-      </a>
-    </motion.div>
+      Our Managed Services Portfolio
+    </motion.h2>
+
+    <div className="grid md:grid-cols-2 gap-8 justify-center">
+      {services.map((service, index) => (
+        <motion.div
+          key={index}
+          className={`bg-gray-800 rounded-xl p-8 border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group flex flex-col items-center text-center
+            ${
+              service.title.includes("Annual Maintenance")
+                ? "md:col-span-2 max-w-2xl mx-auto"
+                : ""
+            }`}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+        >
+          <Link to={service.link} className="block w-full">
+            <div className="flex flex-col items-center text-center">
+              <div className="text-4xl mb-4">{service.icon}</div>
+              <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      {/* Why Trust Us */}
+<section className="bg-gray-800 py-20 px-4">
+  <div className="max-w-6xl mx-auto">
+    <motion.h2
+      className="text-4xl font-bold text-center text-white mb-16"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      Why Businesses Trust Ecotech Managed Services
+    </motion.h2>
+
+    {/* Wrapper as flex for last row centering */}
+    <div className="flex flex-wrap justify-center gap-8">
+      {trustFactors.map((factor, index) => (
+        <motion.div
+          key={index}
+          className="bg-gray-700 rounded-lg p-6 flex flex-col items-center text-center hover:bg-gray-600/70 transition-all duration-300 w-full md:w-[45%] lg:w-[30%]"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+        >
+          <svg
+            className="w-8 h-8 text-green-500 mb-3"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <p className="text-gray-300 leading-relaxed">{factor}</p>
+        </motion.div>
+      ))}
+    </div>
   </div>
 </section>
 
 
-      {/* Services Portfolio */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-4xl font-bold text-center text-white mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Managed Services Portfolio
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-800 rounded-xl p-8 border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Link to={service.link} className="block">
-                  <div className="flex items-start space-x-4">
-                    <div className="text-4xl">{service.icon}</div>
-                    <div>
-                      <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">{service.description}</p>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Trust Us */}
-      <section className="bg-gray-800 py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-4xl font-bold text-center text-white mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Why Businesses Trust Ecotech Managed Services
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {trustFactors.map((factor, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-700 rounded-lg p-6 flex items-start space-x-4 hover:bg-gray-600/70 transition-all duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <svg
-                  className="w-6 h-6 text-green-500 flex-shrink-0 mt-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <p className="text-gray-300 leading-relaxed">{factor}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action */}
       <section className="py-20 px-4">
@@ -203,7 +215,8 @@ const ManagedServiceSolutions = () => {
           >
             <div className="text-4xl mb-4">💡</div>
             <p className="text-2xl font-semibold text-white">
-              "With Ecotech as your managed services partner, IT becomes a growth enabler — not a cost center."
+              "With Ecotech as your managed services partner, IT becomes a growth
+              enabler — not a cost center."
             </p>
           </motion.div>
 

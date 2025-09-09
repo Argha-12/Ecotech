@@ -5,16 +5,18 @@ import {
   Mail,
   Cloud,
   Users,
-  ShieldCheck,
-  Settings,
-  Laptop,
-  Lock,
+  Server,
+  Monitor,
+  Shield,
+  Database,
   RefreshCw,
   Clock,
   Award,
+  KeyRound,
+  Headphones,
 } from "lucide-react";
 
-const ITInfrastructurePage: React.FC = () => {
+const Emailcollaborationsolutions: React.FC = () => {
   const offerings = [
     {
       icon: <Mail className="w-6 h-6" />,
@@ -32,12 +34,12 @@ const ITInfrastructurePage: React.FC = () => {
       desc: "Feature-rich, ad-free, and highly secure business email hosting with powerful collaboration tools.",
     },
     {
-      icon: <Settings className="w-6 h-6" />,
+      icon: <Server className="w-6 h-6" />,
       title: "QLC Email",
       desc: "Reliable, secure, and customizable corporate email platform for On-Prem & Cloud deployments.",
     },
     {
-      icon: <Laptop className="w-6 h-6" />,
+      icon: <Monitor className="w-6 h-6" />,
       title: "Rediffmail",
       desc: "Robust, cost-effective email hosting tailored for growing businesses.",
     },
@@ -53,12 +55,20 @@ const ITInfrastructurePage: React.FC = () => {
       text: "Seamless Migration Services from legacy systems to modern platforms",
     },
     {
-      icon: <Lock className="w-7 h-7" />,
+      icon: <Shield className="w-7 h-7" />,
       text: "Advanced Security with anti-spam, anti-phishing, and encryption controls",
     },
     {
       icon: <Clock className="w-7 h-7" />,
       text: "24/7 Support for uninterrupted productivity",
+    },
+    {
+      icon: <KeyRound className="w-7 h-7" />,
+      text: "Strong Authentication & Identity Management for safe access",
+    },
+    {
+      icon: <Headphones className="w-7 h-7" />,
+      text: "Dedicated Expert Assistance for smooth adoption and training",
     },
   ];
 
@@ -82,32 +92,36 @@ const ITInfrastructurePage: React.FC = () => {
         </motion.section>
 
         {/* Offerings */}
-        <section className="mb-20 px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-extrabold mb-10 text-center">
-              Our Email & Collaboration Offerings
-            </h2>
+<section className="mb-20 px-4">
+  <div className="max-w-5xl mx-auto">
+    <h2 className="text-3xl font-extrabold mb-10 text-center">
+      Our Email & Collaboration Offerings
+    </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {offerings.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700 flex flex-col items-center text-center"
-                  whileHover={{ scale: 1.05 }}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                >
-                  <div className="text-xl mb-4 p-2 rounded-full bg-gray-800 inline-flex items-center justify-center">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                  <p className="leading-relaxed text-gray-300">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+    {/* Flex wrap to keep last row centered */}
+    <div className="flex flex-wrap justify-center gap-6">
+      {offerings.map((item, idx) => (
+        <motion.div
+          key={idx}
+          className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700 flex flex-col items-center text-center w-full sm:w-[45%] lg:w-[30%]"
+          whileHover={{ scale: 1.05 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: idx * 0.1 }}
+        >
+          <div className="text-xl mb-4 p-2 rounded-full bg-gray-800 inline-flex items-center justify-center">
+            {item.icon}
           </div>
-        </section>
+          <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+          <p className="leading-relaxed text-gray-300">{item.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
 
         {/* Why Choose Us */}
         <section className="mb-20">
@@ -115,7 +129,7 @@ const ITInfrastructurePage: React.FC = () => {
             Why Choose Ecotech for Email & Collaboration?
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whyChoose.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -129,7 +143,7 @@ const ITInfrastructurePage: React.FC = () => {
                 <div className="text-xl mb-4 p-2 rounded-full inline-block bg-gray-800">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold">{item.text}</h3>
+                <h3 className="text-lg font-medium">{item.text}</h3>
               </motion.div>
             ))}
           </div>
@@ -182,4 +196,4 @@ const ITInfrastructurePage: React.FC = () => {
   );
 };
 
-export default ITInfrastructurePage;
+export default Emailcollaborationsolutions;

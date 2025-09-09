@@ -92,7 +92,7 @@ const AVSolutions = () => {
   </div>
 
   <div className="max-w-4xl mx-auto px-6 relative z-10">
-    <h1 className="text-5xl md:text-6xl font-extrabold mb-4 animate-pulse">
+    <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
       Audio Visual Solutions
     </h1>
     <div className="text-2xl md:text-3xl font-bold mb-4">

@@ -10,13 +10,12 @@ import {
   Target,
   Layers,
   RefreshCw,
-  Headphones,
   Globe,
 } from "lucide-react";
 
 const WebAppDevelopmentPage: React.FC = () => {
   const heroTitle =
-    "Web & App Development — Digital Experiences Built for Growth";
+    "Web & App Development Digital Experiences Built for Growth";
   const heroSub =
     '"From Concept to Code, We Deliver Business-Driven Digital Solutions."';
   const intro =
@@ -113,36 +112,37 @@ const WebAppDevelopmentPage: React.FC = () => {
         </motion.section>
 
         {/* Services */}
-        <section className="mb-20">
-          <h2 className="text-4xl font-extrabold mb-12 text-center">
-            Our Development Services
-          </h2>
+  <section className="mb-20">
+  <h2 className="text-4xl font-extrabold mb-12 text-center">
+    Our Development Services
+  </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((s, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <div className="flex items-center mb-4">
-                  <div className="p-3 rounded-full bg-gray-800 mr-3">
-                    {s.icon}
-                  </div>
-                  <h3 className="text-xl font-bold">{s.title}</h3>
-                </div>
-                <p className="leading-relaxed mb-2">{s.description}</p>
-                {s.details && (
-                  <p className="text-sm opacity-80">{s.details}</p>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </section>
+  {/* Flex wrap for centering last row */}
+  <div className="flex flex-wrap justify-center gap-8">
+    {services.map((s, idx) => (
+      <motion.div
+        key={idx}
+        className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700 w-full md:w-[45%] lg:w-[30%] flex flex-col items-center text-center"
+        whileHover={{ scale: 1.05 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: idx * 0.1 }}
+      >
+        {/* Icon at top */}
+        <div className="p-4 rounded-full bg-gray-800 mb-4">
+          {s.icon}
+        </div>
+
+        <h3 className="text-xl font-bold mb-3">{s.title}</h3>
+        <p className="leading-relaxed mb-2">{s.description}</p>
+        {s.details && (
+          <p className="text-sm opacity-80">{s.details}</p>
+        )}
+      </motion.div>
+    ))}
+  </div>
+</section>
 
         {/* Why Choose */}
         <section className="mb-20">
@@ -150,11 +150,12 @@ const WebAppDevelopmentPage: React.FC = () => {
             Why Choose Ecotech for Web & App Development?
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Flex wrap for centering last row */}
+          <div className="flex flex-wrap justify-center gap-8">
             {whyChoose.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700 flex flex-col items-center text-center"
+                className="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700 flex flex-col items-center text-center w-full md:w-[45%] lg:w-[30%]"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -193,7 +194,7 @@ const WebAppDevelopmentPage: React.FC = () => {
         >
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <Link
-              to="/GetQuote"
+              to="/get-quote"
               className="px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block text-white"
             >
               📩 [Request a Project Consultation]

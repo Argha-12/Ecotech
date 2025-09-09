@@ -30,6 +30,7 @@ import Audiovisualsolutions from './pages/Audiovisualsolutions';
 import Webappdevelopment from './pages/Webappdevelopment';
 import Managedservicessolutions from './pages/Managedservicessolutions';
 import CaseStudies from './pages/case-studies';
+import Blog from './pages/blog';
 
 
 
@@ -111,7 +112,7 @@ const AppContent: React.FC = () => {
           {/* Resources Routes */}
           <Route path="/resources/case_studies" element={<CaseStudies />} />
           <Route path="/resources/whitepapers" element={<PlaceholderPage />} />
-          <Route path="/resources/blog" element={<PlaceholderPage />} />
+          <Route path="/resources/blog" element={<Blog/>} />
           <Route path="/resources/events" element={<PlaceholderPage />} />
           <Route path="/resources/certifications" element={<PlaceholderPage />} />
         </Routes>

@@ -41,9 +41,9 @@ const GetQuotePage: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          service_id: 'service_gmail', // You'll need to set this up
-          template_id: 'template_quote', // You'll need to set this up
-          user_id: 'YOUR_PUBLIC_KEY', // You'll need to get this from EmailJS
+          service_id: 'service_gmail',
+          template_id: 'template_quote',
+          user_id: 'YOUR_PUBLIC_KEY',
           template_params: {
             to_email: 'argharana8@gmail.com',
             from_name: formData.name,
@@ -67,7 +67,7 @@ Submitted on: ${new Date().toLocaleString()}
       });
 
       if (response.ok) {
-        alert('🎉 Quote request submitted successfully! We\'ll get back to you within 24 hours.');
+        alert('Quote request submitted successfully! We\'ll get back to you within 24 hours.');
         setFormData({
           name: '',
           phoneNo: '',
@@ -81,7 +81,6 @@ Submitted on: ${new Date().toLocaleString()}
     } catch (error) {
       console.error('Error submitting form:', error);
       
-      // Simple mailto fallback that opens email client
       const emailSubject = `New Quote Request from ${formData.name}`;
       const emailBody = `Name: ${formData.name}
 Phone: ${formData.phoneNo}
@@ -93,12 +92,10 @@ Submitted on: ${new Date().toLocaleString()}`;
 
       const mailtoLink = `mailto:argharana8@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
       
-      // Open email client
       window.open(mailtoLink, '_blank');
       
-      alert('📧 Opening your email client to send the quote request. Please click Send in your email application.');
+      alert('Opening your email client to send the quote request. Please click Send in your email application.');
       
-      // Reset form
       setFormData({
         name: '',
         phoneNo: '',
@@ -112,174 +109,218 @@ Submitted on: ${new Date().toLocaleString()}`;
   };
 
   return (
-    <div className="min-h-screen bg-slate-900">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-6 py-20">
-        
-        {/* Top Section - Content */}
-        <div className="mb-16">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="text-white">Get Your</span>
-                <br />
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                  Custom Quote
+    <div className="min-h-screen bg-gray-50">
+      {/* Header Section - Dark Blue Background */}
+      <div className="bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="py-16 md:py-24">
+            <div className="text-center">
+              {/* Success Stories Button */}
+              <div className="mb-8">
+                <span className="inline-flex items-center px-4 py-2 bg-slate-700 border border-slate-600 rounded-full text-white text-sm font-medium">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                 Get Your
                 </span>
-              </h1>
+              </div>
               
-              <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                Transform your business with our cutting-edge cybersecurity solutions. 
-                Get a personalized quote tailored to your specific needs and requirements.
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Custom Quote
+              </h1>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Transform your business with our cutting-edge cybersecurity solutions. Get a personalized quote tailored to your specific needs and requirements.
               </p>
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">✓</span>
-                </div>
-                <h3 className="text-white font-semibold text-xl mb-2">24/7 Expert Support</h3>
-                <p className="text-gray-400">Round-the-clock assistance from our cybersecurity experts</p>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">🛡️</span>
-                </div>
-                <h3 className="text-white font-semibold text-xl mb-2">Enterprise Security</h3>
-                <p className="text-gray-400">Advanced protection for businesses of all sizes</p>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">⚡</span>
-                </div>
-                <h3 className="text-white font-semibold text-xl mb-2">Quick Response</h3>
-                <p className="text-gray-400">Get your customized quote within 24 hours</p>
-              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Section - Form */}
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl relative overflow-hidden">
-            
-            {/* Form Background Effects */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-2xl"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-400/20 to-cyan-400/20 rounded-full blur-xl"></div>
-            
-            <div className="relative z-10">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-white mb-2">
-                  🌟 Request Your Quote
-                </h2>
-                <p className="text-gray-300">Fill in your details and we'll get back to you!</p>
+      {/* Benefits Section */}
+{/* Benefits Section */}
+<div className="py-16 bg-slate-900">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid md:grid-cols-3 gap-8">
+      <div className="text-center">
+        <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <svg
+            className="w-8 h-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+            />
+          </svg>
+        </div>
+        <h3 className="text-lg font-semibold text-white mb-2">
+          Enterprise Security
+        </h3>
+        <p className="text-gray-300">
+          Advanced protection solutions designed for businesses of all sizes
+        </p>
+      </div>
+
+      <div className="text-center">
+        <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <svg
+            className="w-8 h-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <h3 className="text-lg font-semibold text-white mb-2">
+          24/7 Support
+        </h3>
+        <p className="text-gray-300">
+          Round-the-clock assistance from our cybersecurity experts
+        </p>
+      </div>
+
+      <div className="text-center">
+        <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <svg
+            className="w-8 h-8 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            />
+          </svg>
+        </div>
+        <h3 className="text-lg font-semibold text-white mb-2">
+          Quick Response
+        </h3>
+        <p className="text-gray-300">
+          Receive your customized quote within 24 hours
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      {/* Form Section */}
+      <div className="py-16 bg-slate-900">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-800 rounded-lg shadow-sm border border-slate-700">
+            <div className="px-6 py-8 sm:px-8">
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold text-white mb-2">Get Your Quote</h2>
+                <p className="text-gray-300">Please provide your details and we'll get back to you with a customized quote.</p>
               </div>
 
               <div className="space-y-6">
-                <div className="group">
-                  <label className="block text-sm font-semibold text-white/90 mb-2 flex items-center gap-2">
-                    👤 Full Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/90 border-2 border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500"
-                    placeholder="Enter your full name"
-                  />
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-200 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 text-white placeholder-gray-400"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-200 mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      name="phoneNo"
+                      value={formData.phoneNo}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 text-white placeholder-gray-400"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                  </div>
                 </div>
 
-                <div className="group">
-                  <label className="block text-sm font-semibold text-white/90 mb-2 flex items-center gap-2">
-                    📱 Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    name="phoneNo"
-                    value={formData.phoneNo}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/90 border-2 border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500"
-                    placeholder="+1 (555) 123-4567"
-                  />
-                </div>
-
-                <div className="group">
-                  <label className="block text-sm font-semibold text-white/90 mb-2 flex items-center gap-2">
-                    📧 Email Address
+                <div>
+                  <label className="block text-sm font-medium text-gray-200 mb-2">
+                    Email Address *
                   </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/90 border-2 border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500"
+                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 text-white placeholder-gray-400"
                     placeholder="your.email@company.com"
                   />
                 </div>
 
-                <div className="group">
-                  <label className="block text-sm font-semibold text-white/90 mb-2 flex items-center gap-2">
-                    🏢 Organization
+                <div>
+                  <label className="block text-sm font-medium text-gray-200 mb-2">
+                    Organization *
                   </label>
                   <input
                     type="text"
                     name="organization"
                     value={formData.organization}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/90 border-2 border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500"
+                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 text-white placeholder-gray-400"
                     placeholder="Your company name"
                   />
                 </div>
 
-                <div className="group">
-                  <label className="block text-sm font-semibold text-white/90 mb-2 flex items-center gap-2">
-                    🛍️ Products & Services
+                <div>
+                  <label className="block text-sm font-medium text-gray-200 mb-2">
+                    Products & Services of Interest *
                   </label>
                   <textarea
                     name="products"
                     value={formData.products}
                     onChange={handleInputChange}
-                    rows={4}
-                    className="w-full px-4 py-3 bg-white/90 border-2 border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white resize-none transition-all duration-300 text-gray-800 placeholder-gray-500"
-                    placeholder="Describe the products or services you're interested in..."
+                    rows={5}
+                    className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 resize-none text-white placeholder-gray-400"
+                    placeholder="Please describe the products or services you're interested in, including any specific requirements or current challenges you're facing..."
                   />
                 </div>
 
                 <button
+                  type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className={`w-full relative group ${
+                  className={`w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-200 ${
                     isSubmitting 
-                      ? 'bg-gradient-to-r from-gray-400 to-gray-500 cursor-not-allowed' 
-                      : 'bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 hover:from-green-400 hover:via-emerald-400 hover:to-teal-400 transform hover:scale-105'
-                  } text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 overflow-hidden`}
+                      ? 'bg-gray-600 cursor-not-allowed' 
+                      : 'bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-500'
+                  }`}
                 >
-                  {isSubmitting && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-75 animate-pulse"></div>
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Submitting Request...
+                    </span>
+                  ) : (
+                    'Submit Quote Request'
                   )}
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Submitting Magic...
-                      </>
-                    ) : (
-                      <>
-                        🚀 Get My Custom Quote
-                      </>
-                    )}
-                  </span>
                 </button>
               </div>
             </div>
@@ -287,25 +328,25 @@ Submitted on: ${new Date().toLocaleString()}`;
         </div>
       </div>
 
-      {/* Call-to-Action Section */}
-      <div className="bg-gradient-to-r from-blue-900 to-purple-900 py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Secure Your Digital Future?
+      {/* Trust Section */}
+      <div className="py-16 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Trusted by Leading Organizations
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who trust Ecotech Global Services 
-            for their cybersecurity needs.
+            Join thousands of satisfied customers who rely on Ecotech Global Services 
+            for their cybersecurity infrastructure.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-              <span className="text-white font-semibold">✓ ISO 27001 Certified</span>
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="bg-slate-800 border border-slate-700 px-6 py-3 rounded-full">
+              <span className="text-white font-medium">ISO 27001 Certified</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-              <span className="text-white font-semibold">✓ 99.9% Uptime</span>
+            <div className="bg-slate-800 border border-slate-700 px-6 py-3 rounded-full">
+              <span className="text-white font-medium">99.9% Uptime SLA</span>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-              <span className="text-white font-semibold">✓ 24/7 Support</span>
+            <div className="bg-slate-800 border border-slate-700 px-6 py-3 rounded-full">
+              <span className="text-white font-medium">24/7 Expert Support</span>
             </div>
           </div>
         </div>
