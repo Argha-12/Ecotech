@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Shield, Zap, Users, Award, FileText, Layout, Code2, CheckCircle, Rocket, Smartphone, Cloud, Target, BookOpen } from 'lucide-react';
+import { ArrowRight, Shield, Zap, Users, Award, FileText, Layout, Code2, CheckCircle, Rocket, Cloud, Target, BookOpen } from 'lucide-react';
 import Timeline from '../components/Timeline';
 import googleBg from "../assets/googleBg.png";
 import awsBg from "../assets/awsBg.jpg";
@@ -230,7 +230,7 @@ const Home: React.FC = () => {
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {Array.from({ length: Math.ceil(children.length / 6) }, (_, slideIndex) => (
-            <div key={slideIndex} className="w-full flex-shrink-0 grid grid-cols-6 gap-4">
+            <div key={slideIndex} className="w-full flex-shrink-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
               {children.slice(slideIndex * 6, (slideIndex + 1) * 6).map((child, index) => (
                 <div key={index}>{child}</div>
               ))}
@@ -244,7 +244,7 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
 {/* 🔹 Dynamic Hero Banner Section */}
-<section className="relative min-h-[500vh] md:min-h-[60vh] lg:min-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
+<section className="relative min-h-screen md:min-h-[80vh] lg:min-h-[90vh] bg-black flex items-center justify-center overflow-hidden">
   {/* Dynamic Background - Gradient or Image */}
   {currentContent.backgroundType === "gradient" ? (
     <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-indigo-900 to-black">
@@ -271,9 +271,9 @@ const Home: React.FC = () => {
   </div>
 
   {/* Content */}
-  <div className="relative z-10 max-w-4xl md:max-w-5xl px-4 text-center space-y-6 md:space-y-8 pt-20 md:pt-28 lg:pt-36">
+  <div className="relative z-10 max-w-4xl md:max-w-5xl px-4 sm:px-6 text-center space-y-4 sm:space-y-6 md:space-y-8 pt-20 md:pt-28 lg:pt-36">
     {/* Headline */}
-    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight hero-text-animation">
+    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight hero-text-animation">
       <span className="text-white drop-shadow-lg">{currentContent.title}</span>{" "}
       <span className="text-blue-400 drop-shadow-lg">
         {currentContent.highlight}
@@ -281,16 +281,16 @@ const Home: React.FC = () => {
     </h1>
 
     {/* Subheadline */}
-    <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl md:max-w-3xl mx-auto hero-subtitle-animation drop-shadow-md">
+    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto hero-subtitle-animation drop-shadow-md px-4">
       {currentContent.subtitle}
     </p>
 
     {/* Trust Indicators */}
-    <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-xs sm:text-sm md:text-base text-gray-300 hero-indicators-animation">
+    <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm md:text-base text-gray-300 hero-indicators-animation">
       {currentContent.trustIndicators.map((indicator, index) => (
         <span
           key={index}
-          className="flex items-center gap-2 hover:text-blue-300 transition-colors bg-black/20 backdrop-blur-sm px-3 py-2 rounded-full"
+          className="flex items-center gap-1 sm:gap-2 hover:text-blue-300 transition-colors bg-black/20 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm"
         >
           {indicator.icon}
           {indicator.text}
@@ -316,7 +316,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* CTA Button */}
-      <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg text-sm sm:text-base md:text-lg">
+      <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg text-sm sm:text-base md:text-lg">
         Get Started Today
         <ArrowRight className="w-5 h-5" />
       </button>
@@ -339,7 +339,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -384,25 +384,25 @@ const Home: React.FC = () => {
       <Timeline />
 
       {/* 🔹 Work Process Section */}
-      <section className="py-24 relative bg-black overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 relative bg-black overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-950 opacity-95"></div>
 
-        <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-              Our Work <span className="text-white-400">Process</span>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
+              Our Work <span className="text-blue-400">Process</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-medium">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl lg:max-w-3xl mx-auto font-medium px-4">
               A proven methodology crafted to deliver exceptional solutions with precision, innovation, and excellence.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 justify-items-center gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 justify-items-center gap-8 sm:gap-10 lg:gap-12">
             {[
               {
                 icon: <FileText className="w-10 h-10 text-white" />,
-                title: 'Requirement Analysis',
-                desc: 'Understanding business needs & objectives.',
+                title: 'Analysis',
+                desc: 'Understanding your needs',
                 color: 'from-pink-500 to-red-500',
               },
               {
@@ -411,28 +411,29 @@ const Home: React.FC = () => {
                 desc: 'Creating a scalable, secure roadmap for successful implementation.',
                 color: 'from-blue-500 to-cyan-400',
               },
+
               {
                 icon: <Target className="w-10 h-10 text-white" />,
-                title: 'Scope Finalization',
-                desc: 'Defining deliverables, timelines & KPIs for measurable success.',
+                title: 'Scope',
+                desc: 'Defining clear objectives',
                 color: 'from-green-500 to-emerald-400',
               },
               {
                 icon: <Rocket className="w-10 h-10 text-white" />,
-                title: 'Deployment',
-                desc: 'Seamless implementation with minimal disruption to operations.',
+                title: 'Deploy',
+                desc: 'Seamless implementation',
                 color: 'from-purple-500 to-indigo-500',
               },
               {
                 icon: <Shield className="w-10 h-10 text-white" />,
-                title: 'Monitoring & Quality Assurance',
-                desc: 'Ensuring performance, compliance & reliability at every step.',
+                title: 'Monitor',
+                desc: 'Quality assurance',
                 color: 'from-yellow-500 to-orange-500',
               },
               {
                 icon: <BookOpen className="w-10 h-10 text-white" />,
-                title: 'Project Handover & Documentation',
-                desc: 'Complete documentation for seamless transition.',
+                title: 'Handover',
+                desc: 'Complete documentation',
                 color: 'from-cyan-500 to-blue-500',
               },
             ].map((step, index) => (
@@ -442,17 +443,19 @@ const Home: React.FC = () => {
               >
                 <div
                   className={`relative bg-gradient-to-br ${step.color} p-[2px] rounded-full 
-                  w-44 h-44 sm:w-48 sm:h-48 md:w-52 md:h-52 xl:w-52 xl:h-52 2xl:w-56 2xl:h-56
+                  w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-48 lg:h-48 xl:w-52 xl:h-52
                   shadow-xl transition-transform duration-300 hover:scale-105 hover:z-10`}
                 >
-                  <div className="flex flex-col items-center justify-center bg-black rounded-full w-full h-full p-6 group hover:bg-opacity-90">
-                    <div className="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mb-4 shadow-inner group-hover:bg-opacity-60">
-                      {step.icon}
+                  <div className="flex flex-col items-center justify-center bg-black rounded-full w-full h-full p-3 sm:p-4 lg:p-6 group hover:bg-opacity-90">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gray-800 rounded-full flex items-center justify-center mb-2 sm:mb-3 lg:mb-4 shadow-inner group-hover:bg-opacity-60">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white">
+                        {step.icon}
+                      </div>
                     </div>
-                    <h3 className="text-base md:text-lg font-semibold mb-2 text-white group-hover:text-yellow-300 transition-colors duration-300">
+                    <h3 className="text-sm sm:text-base md:text-lg font-bold mb-1 sm:mb-2 text-white group-hover:text-yellow-300 transition-colors duration-300 text-center leading-tight">
                       {step.title}
                     </h3>
-                    <p className="text-xs md:text-sm leading-tight text-gray-400 group-hover:text-gray-200 transition-colors duration-300 px-2">
+                    <p className="text-xs sm:text-sm leading-relaxed text-gray-400 group-hover:text-gray-200 transition-colors duration-300 px-1 sm:px-2 text-center">
                       {step.desc}
                     </p>
                   </div>
@@ -476,7 +479,7 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          <div className="testimonial-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="testimonial-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* Card 1 */}
             <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-6 shadow-md hover:shadow-blue-500/20 transition-all duration-300">
               <span className="quote text-4xl text-blue-400 font-serif">❝</span>

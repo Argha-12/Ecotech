@@ -74,10 +74,10 @@ const CaseStudies: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Hero Section */}
-      <section className="py-20 px-4">
+      <section className="py-16 sm:py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -85,7 +85,7 @@ const CaseStudies: React.FC = () => {
             Our Success Stories
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl md:max-w-3xl mx-auto px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -96,9 +96,9 @@ const CaseStudies: React.FC = () => {
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-20 px-4">
+      <section className="py-16 sm:py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
             {caseStudies.map((study, index) => (
               <motion.div
                 key={study.id}
@@ -107,7 +107,7 @@ const CaseStudies: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="p-3 bg-blue-500/10 rounded-lg">
                       {study.icon}
@@ -117,31 +117,31 @@ const CaseStudies: React.FC = () => {
                     </span>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-white mb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 leading-tight">
                     {study.title}
                   </h3>
                   
-                  <p className="text-gray-300 mb-6">
+                  <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
                     {study.description}
                   </p>
 
-                  <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
                     {study.metrics.map((metric, idx) => (
                       <div key={idx} className="text-center">
-                        <div className="text-xl font-bold text-blue-400">
+                        <div className="text-lg sm:text-xl font-bold text-blue-400">
                           {metric.value}
                         </div>
-                        <div className="text-sm text-gray-400">
+                        <div className="text-xs sm:text-sm text-gray-400">
                           {metric.label}
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="pt-4 border-t border-gray-700">
-                    <button className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+                  <div className="pt-3 sm:pt-4 border-t border-gray-700">
+                    <button className="flex items-center gap-2 text-sm sm:text-base text-blue-400 hover:text-blue-300 transition-colors">
                       View Full Case Study
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                     </button>
                   </div>
                 </div>

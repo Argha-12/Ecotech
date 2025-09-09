@@ -191,18 +191,20 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-5 flex-shrink-0">
-          <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden">
-            <img src={logo} alt="Company Logo" className="w-12 h-12 object-contain" />
+        <Link to="/" className="flex items-center space-x-2 sm:space-x-5 flex-shrink-0">
+          <div className="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden">
+            <img src={logo} alt="Company Logo" className="w-8 h-8 sm:w-12 sm:h-12 object-contain" />
           </div>
-          <span className="text-3xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
-            Ecotech <span className="text-white">Global</span> <span className="text-blue-300">Services</span>
+          <span className="text-lg sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
+            <span className="text-white">Ecotech</span>
+            <span className="text-white"> Global</span> 
+            <span className="text-blue-300 hidden sm:inline"> Services</span>
           </span>
         </Link>
 
           {/* Desktop Navigation - Centered */}
-          <nav className="hidden md:flex flex-1 justify-center">
-            <div className="flex space-x-2 items-center">
+          <nav className="hidden lg:flex flex-1 justify-center">
+            <div className="flex space-x-1 xl:space-x-2 items-center">
               {navItems.map((item) => (
                 <div key={item.label} className="relative">
                   {item.hasDropdown ? (
@@ -210,7 +212,7 @@ const Header = () => {
                       <button
                         data-dropdown-toggle
                         onClick={() => toggleDropdown(item.label)}
-                        className={`flex items-center gap-1 text-base font-semibold px-3 py-2 rounded-md transition duration-200 ${
+                        className={`flex items-center gap-1 text-sm xl:text-base font-semibold px-2 xl:px-3 py-2 rounded-md transition duration-200 ${
                           activeDropdown === item.label
                             ? 'bg-white text-blue-800 shadow-sm'
                             : 'text-blue-100 hover:text-white hover:bg-white/10'
@@ -289,7 +291,7 @@ const Header = () => {
                   ) : (
                     <Link
                       to={item.path}
-                      className={`px-4 py-3 text-base font-semibold rounded-lg transition-all duration-200 ${
+                      className={`px-2 xl:px-4 py-3 text-sm xl:text-base font-semibold rounded-lg transition-all duration-200 ${
                         isActive(item.path)
                           ? 'text-white bg-gradient-to-r from-blue-600 to-blue-500 shadow-md'
                           : 'text-blue-100 hover:text-white hover:bg-white/10'
@@ -325,7 +327,7 @@ const Header = () => {
 
           {/* Mobile Toggle Button */}
           <button
-            className="md:hidden p-2 rounded-lg text-blue-100 hover:text-white hover:bg-white/10 transition-all transform hover:scale-110"
+            className="lg:hidden p-2 rounded-lg text-blue-100 hover:text-white hover:bg-white/10 transition-all transform hover:scale-110"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -339,7 +341,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-gradient-to-b from-blue-900 via-blue-800 to-gray-900 border-t border-blue-700/30 animate-slide-down">
+          <div className="lg:hidden bg-gradient-to-b from-blue-900 via-blue-800 to-gray-900 border-t border-blue-700/30 animate-slide-down">
             <nav className="py-2 space-y-1 px-2">
               {navItems.map((item) => (
                 <div key={item.label} className="space-y-1">
