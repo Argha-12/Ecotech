@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 
+// EmailJS will be loaded via CDN in index.html
+declare global {
+  interface Window {
+    emailjs: any;
+  }
+}
+
 interface ApplicationFormData {
   name: string;
   phoneNo: string;
@@ -41,37 +48,47 @@ const CareerPage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Using EmailJS service to send emails directly from the browser
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          service_id: 'service_gmail', // You'll need to set this up
-          template_id: 'template_career', // You'll need to set this up
-          user_id: 'YOUR_PUBLIC_KEY', // You'll need to get this from EmailJS
-          template_params: {
-            to_email: 'argharana8@gmail.com',
-            from_name: formData.name,
-            from_email: formData.emailId,
-            phone: formData.phoneNo,
-            resume_name: formData.resume.name,
-            message: `
-New Job Application:
+      // Check if environment variables are loaded
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const emailTo = import.meta.env.VITE_EMAIL_TO;
+      
+      console.log('EmailJS Config:', { publicKey, serviceId, templateId, emailTo });
+      console.log('Environment check:', import.meta.env);
+      
+      // Initialize EmailJS
+      window.emailjs.init(publicKey);
+      
+      // Send email using EmailJS
+      const result = await window.emailjs.send(
+        serviceId,
+        templateId,
+        {
+          to_email: emailTo,
+          from_name: formData.name,
+          from_email: formData.emailId,
+          phone: formData.phoneNo,
+          resume_name: formData.resume?.name || 'No file selected',
+          resume_size: formData.resume ? `${(formData.resume.size / 1024 / 1024).toFixed(2)} MB` : 'N/A',
+          message: `New Job Application:
 
 Name: ${formData.name}
 Phone: ${formData.phoneNo}
 Email: ${formData.emailId}
-Resume: ${formData.resume.name}
+Resume: ${formData.resume?.name || 'No file selected'}
+File Size: ${formData.resume ? `${(formData.resume.size / 1024 / 1024).toFixed(2)} MB` : 'N/A'}
 
-Submitted on: ${new Date().toLocaleString()}
-            `
-          }
-        }),
-      });
+⚠️ NOTE: Resume file cannot be attached via email. Please contact the candidate directly to request the resume file.
 
-      if (response.ok) {
+Submitted on: ${new Date().toLocaleString()}`,
+          submission_date: new Date().toLocaleString()
+        }
+      );
+
+      console.log('EmailJS Result:', result);
+      
+      if (result.status === 200) {
         alert('🎉 Application submitted successfully! We\'ll review your application and get back to you soon.');
         setFormData({
           name: '',
@@ -87,6 +104,13 @@ Submitted on: ${new Date().toLocaleString()}
       }
     } catch (error) {
       console.error('Error submitting application:', error);
+      
+      // Show specific error message
+      if (error instanceof Error && error.message?.includes('environment variables')) {
+        alert('⚠️ Configuration Error: Please check environment variables');
+        setIsSubmitting(false);
+        return;
+      }
       
       // Simple mailto fallback that opens email client
       const emailSubject = `New Job Application from ${formData.name}`;
