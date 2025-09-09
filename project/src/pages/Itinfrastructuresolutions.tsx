@@ -109,32 +109,34 @@ const ITInfrastructurePage: React.FC = () => {
 
 
         {/* Core Capabilities */}
-        <section className="mb-20">
-          <h2 className="text-4xl font-extrabold mb-12 text-center">
-            Our Core Capabilities
-          </h2>
+<section className="mb-20">
+  <h2 className="text-4xl font-extrabold mb-12 text-center">
+    Our Core Capabilities
+  </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {capabilities.map((capability, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <div className="flex items-center mb-4">
-                  <div className="text-2xl mr-4 p-2 rounded-full bg-gray-800">
-                    {capability.icon}
-                  </div>
-                  <h3 className="text-xl font-bold">{capability.title}</h3>
-                </div>
-                <p className="leading-relaxed">{capability.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {capabilities.map((capability, idx) => (
+      <motion.div
+        key={idx}
+        className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700 flex flex-col items-center text-center"
+        whileHover={{ scale: 1.05 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: idx * 0.1 }}
+      >
+        <div className="text-xl mb-4 p-3 rounded-full bg-gray-800 inline-flex items-center justify-center">
+          {capability.icon}
+        </div>
+        <h3 className="text-xl font-bold mb-2">{capability.title}</h3>
+        <p className="leading-relaxed text-gray-300">
+          {capability.description}
+        </p>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
+
 
 
         {/* Partners */}
@@ -157,29 +159,33 @@ const ITInfrastructurePage: React.FC = () => {
         </section>
 
         {/* Why Choose */}
-        <section className="mb-20">
-          <h2 className="text-4xl font-extrabold mb-12 text-center">
-            Why Choose Ecotech?
-          </h2>
+<section className="mb-20 px-4">
+  <div className="max-w-5xl mx-auto">
+    <h2 className="text-3xl font-extrabold mb-10 text-center">
+      Why Choose Ecotech?
+    </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {whyChooseFeatures.map((feature, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700 text-center"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <div className="text-3xl mb-4 p-3 rounded-full inline-block bg-gray-800">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold">{feature.title}</h3>
-              </motion.div>
-            ))}
+    <div className="grid md:grid-cols-2 gap-6">
+      {whyChooseFeatures.map((feature, idx) => (
+        <motion.div
+          key={idx}
+          className="bg-gray-900 p-4 rounded-lg shadow border border-gray-700 text-center"
+          whileHover={{ scale: 1.05 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: idx * 0.1 }}
+        >
+          <div className="text-lg mb-3 p-2 rounded-full inline-block bg-gray-800">
+            {feature.icon}
           </div>
-        </section>
+          <h3 className="text-lg font-semibold">{feature.title}</h3>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
         {/* Quote */}
         <motion.section

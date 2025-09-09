@@ -173,13 +173,13 @@ const CloudSolutionsPage: React.FC = () => {
             {whyChooseFeatures.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-gray-700 rounded-lg p-6 flex flex-col items-start hover:bg-gray-600/70 transition-all duration-300"
+                className="bg-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-gray-600/70 transition-all duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="text-3xl mb-4">{item.icon}</div>
+                <div className="text-5xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-semibold text-white mb-2">
                   {item.title}
                 </h3>
@@ -190,42 +190,47 @@ const CloudSolutionsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Our Services */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-4xl font-bold text-center text-white mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Cloud Services Include
-          </motion.h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {services.map((service, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 flex items-center space-x-4"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                <span className="text-lg font-medium text-white">{service}</span>
-              </motion.div>
-            ))}
+
+        {/* Our Services */}
+        {/* Our Services */}
+        <section className="py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <motion.h2
+              className="text-4xl font-bold text-center text-white mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Our Cloud Services Include
+            </motion.h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {services.map((service, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 flex items-center justify-center"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                >
+                  <span className="text-lg font-medium text-white text-center">
+                    {service}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
 
       {/* Call to Action */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 mb-10 shadow-lg"
+            className="bg-gradient-to-r from-blue-900 rounded-2xl p-8 mb-10 shadow-lg"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

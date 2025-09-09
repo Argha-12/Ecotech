@@ -14,185 +14,169 @@ import {
   Award,
 } from "lucide-react";
 
-// ✨ Animation Variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 60, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { type: "spring", stiffness: 80, damping: 15 },
-  },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.18,
-    },
-  },
-};
-
 const ITInfrastructurePage: React.FC = () => {
+  const offerings = [
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: "Google Workspace",
+      desc: "A complete suite of cloud-based productivity tools — Gmail, Drive, Docs, Meet — built for modern teamwork.",
+    },
+    {
+      icon: <Cloud className="w-6 h-6" />,
+      title: "Microsoft 365",
+      desc: "Enterprise-class email, Office apps, and cloud services for seamless communication and document collaboration.",
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: "Zoho Email",
+      desc: "Feature-rich, ad-free, and highly secure business email hosting with powerful collaboration tools.",
+    },
+    {
+      icon: <Settings className="w-6 h-6" />,
+      title: "QLC Email",
+      desc: "Reliable, secure, and customizable corporate email platform for On-Prem & Cloud deployments.",
+    },
+    {
+      icon: <Laptop className="w-6 h-6" />,
+      title: "Rediffmail",
+      desc: "Robust, cost-effective email hosting tailored for growing businesses.",
+    },
+  ];
+
+  const whyChoose = [
+    {
+      icon: <Award className="w-7 h-7" />,
+      text: "ISO-Certified Implementation Standards ensuring security and compliance",
+    },
+    {
+      icon: <RefreshCw className="w-7 h-7" />,
+      text: "Seamless Migration Services from legacy systems to modern platforms",
+    },
+    {
+      icon: <Lock className="w-7 h-7" />,
+      text: "Advanced Security with anti-spam, anti-phishing, and encryption controls",
+    },
+    {
+      icon: <Clock className="w-7 h-7" />,
+      text: "24/7 Support for uninterrupted productivity",
+    },
+  ];
+
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white py-16 px-6">
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Title Section */}
+    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+      <div className="relative z-10 max-w-6xl mx-auto py-16 px-6">
+        {/* Hero Section */}
         <motion.section
           className="mb-20 text-center"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Email Collaboration Solutions
-          </h1>
-          <p className="text-xl text-gray-200 mb-4 italic">
+          <h1 className="text-5xl font-extrabold mb-6">Email Collaboration Solutions</h1>
+          <p className="text-2xl font-bold mb-4 italic">
             "Empowering Teams. Anywhere. Anytime."
           </p>
-          <p className="mb-8 text-lg max-w-3xl mx-auto text-white leading-relaxed">
-            At Ecotech Global Services, we deliver secure, scalable, and
-            high-performance email and collaboration platforms to keep your
-            teams connected and productive — wherever they are. Our partnerships
-            with Google Workspace, Microsoft 365, Zoho Email, QLC Email, and
-            Rediffmail enable us to provide solutions that combine
-            enterprise-grade reliability, advanced security, and intuitive user
-            experiences.
+          <p className="mb-8 text-lg max-w-3xl mx-auto leading-relaxed">
+            At Ecotech Global Services, we deliver secure, scalable, and high-performance email and collaboration platforms to keep your teams connected and productive — wherever they are. Our partnerships with Google Workspace, Microsoft 365, Zoho Email, QLC Email, and Rediffmail enable us to provide solutions that combine enterprise-grade reliability, advanced security, and intuitive user experiences.
           </p>
         </motion.section>
 
         {/* Offerings */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-12 text-center text-white">
-            Our Email & Collaboration Offerings
-          </h2>
-          <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {[
-              {
-                icon: <Mail className="w-6 h-6" />,
-                title: "Google Workspace",
-                desc: "A complete suite of cloud-based productivity tools — Gmail, Drive, Docs, Meet — built for modern teamwork.",
-              },
-              {
-                icon: <Cloud className="w-6 h-6" />,
-                title: "Microsoft 365",
-                desc: "Enterprise-class email, Office apps, and cloud services for seamless communication and document collaboration.",
-              },
-              {
-                icon: <Users className="w-6 h-6" />,
-                title: "Zoho Email",
-                desc: "Feature-rich, ad-free, and highly secure business email hosting with powerful collaboration tools.",
-              },
-              {
-                icon: <Settings className="w-6 h-6" />,
-                title: "QLC Email",
-                desc: "Reliable, secure, and customizable corporate email platform for On-Prem & Cloud deployments.",
-              },
-              {
-                icon: <Laptop className="w-6 h-6" />,
-                title: "Rediffmail",
-                desc: "Robust, cost-effective email hosting tailored for growing businesses.",
-              },
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-white bg-opacity-10 p-6 rounded-xl shadow-lg hover:shadow-2xl hover:bg-opacity-20 transition-all duration-300"
-                variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="flex items-center mb-4 gap-3">
-                  <div className="p-2 rounded-full bg-gray-800">{item.icon}</div>
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                </div>
-                <p className="text-white">{item.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+        <section className="mb-20 px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-extrabold mb-10 text-center">
+              Our Email & Collaboration Offerings
+            </h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {offerings.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700 flex flex-col items-center text-center"
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                >
+                  <div className="text-xl mb-4 p-2 rounded-full bg-gray-800 inline-flex items-center justify-center">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                  <p className="leading-relaxed text-gray-300">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* Why Choose Us */}
-        <section className="mb-20 text-center">
-          <h2 className="text-3xl font-bold mb-12 text-white">
+        <section className="mb-20">
+          <h2 className="text-4xl font-extrabold mb-12 text-center">
             Why Choose Ecotech for Email & Collaboration?
           </h2>
-          <motion.div
-            className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {[
-              {
-                icon: <Award className="w-7 h-7" />,
-                text: "ISO-Certified Implementation Standards ensuring security and compliance",
-              },
-              {
-                icon: <RefreshCw className="w-7 h-7" />,
-                text: "Seamless Migration Services from legacy systems to modern platforms",
-              },
-              {
-                icon: <Lock className="w-7 h-7" />,
-                text: "Advanced Security with anti-spam, anti-phishing, and encryption controls",
-              },
-              {
-                icon: <Clock className="w-7 h-7" />,
-                text: "24/7 Support for uninterrupted productivity",
-              },
-            ].map((item, idx) => (
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {whyChoose.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border border-gray-700 flex items-start gap-4"
-                variants={fadeInUp}
+                className={`bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-700 text-center
+                  ${idx === whyChoose.length - 1 && whyChoose.length % 2 !== 0 ? "col-span-2 mx-auto w-full md:w-1/2" : ""}`}
                 whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="p-3 rounded-full bg-gray-700">{item.icon}</div>
-                <p className="text-lg text-white text-left">{item.text}</p>
+                <div className="text-xl mb-4 p-2 rounded-full inline-block bg-gray-800">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold">{item.text}</h3>
               </motion.div>
             ))}
-          </motion.div>
-          <motion.p
-            className="mt-10 text-xl font-semibold text-white"
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            "Whether you’re a startup or a global enterprise, we connect your
-            people with the tools they need to succeed — securely and
-            efficiently."
-          </motion.p>
+          </div>
         </section>
 
-        {/* CTA */}
-        <motion.div
-          className="text-center mt-12 space-x-4"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+        {/* Quote */}
+        <motion.section
+          className="mb-20 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <Link
-            to="/get-quote"
-            className="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold shadow-lg transition duration-300"
-          >
-            📩 Request a Demo
-          </Link>
-          <Link
-            to="/contact"
-            className="inline-block px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold shadow-lg transition duration-300"
-          >
-            📞 Talk to a Collaboration Expert
-          </Link>
-        </motion.div>
+          <div className="bg-gray-900 p-4 rounded-2xl border border-gray-700 max-w-4xl mx-auto">
+            <blockquote className="text-2xl font-bold mb-4">
+              "Whether you’re a startup or a global enterprise, we connect your people with the tools they need to succeed — securely and efficiently."
+            </blockquote>
+          </div>
+        </motion.section>
+
+        {/* CTA */}
+        <motion.section
+          className="text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl font-bold mb-6">Ready to Optimize Your Email & Collaboration Setup?</h2>
+          <p className="mb-8 text-lg max-w-2xl mx-auto">
+            Get started with secure, reliable, and high-performance email and collaboration solutions today.
+          </p>
+
+          <div className="flex flex-col md:flex-row justify-center gap-6">
+            <Link
+              to="/get-quote"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block text-white"
+            >
+              📩 Request a Demo
+            </Link>
+
+            <Link
+              to="/contact"
+              className="px-8 py-4 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block text-white"
+            >
+              📞 Talk to a Collaboration Expert
+            </Link>
+          </div>
+        </motion.section>
       </div>
     </div>
   );

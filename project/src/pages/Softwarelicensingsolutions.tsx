@@ -53,27 +53,33 @@ const SoftwareLicensingPage: React.FC = () => {
 
 
         {/* Offerings */}
-        <section className="mb-20">
-          <h2 className="text-4xl font-extrabold mb-12 text-center">Our Software Licensing Offerings</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="mb-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-extrabold mb-10 text-center">
+            Our Software Licensing Offerings
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {offerings.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700"
+                className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700 flex flex-col items-center text-center"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="flex items-center mb-4">
-                  <div className="text-2xl mr-4 p-2 rounded-full bg-gray-800">{item.icon}</div>
-                  <h3 className="text-xl font-bold">{item.title}</h3>
+                <div className="text-xl mb-4 p-2 rounded-full bg-gray-800 inline-flex items-center justify-center">
+                  {item.icon}
                 </div>
-                <p className="leading-relaxed">{item.description}</p>
+                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <p className="leading-relaxed text-gray-300">{item.description}</p>
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
+
 
         {/* Why Choose */}
         <section className="mb-20">
@@ -92,7 +98,7 @@ const SoftwareLicensingPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="text-3xl mb-4 p-3 rounded-full inline-block bg-gray-800">
+                <div className="text-xl mb-4 p-2 rounded-full inline-block bg-gray-800">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold">{item.text}</h3>
@@ -131,7 +137,7 @@ const SoftwareLicensingPage: React.FC = () => {
 
           <div className="flex flex-col md:flex-row justify-center gap-6">
             <Link
-              to="/GetQuote"
+              to="/get-quote"
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block text-white"
             >
               📩 Get a Licensing Quote

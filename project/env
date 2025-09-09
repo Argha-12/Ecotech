@@ -1,0 +1,7 @@
+# EmailJS Configuration
+VITE_EMAILJS_PUBLIC_KEY=BWFo59ng7AqxzVJg5
+VITE_EMAILJS_SERVICE_ID=service_b9a24hg
+VITE_EMAILJS_TEMPLATE_ID=template_xrksq9n
+
+# Email Recipients
+VITE_EMAIL_TO=argharana8@gmail.com,pannagaperumal404@gmail.com
