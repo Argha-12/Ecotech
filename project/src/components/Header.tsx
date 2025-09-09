@@ -46,10 +46,10 @@ const Header = () => {
       items: [
         { title: 'End Point Security', href: '/security_solutions/endpoint_security' },
         { title: 'Email Security', href: '/security_solutions/email_security' },
-        { title: 'managed EDR & XDR Solutions', href: '/security_solutions/managed_edr_xdr' },
+        { title: 'Managed EDR & XDR Solutions', href: '/security_solutions/managed_edr_xdr' },
         { title: 'Next Gen Firewalls', href: '/security_solutions/next_gen_firewalls' },
         { title: 'Network Access Control', href: '/security_solutions/network_access_control' },
-        { title: 'Network Monitoring', href: '/security_solutions/network_monitoring' },
+        { title: 'NMS', href: '/security_solutions/network_monitoring' },
         { title: 'IT & OT Security', href: '/security_solutions/it_ot_security' },
         { title: 'SIEM, SOAR & SOC Solutions', href: '/security_solutions/siem_soar_soc' },
         { title: 'Security Audits', href: '/security_solutions/security_audits' },

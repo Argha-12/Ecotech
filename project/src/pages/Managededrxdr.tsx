@@ -175,7 +175,7 @@ const ManagedEDRXDRWithWhyChoose = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-cyan-600 to-blue-700 py-20 text-center">
+      <div className="bg-gradient-to-r from-cyan-1000 to-blue-700 py-20 text-center">
         <h2 className="text-4xl font-extrabold mb-6">
           Stay Ahead of Cyber Threats
         </h2>

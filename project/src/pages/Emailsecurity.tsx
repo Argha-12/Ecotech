@@ -159,7 +159,7 @@ const EmailSecurity: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-cyan-600 to-blue-700 py-20 text-center">
+      <div className="bg-gradient-to-r from-cyan-1000 to-blue-700 py-20 text-center">
         <h2 className="text-4xl font-extrabold mb-6">Secure Every Email Before It Reaches You</h2>
         <p className="text-xl mb-10 text-blue-100 max-w-3xl mx-auto">
           Connect with our experts today and keep your communications threat-free.

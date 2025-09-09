@@ -105,7 +105,7 @@ export default function NextGenFirewalls() {
           viewport={{ once: true }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-cyan-600 to-blue-700 py-16 px-6 rounded-2xl shadow-lg text-center">
+          <div className="bg-gradient-to-r from-cyan-1000 to-blue-700 py-16 px-6 rounded-2xl shadow-lg text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
               Strengthen Your Perimeter Security
             </h2>

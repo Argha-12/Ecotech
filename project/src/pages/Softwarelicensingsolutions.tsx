@@ -42,13 +42,15 @@ const SoftwareLicensingPage: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl font-extrabold mb-6">Software Licensing</h1>
-          <div className="text-2xl font-bold mb-4">"Licensing Done Right."</div>
+          <div className="text-2xl font-bold mb-4">Licensing Done Right.</div>
           <p className="mb-8 text-lg max-w-4xl mx-auto leading-relaxed">
             Empower your business with genuine, compliant software from {" "}
             <span className="font-semibold">Microsoft, Adobe, Autodesk</span> and more. {" "}
             <span className="font-semibold">ISO-certified processes</span> ensure you get the right licenses at the right price.
           </p>
         </motion.section>
+
+
 
         {/* Offerings */}
         <section className="mb-20">
@@ -75,23 +77,31 @@ const SoftwareLicensingPage: React.FC = () => {
 
         {/* Why Choose */}
         <section className="mb-20">
-          <h2 className="text-4xl font-extrabold mb-12 text-center">Why Choose Ecotech for Licensing?</h2>
+          <h2 className="text-4xl font-extrabold mb-12 text-center">
+            Why Choose Ecotech for Licensing?
+          </h2>
+
           <div className="grid md:grid-cols-2 gap-8">
             {whyChoose.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700 text-center"
+                className={`bg-gray-900 p-4 rounded-xl shadow-lg border border-gray-700 text-center
+                  ${idx === whyChoose.length - 1 && whyChoose.length % 2 !== 0 ? "col-span-2 mx-auto w-full md:w-1/2" : ""}`}
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="text-3xl mb-4 p-3 rounded-full inline-block bg-gray-800">{item.icon}</div>
+                <div className="text-3xl mb-4 p-3 rounded-full inline-block bg-gray-800">
+                  {item.icon}
+                </div>
                 <h3 className="text-xl font-bold">{item.text}</h3>
               </motion.div>
             ))}
           </div>
         </section>
+
+
 
         {/* Quote */}
         <motion.section
@@ -100,9 +110,9 @@ const SoftwareLicensingPage: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="bg-gray-900 p-8 rounded-2xl border border-gray-700 max-w-4xl mx-auto">
+          <div className="bg-gray-900 p-4 rounded-2xl border border-gray-700 max-w-4xl mx-auto">
             <blockquote className="text-2xl font-bold mb-4">
-              "The right software fuels productivity. The right licensing protects it."
+              The right software fuels productivity. The right licensing protects it.
             </blockquote>
           </div>
         </motion.section>

@@ -70,35 +70,28 @@ const EndpointSecurity = () => {
       </div>
 
       {/* Features Section */}
-      <div className="py-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What Our Endpoint Security Covers</h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Multi-layered defense with AI-powered threat detection, encryption, and compliance solutions.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-cyan-500/30 transition duration-300 border border-gray-700"
-              >
-                <div className="w-14 h-14 bg-cyan-500/10 rounded-full flex items-center justify-center mb-6">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+<div className="flex flex-wrap justify-center gap-8">
+  {features.map((feature, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="w-full md:w-[45%] lg:w-[30%] bg-gray-800 p-8 rounded-2xl shadow-lg 
+                 hover:shadow-cyan-500/30 transition duration-300 border border-gray-700 
+                 text-center flex flex-col items-center"
+    >
+      <div className="w-14 h-14 bg-cyan-500/10 rounded-full flex items-center justify-center mb-6">
+        {feature.icon}
       </div>
+      <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
+      <p className="text-gray-400">{feature.description}</p>
+    </motion.div>
+  ))}
+</div>
+
+
 
 {/* Why Choose Us Section */}
 <div className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative">
@@ -159,7 +152,7 @@ const EndpointSecurity = () => {
 </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-cyan-600 to-blue-700 py-20 text-center">
+      <div className="bg-gradient-to-r from-cyan-1000 to-blue-700 py-20 text-center">
         <h2 className="text-4xl font-extrabold mb-6">Every Device is a Doorway to Your Business</h2>
         <p className="text-xl mb-10 text-blue-100 max-w-3xl mx-auto">
           We make sure it stays locked to threats and open to productivity. Connect with our experts today.

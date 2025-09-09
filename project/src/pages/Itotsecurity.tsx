@@ -7,7 +7,7 @@ const ITOTSecurity: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a192f] via-[#0f253f] to-[#000000] text-white px-6 py-20 overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(3, 17, 20, 0.15),transparent_70%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto text-center">
         {/* Title */}

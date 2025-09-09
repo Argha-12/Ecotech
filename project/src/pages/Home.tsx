@@ -406,7 +406,7 @@ const Home: React.FC = () => {
                 color: 'from-pink-500 to-red-500',
               },
               {
-                icon: <Layout className="w-10 h-10 text-white" />,
+                icon: <Layout className="w-9 h-9 text-white" />,
                 title: 'Planning & Project Design',
                 desc: 'Creating a scalable, secure roadmap for successful implementation.',
                 color: 'from-blue-500 to-cyan-400',
@@ -547,47 +547,41 @@ const Home: React.FC = () => {
       </section>
 
       {/* Customer Logos Section */}
-      <section className="py-24 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-blue-900"></div>
+<section className="py-24 bg-black relative overflow-hidden">
+  <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-blue-900"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
-              Our Valued Customers
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-4 font-light tracking-wide">
-              Trusted by industry leaders across the globe 🌍
-            </p>
-          </div>
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
+        Our Valued Customers
+      </h2>
+      <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-4 font-light tracking-wide">
+        Trusted by industry leaders across the globe 🌍
+      </p>
+    </div>
 
-          <div className="relative">
-            <CustomerSlider>
-              {[
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoft/microsoft-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netflix/netflix-original-wordmark.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spotify/spotify-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/uber/uber-original.svg",
-                "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/airbnb/airbnb-original-wordmark.svg",
-              ].map((logo, index) => (
-                <div key={index} className="px-4">
-                  <div className="h-24 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl flex items-center justify-center p-4 shadow-lg hover:shadow-xl border border-gray-700 hover:scale-110 transition-all duration-300">
-                    <img
-                      src={logo}
-                      alt={`Client ${index + 1}`}
-                      className="h-12 w-auto object-contain filter invert brightness-0 opacity-90 hover:opacity-100 transition-opacity"
-                    />
-                  </div>
-                </div>
-              ))}
-            </CustomerSlider>
+    <div className="relative">
+      <CustomerSlider>
+        {[
+          "google.PNG",              // Example PNG file
+          "microsoft-original.svg",  // Example SVG file
+          "apple-original.png",      // Another PNG
+        ].map((filename, index) => (
+          <div key={index} className="px-4">
+            <div className="h-24 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl flex items-center justify-center p-4 shadow-lg hover:shadow-xl border border-gray-700 hover:scale-110 transition-all duration-300">
+              <img
+                src={`/assets/logos/${filename}`}   // Local image path
+                alt={`Client ${index + 1}`}
+                className="h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </CustomerSlider>
+    </div>
+  </div>
+</section>
+
 
       <style>{`
         @keyframes heroFadeIn {

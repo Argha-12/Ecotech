@@ -139,13 +139,13 @@ const About = () => {
           <div className="mb-8 inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-600/10 backdrop-blur-xl border border-cyan-500/30 shadow-2xl">
             <Sparkles className="w-5 h-5 text-cyan-400 mr-3" />
             <span className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Leading Digital Innovation Since 2017
+              Leading Digital Innovation Since 2016
             </span>
           </div>
 
           <h1 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
             <span className="block text-white">About</span>
-            <span className="block text-white">Ecotech Global</span>
+            <span className="block text-white">Ecotech Global Services</span>
           </h1>
                     
           <p className="text-2xl md:text-3xl font-light text-gray-300 mb-16 max-w-5xl mx-auto leading-relaxed">
@@ -170,7 +170,7 @@ const About = () => {
       {/* Fixed Company Overview Section */}
       <section
         ref={el => (sectionRefs.current[0] = el)}
-        className="py-32 relative overflow-hidden"
+        className="py-50 relative overflow-hidden"
       >
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
