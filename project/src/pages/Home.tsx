@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Shield, Zap, Users, Award, FileText, Layout, Code2, CheckCircle, Rocket, Cloud, Target, BookOpen } from 'lucide-react';
 import Timeline from '../components/Timeline';
-import googleBg from "../assets/googleBg.png";
+import bgVideo from "../assets/argha.mp4";
 import awsBg from "../assets/awsBg.jpg";
 import infraBg from "../assets/infraBg.jpg";
-import Bg from "../assets/Bg.jpg";
+import Bg from "../assets/ar.jpg";
+
+import googleLogo from "../assets/logos/google.PNG";
+import microsoftLogo from "../assets/logos/microsoft.png";
+import appleLogo from "../assets/logos/apple.png";
+import NEXVAL from "../assets/logos/NEXVAL.jpg";
+import paharpur from "../assets/logos/paharpur.jpg";
+import peerless from "../assets/logos/peerless.jpg";
+import RSSoftware from "../assets/logos/RSSoftware.jpg";
+
+
+const logos = [googleLogo, microsoftLogo, appleLogo,NEXVAL,paharpur,peerless,RSSoftware];
 
 interface Service {
   icon: JSX.Element;
@@ -29,7 +40,7 @@ const heroContent = [
     backgroundImage: null, // pick your default background
     backgroundType: "image"
   },
-  {
+    {
     id: 2,
     title: "Power Your Business",
     highlight: "Beyond Limits",
@@ -42,19 +53,20 @@ const heroContent = [
     backgroundImage: Bg,
     backgroundType: "image"
   },
-  {
-    id: 3,
-    title: "Google Workspace",
-    highlight: "Partner Excellence",
-    subtitle: "The Most Loved Google Workspace Partner in Your Region — Where Productivity Meets Perfection. Unlock 40% OFF Today!",
-    trustIndicators: [
-      { icon: <Users className="w-4 h-4 text-blue-500" />, text: "Productivity Boost" },
-      { icon: <Award className="w-4 h-4 text-blue-500" />, text: "40% OFF Limited" },
-      { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "Instant Setup" }
-    ],
-    backgroundImage: googleBg,
-    backgroundType: "image"
-  },
+{
+  id: 3,
+  title: "Google Workspace",
+  highlight: "Partner Excellence",
+  subtitle: "The Most Loved Google Workspace Partner in Your Region — Where Productivity Meets Perfection. Unlock 40% OFF Today!",
+  trustIndicators: [
+    { icon: <Users className="w-4 h-4 text-blue-500" />, text: "Productivity Boost" },
+    { icon: <Award className="w-8 h-8 text-yellow-300 mr-2 drop-shadow-md animate-bounce" />, text: "40% OFF Limited" },
+    { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "Instant Setup" }
+  ],
+  backgroundImage: bgVideo,   // keep the imported video here
+  backgroundType: "video"     // tell your renderer it's a video
+},
+
   {
     id: 4,
     title: "AWS Cloud",
@@ -62,7 +74,7 @@ const heroContent = [
     subtitle: "Your Gateway to Scalable, Secure, and Future-Ready AWS Cloud Solutions...",
     trustIndicators: [
       { icon: <Shield className="w-4 h-4 text-blue-500" />, text: "AWS Certified" },
-      { icon: <Cloud className="w-4 h-4 text-blue-500" />, text: "50% Discount" },
+      { icon: <Cloud className="w-8 h-8 text-yellow-300 mr-4 drop-shadow-md animate-bounce" />, text: "50% Discount" },
       { icon: <Rocket className="w-4 h-4 text-blue-500" />, text: "Managed Services" }
     ],
     backgroundImage: awsBg,
@@ -96,6 +108,39 @@ const heroContent = [
   }
 ];
 
+const steps = [
+  {
+    icon: <FileText className="w-6 h-6 text-blue-500" />,
+    title: "Requirement Analysis",
+    desc: "Understanding business needs & objectives.",
+  },
+  {
+    icon: <Layout className="w-6 h-6 text-blue-500" />,
+    title: "Planning & Project Design",
+    desc: "Creating a scalable, secure roadmap.",
+  },
+  {
+    icon: <Target className="w-6 h-6 text-blue-500" />,
+    title: "Scope Finalization",
+    desc: "Defining deliverables, timelines & KPIs.",
+  },
+  {
+    icon: <Rocket className="w-6 h-6 text-blue-500" />,
+    title: "Deployment",
+    desc: "Seamless implementation with minimal disruption.",
+  },
+  {
+    icon: <Shield className="w-6 h-6 text-blue-500" />,
+    title: "Monitoring & Quality Assurance",
+    desc: "Ensuring performance, compliance & reliability.",
+  },
+  {
+    icon: <BookOpen className="w-6 h-6 text-blue-500" />,
+    title: "Project Handover & Documentation",
+    desc: "Complete documentation & knowledge transfer.",
+  },
+];
+
 
 const Home: React.FC = () => {
   // State for current hero content
@@ -105,7 +150,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentHero((prev) => (prev + 1) % heroContent.length);
-    }, 8000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -243,25 +288,41 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-{/* 🔹 Dynamic Hero Banner Section */}
-<section className="relative min-h-screen md:min-h-[80vh] lg:min-h-[90vh] bg-black flex items-center justify-center overflow-hidden">
-  {/* Dynamic Background - Gradient or Image */}
+
+      
+{/* Dynamic Hero Banner Section */}
+<section className="relative min-h-screen md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden">
+  {/* Dynamic Background - Gradient, Image, or Video */}
   {currentContent.backgroundType === "gradient" ? (
-    <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-indigo-900 to-black">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+    <div className="absolute inset-0 bg-gradient-to-br from-gray-500 via-indigo-500 to-black">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_85%)]"></div>
     </div>
-  ) : (
+  ) : currentContent.backgroundType === "image" ? (
     <>
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
-        style={{ backgroundImage: `url(${currentContent.backgroundImage})` }}
-      />
-      {/* Dark overlay for better visibility */}
-      <div className="absolute inset-0 bg-black/60"></div>
-      {/* Gradient overlay for nice blending */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-black/50 to-indigo-900/30"></div>
+        <img
+          src={currentContent.backgroundImage || ""}
+          alt={currentContent.title}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      {/* Slightly darker overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/25"></div>
     </>
-  )}
+  ) : currentContent.backgroundType === "video" ? (
+    <>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={currentContent.backgroundImage} type="video/mp4" />
+      </video>
+      {/* Slightly darker overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/25"></div>
+    </>
+  ) : null}
+
 
   {/* Floating Icons */}
   <div className="absolute inset-0 overflow-hidden hidden md:block">
@@ -384,87 +445,53 @@ const Home: React.FC = () => {
       <Timeline />
 
       {/* 🔹 Work Process Section */}
-      <section className="py-16 sm:py-20 lg:py-24 relative bg-black overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-950 opacity-95"></div>
+    <section className="py-16 sm:py-20 lg:py-24 relative bg-black overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-950 opacity-95"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
-              Our Work <span className="text-blue-400">Process</span>
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl lg:max-w-3xl mx-auto font-medium px-4">
-              A proven methodology crafted to deliver exceptional solutions with precision, innovation, and excellence.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 justify-items-center gap-8 sm:gap-10 lg:gap-12">
-            {[
-              {
-                icon: <FileText className="w-10 h-10 text-white" />,
-                title: 'Analysis',
-                desc: 'Understanding your needs',
-                color: 'from-pink-500 to-red-500',
-              },
-              {
-                icon: <Layout className="w-9 h-9 text-white" />,
-                title: 'Planning & Project Design',
-                desc: 'Creating a scalable, secure roadmap for successful implementation.',
-                color: 'from-blue-500 to-cyan-400',
-              },
-
-              {
-                icon: <Target className="w-10 h-10 text-white" />,
-                title: 'Scope',
-                desc: 'Defining clear objectives',
-                color: 'from-green-500 to-emerald-400',
-              },
-              {
-                icon: <Rocket className="w-10 h-10 text-white" />,
-                title: 'Deploy',
-                desc: 'Seamless implementation',
-                color: 'from-purple-500 to-indigo-500',
-              },
-              {
-                icon: <Shield className="w-10 h-10 text-white" />,
-                title: 'Monitor',
-                desc: 'Quality assurance',
-                color: 'from-yellow-500 to-orange-500',
-              },
-              {
-                icon: <BookOpen className="w-10 h-10 text-white" />,
-                title: 'Handover',
-                desc: 'Complete documentation',
-                color: 'from-cyan-500 to-blue-500',
-              },
-            ].map((step, index) => (
-              <div
-                key={index}
-                className="relative flex flex-col items-center justify-center text-center group"
-              >
-                <div
-                  className={`relative bg-gradient-to-br ${step.color} p-[2px] rounded-full 
-                  w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-48 lg:h-48 xl:w-52 xl:h-52
-                  shadow-xl transition-transform duration-300 hover:scale-105 hover:z-10`}
-                >
-                  <div className="flex flex-col items-center justify-center bg-black rounded-full w-full h-full p-3 sm:p-4 lg:p-6 group hover:bg-opacity-90">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gray-800 rounded-full flex items-center justify-center mb-2 sm:mb-3 lg:mb-4 shadow-inner group-hover:bg-opacity-60">
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white">
-                        {step.icon}
-                      </div>
-                    </div>
-                    <h3 className="text-sm sm:text-base md:text-lg font-bold mb-1 sm:mb-2 text-white group-hover:text-yellow-300 transition-colors duration-300 text-center leading-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm leading-relaxed text-gray-400 group-hover:text-gray-200 transition-colors duration-300 px-1 sm:px-2 text-center">
-                      {step.desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
+            Our Work <span className="text-blue-400">Process</span>
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-medium">
+            A proven methodology crafted to deliver exceptional solutions with
+            precision, innovation, and excellence.
+          </p>
         </div>
-      </section>
+
+        {/* Steps in ONE row */}
+<div className="flex flex-wrap justify-between items-start gap-8 relative">
+  {steps.map((step, index) => (
+    <div
+      key={index}
+      className="flex flex-col items-center text-center relative w-40"
+    >
+      {/* Circle */}
+      <div className="relative flex items-center justify-center w-20 h-20 rounded-full border-2 border-gray-700 bg-black z-10">
+        {step.icon}
+      </div>
+
+      {/* Title & Description */}
+      <h3 className="text-lg font-bold text-white mt-4 mb-1">
+        {step.title}
+      </h3>
+      <p className="text-gray-300 text-sm leading-relaxed tracking-wide max-w-xl mx-auto">
+        {step.desc}
+      </p>
+
+      {/* Arrow line between circles */}
+      {index < steps.length - 1 && (
+        <div className="hidden md:block absolute top-10 right-[-65px] w-16 border-t-2 border-dashed border-blue-400">
+          {/* Add arrow head */}
+          <div className="absolute -right-2 -top-1 w-0 h-0 border-l-8 border-t-4 border-b-4 border-l-blue-400 border-t-transparent border-b-transparent"></div>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+</div>
+    </section>
 
       {/* Testimonial Section */}
       <section className="testimonials py-20 bg-gradient-to-b from-[#0B1220] to-[#0B0F19]">
@@ -550,40 +577,36 @@ const Home: React.FC = () => {
       </section>
 
       {/* Customer Logos Section */}
-<section className="py-24 bg-black relative overflow-hidden">
-  <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-blue-900"></div>
+    <section className="py-24 bg-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-blue-900"></div>
 
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
-        Our Valued Customers
-      </h2>
-      <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-4 font-light tracking-wide">
-        Trusted by industry leaders across the globe 🌍
-      </p>
-    </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
+            Our Valued Customers
+          </h2>
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-4 font-light tracking-wide">
+            Trusted by industry leaders across the globe 🌍
+          </p>
+        </div>
 
-    <div className="relative">
-      <CustomerSlider>
-        {[
-          "google.PNG",              // Example PNG file
-          "microsoft-original.svg",  // Example SVG file
-          "apple-original.png",      // Another PNG
-        ].map((filename, index) => (
-          <div key={index} className="px-4">
-            <div className="h-24 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl flex items-center justify-center p-4 shadow-lg hover:shadow-xl border border-gray-700 hover:scale-110 transition-all duration-300">
-              <img
-                src={`/assets/logos/${filename}`}   // Local image path
-                alt={`Client ${index + 1}`}
-                className="h-12 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
-              />
-            </div>
-          </div>
-        ))}
-      </CustomerSlider>
-    </div>
-  </div>
-</section>
+        <div className="relative">
+          <CustomerSlider>
+            {logos.map((logo, index) => (
+              <div key={index} className="px-4">
+                <div className="h-24 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl flex items-center justify-center p-4 shadow-lg hover:shadow-xl border border-gray-700 hover:scale-110 transition-all duration-300">
+                  <img
+                    src={logo}
+                    alt={`Client ${index + 1}`}
+                    className="h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+                  />
+                </div>
+              </div>
+            ))}
+          </CustomerSlider>
+        </div>
+      </div>
+    </section>
 
 
       <style>{`

@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Lock, Mail, AlertTriangle, Cloud, Eye } from "lucide-react";
 import { Link } from "react-router-dom"; // 👈 Import Link for navigation
-import bgImage from "../assets/email.jpg"; // Adjust path
 
 const EmailSecurity: React.FC = () => {
   const features = [
@@ -64,30 +63,31 @@ const EmailSecurity: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
-      <div
-        className="bg-gradient-to-r from-black via-gray-900 to-black py-24 relative overflow-hidden"
-        style={{ backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
-      >
-        <div className="absolute inset-0 bg-black/80"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Email Security — Protect Every Message, Every Time
-            </h1>
-            <p className="text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Because Every Email Could Be a Threat — Or an Opportunity. At <span className="font-semibold">Ecotech Global Services</span>, we safeguard your communications with enterprise-grade email protection.
-            </p>
-            <p className="text-lg mb-8 text-gray-400 max-w-3xl mx-auto">
-              We partner with <span className="font-semibold">Trend Micro, Fortinet, Check Point, Barracuda, and Sophos</span> to deliver adaptive, multi-layered email security.
-            </p>
-          </motion.div>
-        </div>
-      </div>
+<div className="bg-gradient-to-r from-black via-gray-900 to-black py-24 relative overflow-hidden">
+  <div className="absolute inset-0 bg-black/80"></div>
+
+  <div className="container mx-auto px-4 relative z-10">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-center max-w-4xl mx-auto"
+    >
+      <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        Email Security — Protect Every Message, Every Time
+      </h1>
+      <p className="text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        Because Every Email Could Be a Threat — Or an Opportunity. At{" "}
+        <span className="font-semibold">Ecotech Global Services</span>, we safeguard your communications with enterprise-grade email protection.
+      </p>
+      <p className="text-lg mb-8 text-gray-400 max-w-3xl mx-auto">
+        We partner with{" "}
+        <span className="font-semibold">Trend Micro, Fortinet, Check Point, Barracuda, and Sophos</span> to deliver adaptive, multi-layered email security.
+      </p>
+    </motion.div>
+  </div>
+</div>
+
 
       {/* Features Section */}
       <div className="py-20 bg-gradient-to-b from-gray-900 to-black">

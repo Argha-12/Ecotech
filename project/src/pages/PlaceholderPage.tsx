@@ -12,7 +12,7 @@ const PlaceholderPage: React.FC = () => {
           <h1 className="text-3xl font-bold text-gray-900 capitalize mb-4">
             {pageName || 'Page'}
           </h1>
-          <p className="text-gray-600 mb-8">
+          <p className="text-gray-600 mb-10">
             This page is under construction. Content will be added soon.
           </p>
           <div className="inline-flex items-center justify-center w-24 h-24 bg-blue-100 rounded-full mb-6">

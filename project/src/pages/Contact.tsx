@@ -86,27 +86,27 @@ const Contact = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={index}
-                className="text-center p-6 bg-gray-50 rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  {info.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {info.title}
-                </h3>
-                {info.details.map((detail, detailIndex) => (
-                  <p key={detailIndex} className="text-gray-600 text-sm">
-                    {detail}
-                  </p>
-                ))}
-              </motion.div>
-            ))}
+          {contactInfo.map((info, index) => (
+            <motion.div
+              key={index}
+              className="text-center p-6 bg-gray-50 rounded-lg shadow-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                {info.icon}
+              </div>
+              <h3 className="text-lg font-bold text-blue-700 mb-2">
+                {info.title}
+              </h3>
+              {info.details.map((detail, detailIndex) => (
+                <p key={detailIndex} className="text-gray-800 text-sm font-medium">
+                  {detail}
+                </p>
+              ))}
+            </motion.div>
+          ))}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

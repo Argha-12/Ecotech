@@ -103,7 +103,8 @@ const Header = () => {
   const resourcesItems: MenuItem[] = [
     { title: 'Case Studies', href: '/resources/case_studies' },
     { title: 'Blogs', href: '/resources/blog' },
-    { title: 'Support Desk', href: '/resources/support' }
+    { title: 'Support Desk', href: '/resources/support' },
+    { title: 'Gallery', href: '/resources/gallery' }
   ];
 
   type NavItem = {
@@ -190,17 +191,18 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2 sm:space-x-5 flex-shrink-0">
-          <div className="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden">
-            <img src={logo} alt="Company Logo" className="w-8 h-8 sm:w-12 sm:h-12 object-contain" />
-          </div>
-          <span className="text-lg sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
-            <span className="text-white">Ecotech</span>
-            <span className="text-white"> Global</span> 
-            <span className="text-blue-300 hidden sm:inline"> Services</span>
-          </span>
-        </Link>
+      {/* Logo */}
+      <Link to="/" className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
+        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden">
+          <img src={logo} alt="Company Logo" className="w-full h-full object-contain" />
+        </div>
+        <span className="text-lg sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
+          <span className="text-white">Ecotech</span>
+          <span className="text-white"> Global</span> 
+          <span className="text-blue-300 hidden sm:inline"> Services</span>
+        </span>
+      </Link>
+
 
           {/* Desktop Navigation - Centered */}
           <nav className="hidden lg:flex flex-1 justify-center">

@@ -123,7 +123,7 @@ const CloudSolutionsPage: React.FC = () => {
       </section>
 
       {/* Cloud Providers */}
-      <section className="py-20 px-4">
+      <section className="py-10 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             className="text-4xl font-bold text-center text-white mb-16"
@@ -139,17 +139,17 @@ const CloudSolutionsPage: React.FC = () => {
             {cloudProviders.map((provider, idx) => (
               <motion.div
                 key={idx}
-                className="bg-gray-800 rounded-xl p-8 border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group text-center"
+                className="bg-yellow-800/30 rounded-xl p-8 border border-yellow-400 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/40 transition-all duration-300 group text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="text-5xl mb-6">{provider.icon}</div>
-                <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                <div className="text-5xl mb-6 text-yellow-500">{provider.icon}</div>
+                <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-yellow-500 transition-colors">
                   {provider.name}
                 </h3>
-                <p className="text-gray-300 leading-relaxed">{provider.description}</p>
+                <p className="text-gray-200 leading-relaxed">{provider.description}</p>
               </motion.div>
             ))}
           </div>
@@ -157,7 +157,7 @@ const CloudSolutionsPage: React.FC = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-gray-800 py-20 px-4">
+      <section className="bg-gray-900 py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             className="text-4xl font-bold text-center text-white mb-16"
@@ -173,7 +173,7 @@ const CloudSolutionsPage: React.FC = () => {
             {whyChooseFeatures.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-gray-600/70 transition-all duration-300"
+                className="bg-yellow-800/30 rounded-xl p-8 border border-yellow-400 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/40 transition-all duration-300 group text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -190,9 +190,6 @@ const CloudSolutionsPage: React.FC = () => {
         </div>
       </section>
 
-
-
-        {/* Our Services */}
         {/* Our Services */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
@@ -230,7 +227,7 @@ const CloudSolutionsPage: React.FC = () => {
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            className="bg-gradient-to-r from-blue-900 rounded-2xl p-8 mb-10 shadow-lg"
+            className="bg-gradient-to-r from-gray-900 rounded-2xl p-8 mb-10 shadow-lg"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -251,14 +248,16 @@ const CloudSolutionsPage: React.FC = () => {
           >
             <Link
               to="/get-quote"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/40"
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/40"
+
             >
               📩 Get a Quote
             </Link>
 
             <Link
               to="/contact"
-              className="border border-gray-600 text-gray-300 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 hover:text-white transition-all duration-300 flex items-center justify-center"
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/40"
+
             >
               📞 Talk to an Expert
             </Link>
