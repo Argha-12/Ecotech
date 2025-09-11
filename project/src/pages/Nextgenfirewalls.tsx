@@ -3,6 +3,27 @@ import { motion } from "framer-motion";
 import { Shield, Eye, BarChart3, Settings, Send, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
+// ✅ Importing partner logos
+import microsoftLogo from "../assets/logos/microsoft.png";
+import nexvalLogo from "../assets/logos/NEXVAL.jpg";
+import paharpurLogo from "../assets/logos/paharpur.jpg";
+import peerlessLogo from "../assets/logos/peerless.jpg";
+import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
+import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
+import amitLogo from "../assets/logos/Amit Metalics.png";
+import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+
+const partners = [
+  { name: "Microsoft", logo: microsoftLogo },
+  { name: "NEXVAL", logo: nexvalLogo },
+  { name: "Paharpur", logo: paharpurLogo },
+  { name: "Peerless", logo: peerlessLogo },
+  { name: "RS Software", logo: rsSoftwareLogo },
+  { name: "Alcove Realty", logo: alcoveLogo },
+  { name: "Amit Metalics", logo: amitLogo },
+  { name: "Ashoka Hall", logo: ashokaLogo },
+];
+
 export default function NextGenFirewalls() {
   const features = [
     {
@@ -77,7 +98,7 @@ export default function NextGenFirewalls() {
         </motion.p>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 gap-8 text-center">
+        <div className="grid md:grid-cols-2 gap-8 text-center mb-20">
           {features.map((feature, idx) => {
             const Icon = feature.icon;
             return (
@@ -97,6 +118,39 @@ export default function NextGenFirewalls() {
           })}
         </div>
 
+{/* Partners Section */}
+<section className="py-16 bg-gray text-white relative overflow-hidden">
+  <div className="text-center mb-12">
+    <h2 className="text-4xl font-extrabold">Our Valued Partners</h2>
+    <p className="mt-4 text-lg text-gray-300">
+      Trusted by industry leaders across the globe 🌐
+    </p>
+  </div>
+
+  {/* ✅ Smooth Scrolling Carousel */}
+  <div className="overflow-hidden relative">
+    <motion.div
+      className="flex gap-8"
+      animate={{ x: ["0%", "-100%"] }}
+      transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+    >
+      {[...partners, ...partners].map((partner, idx) => (
+        <div
+          key={idx}
+          className="bg-white p-6 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
+        >
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            className="max-h-20 object-contain"
+          />
+        </div>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
+
         {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -105,7 +159,7 @@ export default function NextGenFirewalls() {
           viewport={{ once: true }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-cyan-1000 to-blue-700 py-16 px-6 rounded-2xl shadow-lg text-center">
+          <div className="bg-gray-900 py-16 px-6 rounded-2xl shadow-lg text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
               Strengthen Your Perimeter Security
             </h2>

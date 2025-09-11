@@ -2,6 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+import microsoftLogo from "../assets/logos/microsoft.png";
+import nexvalLogo from "../assets/logos/NEXVAL.jpg";
+import dellLogo from "../assets/logos/paharpur.jpg";
+import peerlessLogo from "../assets/logos/peerless.jpg";
+import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
+import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
+import amitLogo from "../assets/logos/Amit Metalics.png";
+import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+
+const partners = [
+  { name: "Microsoft", logo: microsoftLogo },
+  { name: "NEXVAL", logo: nexvalLogo },
+  { name: "Dell", logo: dellLogo },
+  { name: "Allied Telesis", logo: peerlessLogo },
+  { name: "Juniper Networks", logo: rsSoftwareLogo },
+  { name: "AWS", logo: alcoveLogo },
+  { name: "Acronis", logo: amitLogo },
+  { name: "Veeam", logo: ashokaLogo },
+];
+
+
+
 const ITInfrastructurePage: React.FC = () => {
   const capabilities = [
     {
@@ -49,16 +71,6 @@ const ITInfrastructurePage: React.FC = () => {
     { title: "24/7 Support & Proactive Maintenance", icon: "🔧" },
   ];
 
-  const partners = [
-    "Cisco",
-    "HP",
-    "Dell",
-    "Allied Telesis",
-    "Juniper Networks",
-    "AWS",
-    "Acronis",
-    "Veeam",
-  ];
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden">
@@ -119,7 +131,7 @@ const ITInfrastructurePage: React.FC = () => {
             {capabilities.map((capability, idx) => (
               <motion.div
                 key={idx}
-                className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-700 flex flex-col items-center text-center"
+                className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border border-gray-500 flex flex-col items-center text-center"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -139,24 +151,38 @@ const ITInfrastructurePage: React.FC = () => {
       </section>
 
 
-        {/* Partners */}
-        <section className="mb-20 text-center">
-          <h2 className="text-4xl font-bold mb-12">Trusted Technology Partners</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {partners.map((partner, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-gray-900/60 p-6 rounded-xl border border-gray-700 hover:bg-gray-800 transition-all"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <span className="font-bold text-lg">{partner}</span>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+
+{/* Partners */}
+    <section className="py-16 bg-black text-white relative overflow-hidden">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-extrabold">Our Valued Pantners</h2>
+        <p className="mt-4 text-lg text-gray-300">
+          Trusted by industry leaders across the globe 🌐
+        </p>
+      </div>
+
+      {/* ✅ restrict width to 80% and center */}
+      <div className="max-w-[80%] mx-auto overflow-hidden">
+        <motion.div
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        >
+          {[...partners, ...partners].map((partner, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
+            >
+              <img
+                src={partner.logo}   // ✅ imported logo used here
+                alt={partner.name}
+                className="max-h-24 md:max-h-28 object-contain"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
 
         {/* Why Choose */}
         <section className="mb-20 px-4">
@@ -169,7 +195,7 @@ const ITInfrastructurePage: React.FC = () => {
               {whyChooseFeatures.map((feature, idx) => (
                 <motion.div
                   key={idx}
-                  className="bg-gray-900 p-4 rounded-lg shadow border border-gray-700 text-center"
+                  className="bg-gray-900 p-4 rounded-lg shadow border border-gray-500 text-center"
                   whileHover={{ scale: 1.05 }}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -192,7 +218,7 @@ const ITInfrastructurePage: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="bg-gray-900 p-8 rounded-2xl border border-gray-700 max-w-4xl mx-auto">
+          <div className="bg-gray-900 p-8 rounded-2xl border border-gray-500 max-w-4xl mx-auto">
             <blockquote className="text-2xl font-bold mb-4">
               "Your IT infrastructure should accelerate your business — not slow it down. With Ecotech, you get a foundation engineered for growth."
             </blockquote>
@@ -216,7 +242,7 @@ const ITInfrastructurePage: React.FC = () => {
 
           <div className="flex flex-col md:flex-row justify-center gap-6">
             <Link
-              to="/GetQuote"
+              to="/get-quote"
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-2xl font-bold shadow-lg transform hover:scale-105 transition duration-300 inline-block text-white"
             >
               📩 Get a Quote

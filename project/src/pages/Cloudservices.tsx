@@ -139,14 +139,14 @@ const CloudSolutionsPage: React.FC = () => {
             {cloudProviders.map((provider, idx) => (
               <motion.div
                 key={idx}
-                className="bg-yellow-800/30 rounded-xl p-8 border border-yellow-400 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/40 transition-all duration-300 group text-center"
+                className="bg-gray-800/30 rounded-xl p-8 border border-gray-400 hover:border-gray-500 hover:shadow-lg hover:shadow-blue-500/40 transition-all duration-300 group text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
-                <div className="text-5xl mb-6 text-yellow-500">{provider.icon}</div>
-                <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-yellow-500 transition-colors">
+                <div className="text-5xl mb-6 text-white-500">{provider.icon}</div>
+                <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-white-500 transition-colors">
                   {provider.name}
                 </h3>
                 <p className="text-gray-200 leading-relaxed">{provider.description}</p>
@@ -173,7 +173,7 @@ const CloudSolutionsPage: React.FC = () => {
             {whyChooseFeatures.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-yellow-800/30 rounded-xl p-8 border border-yellow-400 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/40 transition-all duration-300 group text-center"
+                className="bg-gray-800/30 rounded-xl p-8 border border-gry-400 hover:border-gray-500 hover:shadow-lg hover:shadow-blue-500/40 transition-all duration-300 group text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -207,7 +207,7 @@ const CloudSolutionsPage: React.FC = () => {
               {services.map((service, idx) => (
                 <motion.div
                   key={idx}
-                  className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 flex items-center justify-center"
+                  className="bg-gray-800 p-6 rounded-xl border border-gray-400 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 flex items-center justify-center"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -248,7 +248,7 @@ const CloudSolutionsPage: React.FC = () => {
           >
             <Link
               to="/get-quote"
-              className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/40"
+              className="bg-gradient-to-r from-blue-400 to-orange-500 hover:from-blue-500 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/40"
 
             >
               📩 Get a Quote
@@ -256,7 +256,7 @@ const CloudSolutionsPage: React.FC = () => {
 
             <Link
               to="/contact"
-              className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/40"
+              className="bg-gradient-to-r from-blue-400 to-orange-500 hover:from-blue-500 hover:to-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/40"
 
             >
               📞 Talk to an Expert

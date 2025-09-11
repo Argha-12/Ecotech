@@ -131,7 +131,7 @@ const ManagedServiceSolutions = () => {
       {services.map((service, index) => (
         <motion.div
           key={index}
-          className={`bg-gray-800 rounded-xl p-8 border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group flex flex-col items-center text-center
+          className={`bg-gray-800 rounded-xl p-8 border border-gray-500 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group flex flex-col items-center text-center
             ${
               service.title.includes("Annual Maintenance")
                 ? "md:col-span-2 max-w-2xl mx-auto"
@@ -160,7 +160,7 @@ const ManagedServiceSolutions = () => {
 </section>
 
       {/* Why Trust Us */}
-<section className="bg-gray-800 py-20 px-4">
+<section className="bg-gray-900 py-20 px-4">
   <div className="max-w-6xl mx-auto">
     <motion.h2
       className="text-4xl font-bold text-center text-white mb-16"
@@ -177,7 +177,7 @@ const ManagedServiceSolutions = () => {
       {trustFactors.map((factor, index) => (
         <motion.div
           key={index}
-          className="bg-gray-700 rounded-lg p-6 flex flex-col items-center text-center hover:bg-gray-600/70 transition-all duration-300 w-full md:w-[45%] lg:w-[30%]"
+          className="bg-gray-800 rounded-lg p-6 flex flex-col items-center text-center border border-gray-500 hover:bg-gray-700/70 transition-all duration-300 w-full md:w-[45%] lg:w-[30%]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -207,7 +207,7 @@ const ManagedServiceSolutions = () => {
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 mb-10 shadow-lg"
+            className="bg-gray-900 rounded-2xl p-8 mb-10 shadow-lg"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}

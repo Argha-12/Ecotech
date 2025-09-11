@@ -2,6 +2,26 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Lock, EyeOff, Server, Zap, ShieldCheck } from 'lucide-react';
 
+import microsoftLogo from "../assets/logos/microsoft.png";
+import nexvalLogo from "../assets/logos/NEXVAL.jpg";
+import dellLogo from "../assets/logos/paharpur.jpg";
+import peerlessLogo from "../assets/logos/peerless.jpg";
+import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
+import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
+import amitLogo from "../assets/logos/Amit Metalics.png";
+import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+
+const partners = [
+  { name: "Microsoft", logo: microsoftLogo },
+  { name: "NEXVAL", logo: nexvalLogo },
+  { name: "Dell", logo: dellLogo },
+  { name: "Allied Telesis", logo: peerlessLogo },
+  { name: "Juniper Networks", logo: rsSoftwareLogo },
+  { name: "AWS", logo: alcoveLogo },
+  { name: "Acronis", logo: amitLogo },
+  { name: "Veeam", logo: ashokaLogo },
+];
+
 const EndpointSecurity = () => {
   const features = [
     {
@@ -90,6 +110,38 @@ const EndpointSecurity = () => {
     </motion.div>
   ))}
 </div>
+
+{/* Partners */}
+    <section className="py-16 bg-black text-white relative overflow-hidden">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-extrabold">Our Valued Pantners</h2>
+        <p className="mt-4 text-lg text-gray-300">
+          Trusted by industry leaders across the globe 🌐
+        </p>
+      </div>
+
+      {/* ✅ restrict width to 80% and center */}
+      <div className="max-w-[80%] mx-auto overflow-hidden">
+        <motion.div
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        >
+          {[...partners, ...partners].map((partner, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
+            >
+              <img
+                src={partner.logo}   // ✅ imported logo used here
+                alt={partner.name}
+                className="max-h-24 md:max-h-28 object-contain"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
 
 
 

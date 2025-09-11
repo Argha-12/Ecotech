@@ -4,18 +4,91 @@ import Timeline from '../components/Timeline';
 import bgVideo from "../assets/argha.mp4";
 import awsBg from "../assets/awsBg.jpg";
 import infraBg from "../assets/infraBg.jpg";
-import Bg from "../assets/ar.jpg";
+import Bg from "../assets/Power Your Business.jpg";
+import SecureYour from "../assets/Secure.mp4";
+import { motion } from 'framer-motion';
 
-import googleLogo from "../assets/logos/google.png";
 import microsoftLogo from "../assets/logos/microsoft.png";
-import appleLogo from "../assets/logos/apple.png";
-import NEXVAL from "../assets/logos/NEXVAL.jpg";
+import nexvalLogo from "../assets/logos/NEXVAL.jpg";
 import paharpur from "../assets/logos/paharpur.jpg";
 import peerless from "../assets/logos/peerless.jpg";
 import RSSoftware from "../assets/logos/RSSoftware.jpg";
-import missionBg from "../assets/mission-vision.jpg";
+import AlcoveReality from "../assets/logos/Alcove Reality.jpg";
+import AmitMetalics from "../assets/logos/Amit Metalics.png";
+import AryamanBikramBirla from "../assets/logos/Aryaman Bikram Birla.jpg";
+import AshokaHall from "../assets/logos/Ashoka Hall.png";
+import basehospitalbarrackpore from "../assets/logos/base-hospital-barrackpore.png";
+import Burdwanuniversity from "../assets/logos/Burdwan university.jpg";
+import CGCRILOGO from "../assets/logos/CGCRI LOGO.png";
+import CKBirlaHospital from "../assets/logos/CK Birla Hospital.png";
+import DDEVPlastiks from "../assets/logos/DDEV Plastiks.png";
+// import EEPCINDIA from "../assets/logos/EEPC INDIA.jpg";
+// import Eveready from "../assets/logos/Eveready.png";
+// import fit_logo from "../assets/logos/fit_logo.jpg";
+// import GDBirla from "../assets/logos/GD Birla Memorial School ranikheet.jpg";
+// import GdGoenkaSchool from "../assets/logos/Gd Goenka School.jpg";
+// import gkbopticals from "../assets/logos/gkb_opticals_logo.jpg";
+// import GTPL_LOGO from "../assets/logos/GTPL_LOGO_HIGH_RESOLUTION.png";
+// import HAL from "../assets/logos/HAL.jpg";
+// import Icar from "../assets/logos/Icar.png";
+// import IICB from "../assets/logos/IICB.jpg";
+// import IILDS from "../assets/logos/IILDS.jpg";
+// import IIT_Kharagpur from "../assets/logos/IIT_Kharagpur_Logo.jpg";
+// import India_Meteorological from "../assets/logos/India_Meteorological_Department_(logo).png";
+// import Indian_Institute from "../assets/logos/Indian_Institute_of_Foreign_Trade_logo.png";
+// import KalingaHospital from "../assets/logos/Kalinga Hospital.jpg";
 
-const logos = [googleLogo, microsoftLogo, appleLogo,NEXVAL,paharpur,peerless,RSSoftware];
+const partners = [
+  { name: "Microsoft", logo: microsoftLogo },
+  { name: "NEXVAL", logo: nexvalLogo },
+  { name: "paharpur", logo: paharpur },
+  { name: "peerless", logo: peerless },
+  { name: "RSSoftware", logo: RSSoftware },
+  { name: "Alcove Reality", logo: AlcoveReality },
+  { name: "Amit Metalics", logo: AmitMetalics },
+  { name: "Aryaman Bikram Birla", logo: AryamanBikramBirla },
+  { name: "Ashoka Hall", logo: AshokaHall },
+  { name: "base-hospital-barrackpore", logo: basehospitalbarrackpore },
+  { name: "CGCRI LOGO", logo: CGCRILOGO },
+  { name: "Burdwan university", logo: Burdwanuniversity },
+  { name: "CK Birla Hospital", logo: CKBirlaHospital },
+  { name: "DDEV Plastiks", logo: DDEVPlastiks },
+];
+
+// import googleLogo from "../assets/logos/google.PNG";
+// import microsoftLogo from "../assets/logos/microsoft.png";
+// import appleLogo from "../assets/logos/apple.png";
+// import NEXVAL from "../assets/logos/NEXVAL.jpg";
+// import paharpur from "../assets/logos/paharpur.jpg";
+// import peerless from "../assets/logos/peerless.jpg";
+// import RSSoftware from "../assets/logos/RSSoftware.jpg";
+// import AlcoveReality from "../assets/logos/Alcove Reality.jpg";
+// import AmitMetalics from "../assets/logos/Amit Metalics.png";
+// import AryamanBikramBirla from "../assets/logos/Aryaman Bikram Birla.jpg";
+// import AshokaHall from "../assets/logos/Ashoka Hall.png";
+// import basehospitalbarrackpore from "../assets/logos/base-hospital-barrackpore.png";
+// import Burdwanuniversity from "../assets/logos/Burdwan university.jpg";
+// import CGCRILOGO from "../assets/logos/CGCRI LOGO.png";
+// import CKBirlaHospital from "../assets/logos/CK Birla Hospital.png";
+// import DDEVPlastiks from "../assets/logos/DDEV Plastiks.png";
+// import EEPCINDIA from "../assets/logos/EEPC INDIA.jpg";
+// import Eveready from "../assets/logos/Eveready.png";
+// import fit_logo from "../assets/logos/fit_logo.jpg";
+// import GDBirla from "../assets/logos/GD Birla Memorial School ranikheet.jpg";
+// import GdGoenkaSchool from "../assets/logos/Gd Goenka School.jpg";
+// import gkbopticals from "../assets/logos/gkb_opticals_logo.jpg";
+// import GTPL_LOGO from "../assets/logos/GTPL_LOGO_HIGH_RESOLUTION.png";
+// import HAL from "../assets/logos/HAL.jpg";
+// import Icar from "../assets/logos/Icar.png";
+// import IICB from "../assets/logos/IICB.jpg";
+// import IILDS from "../assets/logos/IILDS.jpg";
+// import IIT_Kharagpur from "../assets/logos/IIT_Kharagpur_Logo.jpg";
+// import India_Meteorological from "../assets/logos/India_Meteorological_Department_(logo).png";
+// import Indian_Institute from "../assets/logos/Indian_Institute_of_Foreign_Trade_logo.png";
+// import KalingaHospital from "../assets/logos/Kalinga Hospital.jpg";
+
+
+// const logos = [KalingaHospital,Indian_Institute,India_Meteorological,IIT_Kharagpur,IILDS,IICB,CGCRILOGO,Icar,GTPL_LOGO,HAL,gkbopticals,GdGoenkaSchool,GDBirla,fit_logo,Eveready,EEPCINDIA,DDEVPlastiks,CKBirlaHospital, microsoftLogo, appleLogo,NEXVAL,paharpur,peerless,RSSoftware,AlcoveReality,AmitMetalics,AryamanBikramBirla,AshokaHall,basehospitalbarrackpore,Burdwanuniversity];
 
 interface Service {
   icon: JSX.Element;
@@ -37,8 +110,8 @@ const heroContent = [
       { icon: <Cloud className="w-4 h-4 text-blue-500" />, text: "Cloud Partner" },
       { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "24/7 Support" }
     ],
-    backgroundImage: missionBg, // pick your default background
-    backgroundType: "image"
+    backgroundImage: SecureYour, // pick your default background
+    backgroundType: "video"
   },
     {
     id: 2,
@@ -256,35 +329,35 @@ const Home: React.FC = () => {
 
   const currentContent = heroContent[currentHero];
 
-  // Simple slider component for customer logos
-  const CustomerSlider: React.FC<{ children: React.ReactNode[] }> = ({ children }) => {
-    const [currentSlide, setCurrentSlide] = useState(0);
+  // // Simple slider component for customer logos
+  // const CustomerSlider: React.FC<{ children: React.ReactNode[] }> = ({ children }) => {
+  //   const [currentSlide, setCurrentSlide] = useState(0);
     
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % Math.ceil(children.length / 6));
-      }, 2000);
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       setCurrentSlide((prev) => (prev + 1) % Math.ceil(children.length / 6));
+  //     }, 4000);
       
-      return () => clearInterval(interval);
-    }, [children.length]);
+  //     return () => clearInterval(interval);
+  //   }, [children.length]);
 
-    return (
-      <div className="overflow-hidden">
-        <div 
-          className="flex transition-transform duration-1000 ease-in-out"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {Array.from({ length: Math.ceil(children.length / 6) }, (_, slideIndex) => (
-            <div key={slideIndex} className="w-full flex-shrink-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
-              {children.slice(slideIndex * 6, (slideIndex + 1) * 6).map((child, index) => (
-                <div key={index}>{child}</div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
+  //   return (
+  //     <div className="overflow-hidden">
+  //       <div 
+  //         className="flex transition-transform duration-1000 ease-in-out"
+  //         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+  //       >
+  //         {Array.from({ length: Math.ceil(children.length / 6) }, (_, slideIndex) => (
+  //           <div key={slideIndex} className="w-full flex-shrink-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+  //             {children.slice(slideIndex * 6, (slideIndex + 1) * 6).map((child, index) => (
+  //               <div key={index}>{child}</div>
+  //             ))}
+  //           </div>
+  //         ))}
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className="min-h-screen">
@@ -305,7 +378,7 @@ const Home: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
       {/* Slightly darker overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/25"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/35"></div>
     </>
   ) : currentContent.backgroundType === "video" ? (
     <>
@@ -577,37 +650,36 @@ const Home: React.FC = () => {
       </section>
 
       {/* Customer Logos Section */}
-    <section className="py-24 bg-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-blue-900"></div>
+    <section className="py-16 bg-black text-white relative overflow-hidden">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-extrabold">Our Valued Customer</h2>
+        <p className="mt-4 text-lg text-gray-300">
+          Trusted by industry leaders across the globe 🌐
+        </p>
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
-            Our Valued Customers
-          </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-4 font-light tracking-wide">
-            Trusted by industry leaders across the globe 🌍
-          </p>
-        </div>
-
-        <div className="relative">
-          <CustomerSlider>
-            {logos.map((logo, index) => (
-              <div key={index} className="px-4">
-                <div className="h-24 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl flex items-center justify-center p-4 shadow-lg hover:shadow-xl border border-gray-700 hover:scale-110 transition-all duration-300">
-                  <img
-                    src={logo}
-                    alt={`Client ${index + 1}`}
-                    className="h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
-                  />
-                </div>
-              </div>
-            ))}
-          </CustomerSlider>
-        </div>
+      {/* ✅ restrict width to 80% and center */}
+      <div className="max-w-[80%] mx-auto overflow-hidden">
+        <motion.div
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+        >
+          {[...partners, ...partners].map((partner, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
+            >
+              <img
+                src={partner.logo}   // ✅ imported logo used here
+                alt={partner.name}
+                className="max-h-24 md:max-h-28 object-contain"
+              />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
-
 
       <style>{`
         @keyframes heroFadeIn {

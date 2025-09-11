@@ -1,44 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const CustomerLogos = () => {
-  const customerLogos = [
-    { name: "Cisco", logo: "https://logos-world.net/wp-content/uploads/2020/06/Cisco-Logo.png" },
-    { name: "Heinrich", logo: "https://via.placeholder.com/150x60/ffffff/000000?text=HEINRICH" },
-    { name: "People Link", logo: "https://via.placeholder.com/150x60/ffffff/000000?text=PEOPLE+LINK" },
-    { name: "Logitech", logo: "https://logos-world.net/wp-content/uploads/2020/12/Logitech-Logo.png" },
-    { name: "Delta", logo: "https://logos-world.net/wp-content/uploads/2020/04/Delta-Logo.png" },
-    { name: "LG", logo: "https://logos-world.net/wp-content/uploads/2020/04/LG-Logo.png" },
-    { name: "Samsung", logo: "https://logos-world.net/wp-content/uploads/2020/04/Samsung-Logo.png" },
-    { name: "BenQ", logo: "https://logos-world.net/wp-content/uploads/2020/12/BenQ-Logo.png" },
-  ];
 
-  const duplicatedLogos = [...customerLogos, ...customerLogos];
 
-  return (
-    <div className="overflow-hidden">
-      <div className="flex animate-scroll space-x-8">
-        {duplicatedLogos.map((customer, index) => (
-          <motion.div
-            key={index}
-            className="flex-shrink-0 h-20 w-32 bg-gray-800 rounded-xl flex items-center justify-center p-4 border border-gray-700 hover:bg-gray-700 transition-all duration-300 shadow-sm"
-            whileHover={{ scale: 1.05 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.05 }}
-          >
-            <img
-              src={customer.logo}
-              alt={customer.name}
-              className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
-            />
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
+// AVSolutions Component
 const AVSolutions = () => {
   const [gradientIndex, setGradientIndex] = useState(0);
   const gradients = [
@@ -73,45 +38,39 @@ const AVSolutions = () => {
         `}
       </style>
 
-      
-{/* Hero Section */}
-<motion.section
-  className="pt-12 pb-8 bg-black text-center relative overflow-hidden"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
->
-  {/* Background Pattern */}
-  <div className="absolute inset-0 opacity-5">
-    <div
-      className="absolute inset-0"
-      style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-      }}
-    ></div>
-  </div>
+      {/* Hero Section */}
+      <motion.section
+        className="pt-12 pb-8 bg-black text-center relative overflow-hidden"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
 
-  <div className="max-w-4xl mx-auto px-6 relative z-10">
-    <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
-      Audio Visual Solutions
-    </h1>
-    <div className="text-2xl md:text-3xl font-bold mb-4">
-      Engage. Inspire. Transform.
-    </div>
-    <p className="text-xl italic mb-4">
-      "Turning Communication into an Experience."
-    </p>
-    <p className="text-lg max-w-3xl mx-auto leading-relaxed text-gray-200">
-      At Ecotech Global Services, we design and deliver cutting-edge Audio
-      Visual solutions that bring ideas to life, enhance collaboration,
-      and captivate audiences.
-    </p>
-  </div>
-</motion.section>
-
-
-      {/* Divider */}
-      {/* <div className="h-px w-full bg-white/20 my-16"></div> */}
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
+            Audio Visual Solutions
+          </h1>
+          <div className="text-2xl md:text-3xl font-bold mb-4">
+            Engage. Inspire. Transform.
+          </div>
+          <p className="text-xl italic mb-4">
+            "Turning Communication into an Experience."
+          </p>
+          <p className="text-lg max-w-3xl mx-auto leading-relaxed text-gray-200">
+            At Ecotech Global Services, we design and deliver cutting-edge Audio
+            Visual solutions that bring ideas to life, enhance collaboration,
+            and captivate audiences.
+          </p>
+        </div>
+      </motion.section>
 
       {/* Core AV Offerings */}
       <section className="py-20 bg-gray-950 relative">
@@ -140,7 +99,7 @@ const AVSolutions = () => {
             ].map((card, i) => (
               <motion.div
                 key={i}
-                className="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-700 text-center hover:shadow-2xl transition-all"
+                className="bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-500 text-center hover:shadow-2xl transition-all"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -157,8 +116,6 @@ const AVSolutions = () => {
         </div>
       </section>
 
-
-
       {/* Why Businesses Choose Us */}
       <section className="py-20 bg-gray-900 relative">
         <div className="max-w-5xl mx-auto px-6 text-center">
@@ -174,7 +131,7 @@ const AVSolutions = () => {
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                className="flex items-center space-x-4 p-6 bg-gray-800 rounded-2xl hover:bg-gray-700 transition-all"
+                className="flex items-center space-x-4 p-6 bg-gray-800 rounded-2xl border border-gray-500 hover:bg-gray-700 transition-all"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -191,31 +148,32 @@ const AVSolutions = () => {
         </div>
       </section>
 
+      {/* Customer Logos
+      <section className="py-20 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900"></div>
 
-
-      {/* Customer Logos */}
-      <section className="py-24 bg-gray-950 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-6xl font-extrabold mb-4">
-              Our Trusted Partners
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
+              Our Valued Customers
             </h2>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Working with industry-leading brands to deliver excellence 🤝
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-4 font-light tracking-wide">
+              Trusted by industry leaders across the globe 🌍
             </p>
           </motion.div>
+          
           <CustomerLogos />
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <motion.section
-        className="py-20 bg-gradient-to-r from-indigo-900 via-purple-900 to-blue-900 text-white text-center relative overflow-hidden"
+        className="py-20 bg-gray-900 text-white text-center relative overflow-hidden"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

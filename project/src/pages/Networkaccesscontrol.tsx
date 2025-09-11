@@ -3,6 +3,26 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Lock, Cpu, Wifi, Send, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import microsoftLogo from "../assets/logos/microsoft.png";
+import nexvalLogo from "../assets/logos/NEXVAL.jpg";
+import dellLogo from "../assets/logos/paharpur.jpg";
+import peerlessLogo from "../assets/logos/peerless.jpg";
+import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
+import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
+import amitLogo from "../assets/logos/Amit Metalics.png";
+import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+
+const partners = [
+  { name: "Microsoft", logo: microsoftLogo },
+  { name: "NEXVAL", logo: nexvalLogo },
+  { name: "Dell", logo: dellLogo },
+  { name: "Allied Telesis", logo: peerlessLogo },
+  { name: "Juniper Networks", logo: rsSoftwareLogo },
+  { name: "AWS", logo: alcoveLogo },
+  { name: "Acronis", logo: amitLogo },
+  { name: "Veeam", logo: ashokaLogo },
+];
+
 const NetworkAccessControl: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white px-6 py-20 overflow-hidden">
@@ -117,6 +137,38 @@ const NetworkAccessControl: React.FC = () => {
           </motion.div>
         </div>
 
+{/* Partners Section */}
+<section className="py-16 bg-gray text-white relative overflow-hidden">
+  <div className="text-center mb-12">
+    <h2 className="text-4xl font-extrabold">Our Valued Partners</h2>
+    <p className="mt-4 text-lg text-gray-300">
+      Trusted by industry leaders across the globe 🌐
+    </p>
+  </div>
+
+  {/* ✅ Smooth Scrolling Carousel */}
+  <div className="overflow-hidden relative">
+    <motion.div
+      className="flex gap-8"
+      animate={{ x: ["0%", "-100%"] }}
+      transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+    >
+      {[...partners, ...partners].map((partner, idx) => (
+        <div
+          key={idx}
+          className="bg-white p-6 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
+        >
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            className="max-h-20 object-contain"
+          />
+        </div>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
         {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -125,7 +177,7 @@ const NetworkAccessControl: React.FC = () => {
           viewport={{ once: true }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-cyan-1000 to-blue-700 py-16 px-6 rounded-2xl shadow-lg text-center">
+          <div className="bg-gray-900 py-16 px-6 rounded-2xl shadow-lg text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
               Stay Ahead of Cyber Threats
             </h2>
@@ -135,7 +187,7 @@ const NetworkAccessControl: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Link
-                to="/GetQuote"
+                to="/get-quote"
                 className="inline-flex items-center gap-3 bg-black text-cyan-400 px-8 py-3 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300"
               >
                 <Send className="w-5 h-5 text-cyan-400" />
