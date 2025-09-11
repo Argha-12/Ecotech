@@ -6,14 +6,14 @@ import awsBg from "../assets/awsBg.jpg";
 import infraBg from "../assets/infraBg.jpg";
 import Bg from "../assets/ar.jpg";
 
-import googleLogo from "../assets/logos/google.PNG";
+import googleLogo from "../assets/logos/google.png";
 import microsoftLogo from "../assets/logos/microsoft.png";
 import appleLogo from "../assets/logos/apple.png";
 import NEXVAL from "../assets/logos/NEXVAL.jpg";
 import paharpur from "../assets/logos/paharpur.jpg";
 import peerless from "../assets/logos/peerless.jpg";
 import RSSoftware from "../assets/logos/RSSoftware.jpg";
-
+import missionBg from "../assets/mission-vision.jpg";
 
 const logos = [googleLogo, microsoftLogo, appleLogo,NEXVAL,paharpur,peerless,RSSoftware];
 
@@ -37,7 +37,7 @@ const heroContent = [
       { icon: <Cloud className="w-4 h-4 text-blue-500" />, text: "Cloud Partner" },
       { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "24/7 Support" }
     ],
-    backgroundImage: null, // pick your default background
+    backgroundImage: missionBg, // pick your default background
     backgroundType: "image"
   },
     {
