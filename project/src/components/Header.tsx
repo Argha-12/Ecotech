@@ -199,7 +199,7 @@ const Header = () => {
         <span className="text-lg sm:text-2xl lg:text-3xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
           <span className="text-white">Ecotech</span>
           <span className="text-white"> Global</span> 
-          <span className="text-blue-300 hidden sm:inline"> Services</span>
+          <span className="text-blue-300"> Services</span>
         </span>
       </Link>
 
