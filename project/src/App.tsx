@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import WhatsAppButton from './components/WhatsAppButton.tsx';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -31,10 +32,6 @@ import Webappdevelopment from './pages/Webappdevelopment';
 import Managedservicessolutions from './pages/Managedservicessolutions';
 import CaseStudies from './pages/case-studies';
 import Blog from './pages/blog';
-
-
-
-
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -68,55 +65,39 @@ const AppContent: React.FC = () => {
           <Route path="/security_solutions/siem_soar_soc" element={<SIEMSOARSOC />} />
           <Route path="/security_solutions/security_audits" element={<Securityaudits />} />
 
-
           {/* Cloud Services Routes */}
           <Route path="/cloud_services" element={<Cloudservices />} />
 
-
           {/* IT Infrastructure Routes */}
           <Route path="/it_infrastructure_solutions" element={<Itinfrastructuresolutions />} />
-          {/* <Route path="/services/consulting/strategy" element={<PlaceholderPage />} />
-          <Route path="/services/consulting/digital" element={<PlaceholderPage />} /> */}
 
           {/* Software Licensing Routes */}
           <Route path="/software_licensing_solutions" element={<Softwarelicensingsolutions />} />
-          {/* <Route path="/software_licensing_solutions/microsoft" element={<PlaceholderPage />} />
-          <Route path="/software_licensing_solutions/adobe" element={<PlaceholderPage />} />
-          <Route path="/software_licensing_solutions/autodesk" element={<PlaceholderPage />} />
-          <Route path="/software_licensing_solutions/eviews" element={<PlaceholderPage />} />
-          <Route path="/software_licensing_solutions/corel" element={<PlaceholderPage />} /> */}
 
           {/* Email & Collaboration Routes */}
           <Route path="/email_collaboration_solutions" element={<Emailcollaborationsolutions />} />
-          {/* <Route path="/email_collaboration_solutions/google_workspace" element={<PlaceholderPage />} />
-          <Route path="/email_collaboration_solutions/microsoft_365" element={<PlaceholderPage />} />
-          <Route path="/email_collaboration_solutions/zoho_email" element={<PlaceholderPage />} />
-          <Route path="/email_collaboration_solutions/rediffmail" element={<PlaceholderPage />} /> */}
 
           {/* Audio Visual Routes */}
           <Route path="/audio_visual_solutions" element={<Audiovisualsolutions />} />
-          {/* <Route path="/audio_visual_solutions/collaboration_solutions" element={<PlaceholderPage />} />
-          <Route path="/audio_visual_solutions/digital_signage" element={<PlaceholderPage />} />
-          <Route path="/audio_visual_solutions/command_center" element={<PlaceholderPage />} /> */}
 
           {/* Managed Services Routes */}
           <Route path="/managed_services_solutions" element={<Managedservicessolutions />} />
-          {/* <Route path="/managed_services_solutions/managed_firewall" element={<PlaceholderPage />} />
-          <Route path="/managed_services_solutions/managed_server_management" element={<PlaceholderPage />} />
-          <Route path="/managed_services_solutions/managed_vpn_services" element={<PlaceholderPage />} />
-          <Route path="/managed_services_solutions/managed_it_services" element={<PlaceholderPage />} />
-          <Route path="/managed_services_solutions/noc_services" element={<PlaceholderPage />} /> */}
-            {/*weband app development*/}
+
+          {/* Web & App Development */}
           <Route path="/Web_App_Development" element={<Webappdevelopment />} />
 
           {/* Resources Routes */}
           <Route path="/resources/case_studies" element={<CaseStudies />} />
           <Route path="/resources/gallery" element={<PlaceholderPage />} />
-          <Route path="/resources/blog" element={<Blog/>} />
+          <Route path="/resources/blog" element={<Blog />} />
           <Route path="/resources/events" element={<PlaceholderPage />} />
           <Route path="/resources/certifications" element={<PlaceholderPage />} />
         </Routes>
       </main>
+
+      {/* ✅ WhatsApp button visible on all pages */}
+      <WhatsAppButton />
+
       <Footer />
     </div>
   );

@@ -156,60 +156,47 @@ Note: Please find the resume attached separately.`;
 
       <div className="relative z-10 container mx-auto px-6 py-20">
         
-        {/* Top Section - Content */}
-        <div className="mb-16">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="text-white">Join Our</span>
-                <br />
-                <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-600 bg-clip-text text-transparent">
-                  Amazing Team
-                </span>
-              </h1>
-              
-              <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                Build your career with Ecotech Global Services! Join a team of passionate 
-                professionals dedicated to shaping the future of cybersecurity and technology.
-              </p>
-            </div>
+{/* Top Section - Content */}
+<div className="mb-16">
+  <div className="max-w-4xl mx-auto text-center space-y-8">
+    <div className="space-y-6">
+      <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+        <span className="text-white">Join Our</span>
+        <br />
+        <span className="text-gray-300">Amazing Team</span>
+      </h1>
+      
+      <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        Build your career with Ecotech Global Services! Join a team of passionate 
+        professionals dedicated to shaping the future of cybersecurity and technology.
+      </p>
+    </div>
 
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">🚀</span>
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">Career Growth</h3>
-                <p className="text-gray-400 text-sm">Accelerate your career with mentorship and learning opportunities</p>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">💰</span>
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">Competitive Benefits</h3>
-                <p className="text-gray-400 text-sm">Comprehensive packages with health, dental, and retirement plans</p>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">🌍</span>
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">Remote Flexibility</h3>
-                <p className="text-gray-400 text-sm">Work from anywhere with our flexible remote work policies</p>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">🎯</span>
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">Innovation Focus</h3>
-                <p className="text-gray-400 text-sm">Work on cutting-edge projects that shape the future of cybersecurity</p>
-              </div>
-            </div>
-          </div>
+    {/* Features Grid */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      {[
+        { icon: "🚀", title: "Career Growth", desc: "Accelerate your career with mentorship and learning opportunities" },
+        { icon: "💰", title: "Competitive Benefits", desc: "Comprehensive packages with health, dental, and retirement plans" },
+        { icon: "🌍", title: "Remote Flexibility", desc: "Work from anywhere with our flexible remote work policies" },
+        { icon: "🎯", title: "Innovation Focus", desc: "Work on cutting-edge projects that shape the future of cybersecurity" },
+      ].map((item, idx) => (
+        <div
+          key={idx}
+          className="bg-gray-800 rounded-2xl p-6 border border-gray-700"
+        >
+        <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span className="text-white text-2xl">{item.icon}</span>
         </div>
+        <h3 className="text-white font-semibold text-lg mb-2">{item.title}</h3>
+        <p className="text-white text-base md:text-sm font-semibold">
+          {item.desc}
+        </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 
         {/* Bottom Section - Application Form */}
         <div className="max-w-2xl mx-auto">
@@ -332,55 +319,40 @@ Note: Please find the resume attached separately.`;
           </div>
         </div>
       </div>
-      {/* Why Work With Us Section */}
-      <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-sm py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Why Choose Ecotech as Your Career?
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Join a company that values innovation, growth, and work-life balance. 
-              We invest in our people and their success.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                <span className="text-2xl text-white">🏆</span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Recognition</h3>
-              <p className="text-gray-300 text-sm">Awards and recognition for outstanding performance</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                <span className="text-2xl text-white">📚</span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Learning</h3>
-              <p className="text-gray-300 text-sm">Continuous learning opportunities and certifications</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                <span className="text-2xl text-white">🤝</span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Collaboration</h3>
-              <p className="text-gray-300 text-sm">Work with talented teams across the globe</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                <span className="text-2xl text-white">🌟</span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Impact</h3>
-              <p className="text-gray-300 text-sm">Make a real difference in cybersecurity</p>
-            </div>
-          </div>
-        </div>
-      </div>
+{/* Why Work With Us Section */}
+<div className="bg-gray-900 py-20">
+  <div className="container mx-auto px-6">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold text-white mb-6">
+        Why Choose Ecotech as Your Career?
+      </h2>
+      <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        Join a company that values innovation, growth, and work-life balance. 
+        We invest in our people and their success.
+      </p>
     </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        { icon: "🏆", title: "Recognition", desc: "Awards and recognition for outstanding performance" },
+        { icon: "📚", title: "Learning", desc: "Continuous learning opportunities and certifications" },
+        { icon: "🤝", title: "Collaboration", desc: "Work with talented teams across the globe" },
+        { icon: "🌟", title: "Impact", desc: "Make a real difference in cybersecurity" },
+      ].map((item, idx) => (
+        <div key={idx} className="text-center">
+          <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-2xl text-white">{item.icon}</span>
+          </div>
+          <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+          <p className="text-gray-200 text-l font-semibold">
+            {item.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+</div>
   );
 };
 

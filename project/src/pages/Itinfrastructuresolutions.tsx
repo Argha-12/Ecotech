@@ -2,24 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import microsoftLogo from "../assets/logos/microsoft.png";
-import nexvalLogo from "../assets/logos/NEXVAL.jpg";
-import dellLogo from "../assets/logos/paharpur.jpg";
-import peerlessLogo from "../assets/logos/peerless.jpg";
-import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
-import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
-import amitLogo from "../assets/logos/Amit Metalics.png";
-import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+import acronis from "../assets/IT Infrasture logo/acronis.jpg";
+import allied from "../assets/IT Infrasture logo/allied telesis.png";
+// import dellLogo from "../assets/IT Infrasture logo/Amazon.svg";
+import Cisco from "../assets/IT Infrasture logo/Cisco Firewall.png";
+// import rsSoftwareLogo from "../assets/IT Infrasture logo/Dell_Logo.svg";
+// import alcoveLogo from "../assets/IT Infrasture logo/HP_logo.svg";
+import juniper from "../assets/IT Infrasture logo/juniper logo.png";
+import veeam from "../assets/IT Infrasture logo/veeam.png";
 
 const partners = [
-  { name: "Microsoft", logo: microsoftLogo },
-  { name: "NEXVAL", logo: nexvalLogo },
-  { name: "Dell", logo: dellLogo },
-  { name: "Allied Telesis", logo: peerlessLogo },
-  { name: "Juniper Networks", logo: rsSoftwareLogo },
-  { name: "AWS", logo: alcoveLogo },
-  { name: "Acronis", logo: amitLogo },
-  { name: "Veeam", logo: ashokaLogo },
+  { name: "acronis", logo: acronis },
+  { name: "allied telesis", logo: allied },
+  { name: "Cisco Firewall", logo: Cisco },
+  { name: "juniper logo", logo: juniper },
+  { name: "veeam", logo: veeam }
 ];
 
 
@@ -169,16 +166,17 @@ const ITInfrastructurePage: React.FC = () => {
           transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
         >
           {[...partners, ...partners].map((partner, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
-            >
-              <img
-                src={partner.logo}   // ✅ imported logo used here
-                alt={partner.name}
-                className="max-h-24 md:max-h-28 object-contain"
-              />
-            </div>
+          <div
+            key={idx}
+            className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+          >
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="max-w-full max-h-full object-contain"
+            />
+          </div>
+
           ))}
         </motion.div>
       </div>

@@ -3,9 +3,10 @@ import { ArrowRight, Shield, Zap, Users, Award, FileText, Layout, Code2, CheckCi
 import Timeline from '../components/Timeline';
 import bgVideo from "../assets/argha.mp4";
 import awsBg from "../assets/awsBg.jpg";
+import GW from "../assets/Google Workspace.jpg";
+import GT from "../assets/Globally Trusted.jpg";
 import infraBg from "../assets/infraBg.jpg";
-import Bg from "../assets/Power Your Business.jpg";
-import SecureYour from "../assets/Secure.mp4";
+import Bg from "../assets/Power Business.webp";
 import { motion } from 'framer-motion';
 
 import microsoftLogo from "../assets/logos/microsoft.png";
@@ -110,7 +111,7 @@ const heroContent = [
       { icon: <Cloud className="w-4 h-4 text-blue-500" />, text: "Cloud Partner" },
       { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "24/7 Support" }
     ],
-    backgroundImage: SecureYour, // pick your default background
+    backgroundImage: bgVideo, // pick your default background
     backgroundType: "video"
   },
     {
@@ -136,8 +137,8 @@ const heroContent = [
     { icon: <Award className="w-8 h-8 text-yellow-300 mr-2 drop-shadow-md animate-bounce" />, text: "40% OFF Limited" },
     { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "Instant Setup" }
   ],
-  backgroundImage: bgVideo,   // keep the imported video here
-  backgroundType: "video"     // tell your renderer it's a video
+  backgroundImage: GW,   // keep the imported video here
+  backgroundType: "image"     // tell your renderer it's a video
 },
 
   {
@@ -176,7 +177,7 @@ const heroContent = [
       { icon: <Award className="w-4 h-4 text-blue-500" />, text: "ISO 27001:2013" },
       { icon: <CheckCircle className="w-4 h-4 text-blue-500" />, text: "ISO/IEC 20000-1" }
     ],
-    backgroundImage: Bg,
+    backgroundImage: GT,
     backgroundType: "image"
   }
 ];
@@ -223,7 +224,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentHero((prev) => (prev + 1) % heroContent.length);
-    }, 10000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
