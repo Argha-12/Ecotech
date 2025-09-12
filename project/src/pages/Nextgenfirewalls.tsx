@@ -122,27 +122,27 @@ export default function NextGenFirewalls() {
   </div>
 
   {/* ✅ Smooth Scrolling Carousel */}
-  <div className="overflow-hidden relative">
-    <motion.div
-      className="flex gap-8"
-      animate={{ x: ["0%", "-100%"] }}
-      transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-    >
-      {[...partners, ...partners].map((partner, idx) => (
-        <div
-          key={idx}
-          className="bg-white p-6 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
+      <div className="max-w-[80%] mx-auto overflow-hidden">
+        <motion.div
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
         >
-          <img
-            src={partner.logo}
-            alt={partner.name}
-            className="max-h-20 object-contain"
-          />
-        </div>
-      ))}
-    </motion.div>
-  </div>
-</section>
+          {[...partners, ...partners].map((partner, idx) => (
+          <div
+            key={idx}
+            className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+          >
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="w-[260px] h-[120px] object-contain"
+            />
+          </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
 
 
         {/* CTA Section */}
