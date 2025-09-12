@@ -116,16 +116,16 @@ const SoftwareLicensingPage: React.FC = () => {
                 transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
               >
                 {[...partners, ...partners].map((partner, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
-                  >
-                    <img
-                      src={partner.logo}   // ✅ imported logo used here
-                      alt={partner.name}
-                      className="max-h-24 md:max-h-28 object-contain"
-                    />
-                  </div>
+                <div
+                  key={idx}
+                  className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+                >
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="w-[260px] h-[120px] object-contain"
+                  />
+                </div>
                 ))}
               </motion.div>
             </div>

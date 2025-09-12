@@ -366,6 +366,7 @@ const Home: React.FC = () => {
       
 {/* Dynamic Hero Banner Section */}
 <section className="relative min-h-screen md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden">
+
   {/* Dynamic Background - Gradient, Image, or Video */}
   {currentContent.backgroundType === "gradient" ? (
     <div className="absolute inset-0 bg-gradient-to-br from-gray-500 via-indigo-500 to-black">
@@ -373,11 +374,24 @@ const Home: React.FC = () => {
     </div>
   ) : currentContent.backgroundType === "image" ? (
     <>
+      {/* Low-Res Placeholder (Optional) */}
+      {currentContent.lowResImage && (
         <img
-          src={currentContent.backgroundImage || ""}
-          alt={currentContent.title}
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          src={currentContent.lowResImage}
+          alt="blur"
+          className="absolute inset-0 w-full h-full object-cover blur-xl scale-110"
         />
+      )}
+
+      {/* Full-Res Background with Fade-in */}
+      <img
+        src={currentContent.backgroundImage || ""}
+        alt={currentContent.title}
+        loading="eager"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-0 transition-opacity duration-700"
+        onLoad={(e) => e.currentTarget.classList.add("opacity-100")}
+      />
+
       {/* Slightly darker overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/35"></div>
     </>
@@ -388,15 +402,16 @@ const Home: React.FC = () => {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+        onLoadedData={(e) => e.currentTarget.classList.add("opacity-100")}
       >
         <source src={currentContent.backgroundImage} type="video/mp4" />
       </video>
+
       {/* Slightly darker overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/25"></div>
     </>
   ) : null}
-
 
   {/* Floating Icons */}
   <div className="absolute inset-0 overflow-hidden hidden md:block">
@@ -427,8 +442,7 @@ const Home: React.FC = () => {
           key={index}
           className="flex items-center gap-1 sm:gap-2 hover:text-blue-300 transition-colors bg-black/20 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm"
         >
-          {indicator.icon}
-          {indicator.text}
+          {indicator.icon} {indicator.text}
         </span>
       ))}
     </div>
@@ -452,12 +466,12 @@ const Home: React.FC = () => {
 
       {/* CTA Button */}
       <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg text-sm sm:text-base md:text-lg">
-        Get Started Today
-        <ArrowRight className="w-5 h-5" />
+        Get Started Today <ArrowRight className="w-5 h-5" />
       </button>
     </div>
   </div>
 </section>
+
 
 
       {/* 🔹 Services Section */}
@@ -667,16 +681,16 @@ const Home: React.FC = () => {
           transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
         >
           {[...partners, ...partners].map((partner, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
-            >
-              <img
-                src={partner.logo}   // ✅ imported logo used here
-                alt={partner.name}
-                className="max-h-24 md:max-h-28 object-contain"
-              />
-            </div>
+          <div
+            key={idx}
+            className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+          >
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="w-[260px] h-[120px] object-contain"
+            />
+          </div>
           ))}
         </motion.div>
       </div>
