@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Shield, Zap, Users, Award, FileText, Layout, Code2, CheckCircle, Rocket, Cloud, Target, BookOpen } from 'lucide-react';
 import Timeline from '../components/Timeline';
-import bgVideo from "../assets/argha.mp4";
+import bgVideo from "../assets/argha.png";
 import awsBg from "../assets/awsBg.jpg";
 import GW from "../assets/Google Workspace.jpg";
 import GT from "../assets/Globally Trusted.jpg";
@@ -137,7 +137,7 @@ const heroContent = [
       { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "24/7 Support" }
     ],
     backgroundImage: bgVideo, // pick your default background
-    backgroundType: "video"
+    backgroundType: "image"
   },
     {
     id: 2,
@@ -399,6 +399,9 @@ const Home: React.FC = () => {
     </div>
   ) : currentContent.backgroundType === "image" ? (
     <>
+      {/* Immediate gradient fallback to prevent grey screen */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black"></div>
+
       {/* Low-Res Placeholder (Optional) */}
       {currentContent.lowResImage && (
         <img
@@ -408,13 +411,20 @@ const Home: React.FC = () => {
         />
       )}
 
-      {/* Full-Res Background with Fade-in */}
+      {/* Full-Res Background with Fade-in and hardware acceleration */}
       <img
         src={currentContent.backgroundImage || ""}
         alt={currentContent.title}
         loading="eager"
-        className="absolute inset-0 w-full h-full object-cover object-center opacity-0 transition-opacity duration-700"
-        onLoad={(e) => e.currentTarget.classList.add("opacity-100")}
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-0 transition-opacity duration-500 transform-gpu"
+        style={{ transform: 'translateZ(0)' }}
+        onLoad={(e) => {
+          e.currentTarget.style.opacity = '1';
+        }}
+        onError={() => {
+          console.warn('Hero image failed to load:', currentContent.backgroundImage);
+        }}
       />
 
       {/* Slightly darker overlay */}
