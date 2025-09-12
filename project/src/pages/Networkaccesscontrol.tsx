@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Lock, Cpu, Wifi, Send, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import microsoftLogo from "../assets/logos/microsoft.png";
 import nexvalLogo from "../assets/logos/NEXVAL.jpg";
 import dellLogo from "../assets/logos/paharpur.jpg";
 import peerlessLogo from "../assets/logos/peerless.jpg";
@@ -13,7 +12,7 @@ import amitLogo from "../assets/logos/Amit Metalics.png";
 import ashokaLogo from "../assets/logos/Ashoka Hall.png";
 
 const partners = [
-  { name: "Microsoft", logo: microsoftLogo },
+
   { name: "NEXVAL", logo: nexvalLogo },
   { name: "Dell", logo: dellLogo },
   { name: "Allied Telesis", logo: peerlessLogo },

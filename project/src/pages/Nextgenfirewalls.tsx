@@ -4,24 +4,18 @@ import { Shield, Eye, BarChart3, Settings, Send, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // ✅ Importing partner logos
-import microsoftLogo from "../assets/logos/microsoft.png";
-import nexvalLogo from "../assets/logos/NEXVAL.jpg";
-import paharpurLogo from "../assets/logos/paharpur.jpg";
-import peerlessLogo from "../assets/logos/peerless.jpg";
-import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
-import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
-import amitLogo from "../assets/logos/Amit Metalics.png";
-import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+import nexvalLogo from "../assets/Next Gen firewall/Cisco Firewall.png";
+import paharpurLogo from "../assets/Next Gen firewall/fortinet-firewall.png";
+import peerlessLogo from "../assets/Next Gen firewall/Paloalto.png";
+import rsSoftwareLogo from "../assets/Next Gen firewall/sonic wall firewall logo.png";
+import alcoveLogo from "../assets/Next Gen firewall/sophos-firewall.webp";
 
 const partners = [
-  { name: "Microsoft", logo: microsoftLogo },
-  { name: "NEXVAL", logo: nexvalLogo },
-  { name: "Paharpur", logo: paharpurLogo },
-  { name: "Peerless", logo: peerlessLogo },
-  { name: "RS Software", logo: rsSoftwareLogo },
-  { name: "Alcove Realty", logo: alcoveLogo },
-  { name: "Amit Metalics", logo: amitLogo },
-  { name: "Ashoka Hall", logo: ashokaLogo },
+  { name: "Cisco Firewall", logo: nexvalLogo },
+  { name: "fortinet-firewall", logo: paharpurLogo },
+  { name: "Paloalto", logo: peerlessLogo },
+  { name: "sonic wall firewall logo", logo: rsSoftwareLogo },
+  { name: "sophos-firewall", logo: alcoveLogo },
 ];
 
 export default function NextGenFirewalls() {
@@ -132,7 +126,7 @@ export default function NextGenFirewalls() {
     <motion.div
       className="flex gap-8"
       animate={{ x: ["0%", "-100%"] }}
-      transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+      transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
     >
       {[...partners, ...partners].map((partner, idx) => (
         <div

@@ -16,7 +16,7 @@ import {
   Headphones,
 } from "lucide-react";
 
-import microsoftLogo from "../assets/logos/microsoft.png";
+
 import nexvalLogo from "../assets/logos/NEXVAL.jpg";
 import dellLogo from "../assets/logos/paharpur.jpg";
 import peerlessLogo from "../assets/logos/peerless.jpg";
@@ -26,7 +26,6 @@ import amitLogo from "../assets/logos/Amit Metalics.png";
 import ashokaLogo from "../assets/logos/Ashoka Hall.png";
 
 const partners = [
-  { name: "Microsoft", logo: microsoftLogo },
   { name: "NEXVAL", logo: nexvalLogo },
   { name: "Dell", logo: dellLogo },
   { name: "Allied Telesis", logo: peerlessLogo },

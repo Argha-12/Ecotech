@@ -9,7 +9,7 @@ import infraBg from "../assets/infraBg.jpg";
 import Bg from "../assets/Power Business.webp";
 import { motion } from 'framer-motion';
 
-import microsoftLogo from "../assets/logos/microsoft.png";
+
 import nexvalLogo from "../assets/logos/NEXVAL.jpg";
 import paharpur from "../assets/logos/paharpur.jpg";
 import peerless from "../assets/logos/peerless.jpg";
@@ -23,24 +23,46 @@ import Burdwanuniversity from "../assets/logos/Burdwan university.jpg";
 import CGCRILOGO from "../assets/logos/CGCRI LOGO.png";
 import CKBirlaHospital from "../assets/logos/CK Birla Hospital.png";
 import DDEVPlastiks from "../assets/logos/DDEV Plastiks.png";
-// import EEPCINDIA from "../assets/logos/EEPC INDIA.jpg";
-// import Eveready from "../assets/logos/Eveready.png";
-// import fit_logo from "../assets/logos/fit_logo.jpg";
-// import GDBirla from "../assets/logos/GD Birla Memorial School ranikheet.jpg";
-// import GdGoenkaSchool from "../assets/logos/Gd Goenka School.jpg";
-// import gkbopticals from "../assets/logos/gkb_opticals_logo.jpg";
-// import GTPL_LOGO from "../assets/logos/GTPL_LOGO_HIGH_RESOLUTION.png";
-// import HAL from "../assets/logos/HAL.jpg";
-// import Icar from "../assets/logos/Icar.png";
-// import IICB from "../assets/logos/IICB.jpg";
-// import IILDS from "../assets/logos/IILDS.jpg";
-// import IIT_Kharagpur from "../assets/logos/IIT_Kharagpur_Logo.jpg";
-// import India_Meteorological from "../assets/logos/India_Meteorological_Department_(logo).png";
-// import Indian_Institute from "../assets/logos/Indian_Institute_of_Foreign_Trade_logo.png";
-// import KalingaHospital from "../assets/logos/Kalinga Hospital.jpg";
+import EEPC from "../assets/logos/EEPC INDIA.jpg";
+import Eveready from "../assets/logos/Eveready.png";
+import fit_logo from "../assets/logos/fit_logo.jpg";
+import Birla from "../assets/logos/GD Birla Memorial School ranikheet.jpg";
+import GdGoenka from "../assets/logos/Gd Goenka School.jpg";
+import gkb_opticals_logo from "../assets/logos/gkb_opticals_logo.jpg";
+import GTPL_LOGO_HIGH_RESOLUTION from "../assets/logos/GTPL_LOGO_HIGH_RESOLUTION.png";
+import HAL from "../assets/logos/HAL.jpg";
+import Icar from "../assets/logos/Icar.png";
+import IICB from "../assets/logos/IICB.jpg";
+import IILDS from "../assets/logos/IILDS.jpg";
+import IIT_Kharagpur_Logo from "../assets/logos/IIT_Kharagpur_Logo.jpg";
+import India_Meteorological from "../assets/logos/India_Meteorological_Department_(logo).png";
+import Indian_Institute from "../assets/logos/Indian_Institute_of_Foreign_Trade_logo.png";
+import Kalinga from "../assets/logos/Kalinga Hospital.jpg";
+import Kesoram from "../assets/logos/Kesoram.png";
+import KPC from "../assets/logos/KPC Hospital.webp";
+import mission from "../assets/logos/mission Hospital Durgapur.png";
+import Narayan from "../assets/logos/Narayan Memorial Hospital.jpg";
+import National from "../assets/logos/National.png";
+import library from "../assets/logos/national-library.jpg";
+import NCSM from "../assets/logos/NCSM-Logo.png";
+import NTPC from "../assets/logos/NTPC.png";
+import PWD from "../assets/logos/PWD.jpg";
+import Rashmi from "../assets/logos/Rashmi Group.jpg";
+import Seacom_Logo from "../assets/logos/Seacom_Logo.png";
+import siddha_group_logo from "../assets/logos/siddha_group_logo.jpg";
+import Xavier from "../assets/logos/St._Xavier's.jpg";
+import Tata from "../assets/logos/Tata Steel.png";
+import TDB from "../assets/logos/TDB Collage.jpg";
+import University_of_Kalyani_Logo from "../assets/logos/University_of_Kalyani_Logo.jpg";
+import Vikram from "../assets/logos/Vikram Solar.png";
+import virtual_clone_logo from "../assets/logos/virtual_clone_logo.jpg";
+import Wbidc from "../assets/logos/Wbidc.jpg";
+import West_Bengal_Nati from "../assets/logos/West_Bengal_Nati.jpg";
+import Wowmomo from "../assets/logos/Wowmomo.jpg";
+import XIM from "../assets/logos/XIM.png";
 
 const partners = [
-  { name: "Microsoft", logo: microsoftLogo },
+ 
   { name: "NEXVAL", logo: nexvalLogo },
   { name: "paharpur", logo: paharpur },
   { name: "peerless", logo: peerless },
@@ -53,43 +75,46 @@ const partners = [
   { name: "CGCRI LOGO", logo: CGCRILOGO },
   { name: "Burdwan university", logo: Burdwanuniversity },
   { name: "CK Birla Hospital", logo: CKBirlaHospital },
+  { name: "EEPC INDIA", logo: EEPC },
+  { name: "Eveready", logo: Eveready },
+  { name: "fit_logo", logo: fit_logo },
+  { name: "GD Birla Memorial School ranikheet", logo:Birla  },
+  { name: "Gd Goenka School", logo: GdGoenka },
+  { name: "gkb_opticals_logo", logo: gkb_opticals_logo },
+  { name: "GTPL_LOGO_HIGH_RESOLUTION", logo: GTPL_LOGO_HIGH_RESOLUTION },
   { name: "DDEV Plastiks", logo: DDEVPlastiks },
+  { name: "HAL", logo: HAL },
+  { name: "Icar", logo: Icar },
+  { name: "IICB", logo: IICB },
+  { name: "IILDS", logo: IILDS },
+  { name: "IIT_Kharagpur_Logo", logo: IIT_Kharagpur_Logo },
+  { name: "India_Meteorological_Department_(logo)", logo: India_Meteorological },
+  { name: "Indian_Institute_of_Foreign_Trade_logo", logo: Indian_Institute },
+  { name: "Kalinga Hospital", logo: Kalinga },
+  { name: "Kesoram", logo: Kesoram },
+  { name: "KPC Hospital", logo: KPC },
+  { name: "mission Hospital Durgapur", logo: mission },
+  { name: "Narayan Memorial Hospital", logo: Narayan },
+  { name: "National", logo: National },
+  { name: "national-library", logo: library},
+  { name: "NCSM-Logo", logo: NCSM },
+  { name: "PWD", logo: PWD },
+  { name: "Rashmi Group", logo: Rashmi },
+  { name: "NTPC", logo: NTPC },
+  { name: "Seacom_Logo", logo: Seacom_Logo },
+  { name: "siddha_group_logo", logo: siddha_group_logo },
+  { name: "St._Xavier's", logo: Xavier },
+{ name: "Tata Steel", logo: Tata },
+{ name: "TDB Collage", logo: TDB },
+{ name: "University_of_Kalyani_Logo", logo: University_of_Kalyani_Logo },
+{ name: "Vikram Solar", logo: Vikram },
+{ name: "virtual_clone_logo", logo: virtual_clone_logo },
+{ name: "Wbidc", logo: Wbidc },
+{ name: "West_Bengal_Nati", logo: West_Bengal_Nati },
+{ name: "Wowmomo", logo: Wowmomo },
+{ name: "XIM", logo: XIM },
 ];
 
-// import googleLogo from "../assets/logos/google.PNG";
-// import microsoftLogo from "../assets/logos/microsoft.png";
-// import appleLogo from "../assets/logos/apple.png";
-// import NEXVAL from "../assets/logos/NEXVAL.jpg";
-// import paharpur from "../assets/logos/paharpur.jpg";
-// import peerless from "../assets/logos/peerless.jpg";
-// import RSSoftware from "../assets/logos/RSSoftware.jpg";
-// import AlcoveReality from "../assets/logos/Alcove Reality.jpg";
-// import AmitMetalics from "../assets/logos/Amit Metalics.png";
-// import AryamanBikramBirla from "../assets/logos/Aryaman Bikram Birla.jpg";
-// import AshokaHall from "../assets/logos/Ashoka Hall.png";
-// import basehospitalbarrackpore from "../assets/logos/base-hospital-barrackpore.png";
-// import Burdwanuniversity from "../assets/logos/Burdwan university.jpg";
-// import CGCRILOGO from "../assets/logos/CGCRI LOGO.png";
-// import CKBirlaHospital from "../assets/logos/CK Birla Hospital.png";
-// import DDEVPlastiks from "../assets/logos/DDEV Plastiks.png";
-// import EEPCINDIA from "../assets/logos/EEPC INDIA.jpg";
-// import Eveready from "../assets/logos/Eveready.png";
-// import fit_logo from "../assets/logos/fit_logo.jpg";
-// import GDBirla from "../assets/logos/GD Birla Memorial School ranikheet.jpg";
-// import GdGoenkaSchool from "../assets/logos/Gd Goenka School.jpg";
-// import gkbopticals from "../assets/logos/gkb_opticals_logo.jpg";
-// import GTPL_LOGO from "../assets/logos/GTPL_LOGO_HIGH_RESOLUTION.png";
-// import HAL from "../assets/logos/HAL.jpg";
-// import Icar from "../assets/logos/Icar.png";
-// import IICB from "../assets/logos/IICB.jpg";
-// import IILDS from "../assets/logos/IILDS.jpg";
-// import IIT_Kharagpur from "../assets/logos/IIT_Kharagpur_Logo.jpg";
-// import India_Meteorological from "../assets/logos/India_Meteorological_Department_(logo).png";
-// import Indian_Institute from "../assets/logos/Indian_Institute_of_Foreign_Trade_logo.png";
-// import KalingaHospital from "../assets/logos/Kalinga Hospital.jpg";
-
-
-// const logos = [KalingaHospital,Indian_Institute,India_Meteorological,IIT_Kharagpur,IILDS,IICB,CGCRILOGO,Icar,GTPL_LOGO,HAL,gkbopticals,GdGoenkaSchool,GDBirla,fit_logo,Eveready,EEPCINDIA,DDEVPlastiks,CKBirlaHospital, microsoftLogo, appleLogo,NEXVAL,paharpur,peerless,RSSoftware,AlcoveReality,AmitMetalics,AryamanBikramBirla,AshokaHall,basehospitalbarrackpore,Burdwanuniversity];
 
 interface Service {
   icon: JSX.Element;
