@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from 'lucide-react';
+import { emailService, EmailTemplates } from '../utils/emailService';
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,18 +21,48 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+    
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Prepare email data using the contact template
+      const emailData = EmailTemplates.contactForm(formData);
+      
+      // Send email using the email service
+      const result = await emailService.sendEmail(emailData, 'contact', {
+        successMessage: '✅ Message sent successfully! We\'ll respond within 24 hours.',
+        errorMessage: '⚠️ Failed to send message. Please try again or contact us directly.',
+        enableMailtoFallback: true,
+        fallbackEmail: 'info@ecotechglobal.in'
+      });
+      
+      if (result.success) {
+        alert(result.message);
+        
+        // Reset form on success
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        alert(result.message);
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('⚠️ An unexpected error occurred. Please try again or contact us directly.');
+    }
+    
+    setIsSubmitting(false);
   };
 
   const contactInfo = [
@@ -209,10 +241,24 @@ const Contact = () => {
                 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center justify-center space-x-2"
+                  disabled={isSubmitting}
+                  className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors inline-flex items-center justify-center space-x-2 ${
+                    isSubmitting 
+                      ? 'bg-gray-400 cursor-not-allowed text-white' 
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                  }`}
                 >
-                  <Send className="w-5 h-5" />
-                  <span>Send Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </form>
             </motion.div>

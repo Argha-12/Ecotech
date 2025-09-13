@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { emailService, EmailTemplates } from '../utils/emailService';
 
 interface FormData {
   name: string;
@@ -34,40 +35,27 @@ const GetQuotePage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Using EmailJS service to send emails directly from the browser
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          service_id: 'service_gmail',
-          template_id: 'template_quote',
-          user_id: 'YOUR_PUBLIC_KEY',
-          template_params: {
-            to_email: 'argharana8@gmail.com',
-            from_name: formData.name,
-            from_email: formData.email,
-            phone: formData.phoneNo,
-            organization: formData.organization,
-            products: formData.products,
-            message: `
-New Quote Request:
-
-Name: ${formData.name}
-Phone: ${formData.phoneNo}
-Email: ${formData.email}
-Organization: ${formData.organization}
-Products/Services: ${formData.products}
-
-Submitted on: ${new Date().toLocaleString()}
-            `
-          }
-        }),
+      // Prepare email data using the contact form template with organization appended to name
+      const emailData = EmailTemplates.contactForm({
+        name: `${formData.name} (${formData.organization})`,
+        email: formData.email,
+        phone: formData.phoneNo,
+        subject: 'Request a Quote',
+        message: `Organization: ${formData.organization}\n\nProducts/Services of Interest:\n${formData.products}`
       });
-
-      if (response.ok) {
-        alert('Quote request submitted successfully! We\'ll get back to you within 24 hours.');
+      
+      // Send email using the contact template
+      const result = await emailService.sendEmail(emailData, 'contact', {
+        successMessage: '🎯 Quote request submitted! We\'ll send your custom quote within 24 hours.',
+        errorMessage: '⚠️ Failed to submit quote request. Please try again or contact us directly.',
+        enableMailtoFallback: true,
+        fallbackEmail: 'sales@ecotechglobal.in'
+      });
+      
+      if (result.success) {
+        alert(result.message);
+        
+        // Reset form on success
         setFormData({
           name: '',
           phoneNo: '',
@@ -76,33 +64,11 @@ Submitted on: ${new Date().toLocaleString()}
           products: ''
         });
       } else {
-        throw new Error('Email service failed');
+        alert(result.message);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      
-      const emailSubject = `New Quote Request from ${formData.name}`;
-      const emailBody = `Name: ${formData.name}
-Phone: ${formData.phoneNo}
-Email: ${formData.email}
-Organization: ${formData.organization}
-Products/Services: ${formData.products}
-
-Submitted on: ${new Date().toLocaleString()}`;
-
-      const mailtoLink = `mailto:argharana8@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-      
-      window.open(mailtoLink, '_blank');
-      
-      alert('Opening your email client to send the quote request. Please click Send in your email application.');
-      
-      setFormData({
-        name: '',
-        phoneNo: '',
-        email: '',
-        organization: '',
-        products: ''
-      });
+      console.error('Error submitting quote request:', error);
+      alert('⚠️ An unexpected error occurred. Please try again or contact us directly.');
     }
     
     setIsSubmitting(false);

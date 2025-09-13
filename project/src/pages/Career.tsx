@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { emailService, EmailTemplates } from '../utils/emailService';
 
 // EmailJS will be loaded via CDN in index.html
 declare global {
@@ -48,98 +49,42 @@ const CareerPage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Check if environment variables are loaded
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const emailTo = import.meta.env.VITE_EMAIL_TO;
+      // Prepare email data using the job application template
+      const emailData = EmailTemplates.jobApplication({
+        name: formData.name,
+        phoneNo: formData.phoneNo,
+        emailId: formData.emailId,
+        resume: formData.resume
+      });
       
-      console.log('EmailJS Config:', { publicKey, serviceId, templateId, emailTo });
-      console.log('Environment check:', import.meta.env);
+      // Send email using the email service
+      const result = await emailService.sendEmail(emailData, 'career', {
+        successMessage: '🎉 Application submitted successfully! We\'ll review your application and get back to you soon.',
+        errorMessage: '⚠️ Failed to submit application. Please try again or contact us directly.',
+        enableMailtoFallback: true,
+        fallbackEmail: 'hr@ecotechglobal.in'
+      });
       
-      // Initialize EmailJS
-      window.emailjs.init(publicKey);
-      
-      // Send email using EmailJS
-      const result = await window.emailjs.send(
-        serviceId,
-        templateId,
-        {
-          to_email: emailTo,
-          from_name: formData.name,
-          from_email: formData.emailId,
-          phone: formData.phoneNo,
-          resume_name: formData.resume?.name || 'No file selected',
-          resume_size: formData.resume ? `${(formData.resume.size / 1024 / 1024).toFixed(2)} MB` : 'N/A',
-          message: `New Job Application:
-
-Name: ${formData.name}
-Phone: ${formData.phoneNo}
-Email: ${formData.emailId}
-Resume: ${formData.resume?.name || 'No file selected'}
-File Size: ${formData.resume ? `${(formData.resume.size / 1024 / 1024).toFixed(2)} MB` : 'N/A'}
-
-⚠️ NOTE: Resume file cannot be attached via email. Please contact the candidate directly to request the resume file.
-
-Submitted on: ${new Date().toLocaleString()}`,
-          submission_date: new Date().toLocaleString()
-        }
-      );
-
-      console.log('EmailJS Result:', result);
-      
-      if (result.status === 200) {
-        alert('🎉 Application submitted successfully! We\'ll review your application and get back to you soon.');
+      if (result.success) {
+        alert(result.message);
+        
+        // Reset form on success
         setFormData({
           name: '',
           phoneNo: '',
           emailId: '',
           resume: null
         });
+        
         // Clear file input
         const fileInput = document.getElementById('resume') as HTMLInputElement;
         if (fileInput) fileInput.value = '';
       } else {
-        throw new Error('Email service failed');
+        alert(result.message);
       }
     } catch (error) {
       console.error('Error submitting application:', error);
-      
-      // Show specific error message
-      if (error instanceof Error && error.message?.includes('environment variables')) {
-        alert('⚠️ Configuration Error: Please check environment variables');
-        setIsSubmitting(false);
-        return;
-      }
-      
-      // Simple mailto fallback that opens email client
-      const emailSubject = `New Job Application from ${formData.name}`;
-      const emailBody = `Name: ${formData.name}
-Phone: ${formData.phoneNo}
-Email: ${formData.emailId}
-Resume: ${formData.resume.name}
-
-Submitted on: ${new Date().toLocaleString()}
-
-Note: Please find the resume attached separately.`;
-
-      const mailtoLink = `mailto:argharana8@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-      
-      // Open email client
-      window.open(mailtoLink, '_blank');
-      
-      alert('📧 Opening your email client to send the application. Please attach your resume and click Send.');
-      
-      // Reset form
-      setFormData({
-        name: '',
-        phoneNo: '',
-        emailId: '',
-        resume: null
-      });
-      // Clear file input
-      const fileInput = document.getElementById('resume') as HTMLInputElement;
-      if (fileInput) fileInput.value = '';
+      alert('⚠️ An unexpected error occurred. Please try again or contact us directly.');
     }
     
     setIsSubmitting(false);
