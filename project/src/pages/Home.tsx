@@ -8,6 +8,7 @@ import GT from "../assets/Globally Trusted.jpg";
 import infraBg from "../assets/infraBg.jpg";
 import Bg from "../assets/Power Business.webp";
 import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
 
 
 import nexvalLogo from "../assets/logos/NEXVAL.jpg";
@@ -500,9 +501,12 @@ const Home: React.FC = () => {
       </div>
 
       {/* CTA Button */}
-      <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg text-sm sm:text-base md:text-lg">
+      <Link
+        to="/contact"
+        className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-lg font-semibold flex items-center gap-2 mx-auto transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg text-sm sm:text-base md:text-lg"
+      >
         Get Started Today <ArrowRight className="w-5 h-5" />
-      </button>
+      </Link>
     </div>
   </div>
 </section>
