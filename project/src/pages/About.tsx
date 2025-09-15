@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Target, Users, Award, CheckCircle, TrendingUp, Star, Zap, Shield, Globe, ArrowRight, Play, Sparkles, Code, Lightbulb } from "lucide-react";
 
 const statsData = [
@@ -131,41 +133,51 @@ const About = () => {
       <FloatingShape className="bottom-1/3 left-1/5 w-72 h-72 bg-indigo-600 rounded-full blur-3xl" delay={3} />
       <FloatingShape className="bottom-20 right-20 w-48 h-48 bg-purple-600 rounded-full blur-3xl" delay={2} />
 
-      {/* Enhanced Hero Section */}
-      <section className="relative py-40 px-4 text-center bg-gradient-to-b from-slate-900/90 to-transparent">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900/10 to-transparent"></div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="mb-8 inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-600/10 backdrop-blur-xl border border-cyan-500/30 shadow-2xl">
-            <Sparkles className="w-5 h-5 text-cyan-400 mr-3" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Leading Digital Innovation Since 2016
-            </span>
-          </div>
+{/* Enhanced Hero Section */}
+<section className="relative py-40 px-4 text-center bg-gradient-to-b from-slate-900/90 to-transparent">
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900/10 to-transparent"></div>
+  
+  {/* Motion Wrapper */}
+  <motion.div 
+    className="relative z-10 max-w-6xl mx-auto"
+    initial={{ opacity: 0, y: 50 }}     // start off-screen (down)
+    animate={{ opacity: 1, y: 0 }}      // fade in + move up
+    transition={{ duration: 1, ease: "easeOut" }}  // smooth timing
+  >
+    <div className="mb-8 inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-600/10 backdrop-blur-xl border border-cyan-500/30 shadow-2xl">
+      <Sparkles className="w-5 h-5 text-cyan-400 mr-3" />
+      <span className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+        Leading Digital Innovation Since 2016
+      </span>
+    </div>
 
-          <h1 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
-            <span className="block text-white">About</span>
-            <span className="block text-white">Ecotech Global Services</span>
-          </h1>
-                    
-          <p className="text-2xl md:text-3xl font-light text-gray-300 mb-16 max-w-5xl mx-auto leading-relaxed">
-            Your trusted partner for <span className="font-bold text-white">innovative IT solutions</span> and 
-            <span className="font-bold text-white"> digital transformation</span>
-          </p>
+    <h1 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
+      <span className="block text-white">About</span>
+      <span className="block text-white">Ecotech Global Services</span>
+    </h1>
+              
+    <p className="text-2xl md:text-3xl font-light text-gray-300 mb-16 max-w-5xl mx-auto leading-relaxed">
+      Your trusted partner for <span className="font-bold text-white">innovative IT solutions</span> and 
+      <span className="font-bold text-white"> digital transformation</span>
+    </p>
 
-          
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <button className="group flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full font-bold text-lg shadow-2xl hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400/20">
-              <Play className="w-3 h-3 group-hover:scale-110 transition-transform" />
-              Watch Our Story
-            </button>
-            <button className="flex items-center gap-4 px-10 py-5 border-2 border-white/30 rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm hover:border-cyan-400/50">
-              Learn More
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-            </button>
-          </div>
-        </div>
-      </section>
+    <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+      <Link to="/contact">
+        <button className="group flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full font-bold text-lg shadow-2xl hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105 border border-cyan-400/20">
+          <Play className="w-3 h-3 group-hover:scale-110 transition-transform" />
+          Watch Our Story
+        </button>
+      </Link>
+
+      <Link to="/contact">
+        <button className="group flex items-center gap-4 px-10 py-5 border-2 border-white/30 rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm hover:border-cyan-400/50">
+          Learn More
+          <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+        </button>
+      </Link>
+    </div>
+  </motion.div>
+</section>
 
       {/* Fixed Company Overview Section */}
       <section

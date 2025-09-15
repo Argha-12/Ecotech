@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { emailService, EmailTemplates } from '../utils/emailService';
 
+
 interface FormData {
   name: string;
   phoneNo: string;
@@ -49,7 +50,7 @@ const GetQuotePage: React.FC = () => {
         successMessage: '🎯 Quote request submitted! We\'ll send your custom quote within 24 hours.',
         errorMessage: '⚠️ Failed to submit quote request. Please try again or contact us directly.',
         enableMailtoFallback: true,
-        fallbackEmail: 'sales@ecotechglobal.in'
+        fallbackEmail: 'argharana8@gmail.com'
       });
       
       if (result.success) {
