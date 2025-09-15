@@ -102,7 +102,7 @@ const GetQuotePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Benefits Section */}
+
 {/* Benefits Section */}
 <div className="py-16 bg-slate-900">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

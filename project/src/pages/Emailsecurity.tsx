@@ -84,10 +84,10 @@ const EmailSecurity: React.FC = () => {
       className="text-center max-w-4xl mx-auto"
     >
       <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-        Email Security — Protect Every Message, Every Time
+        Email Security Protect Every Message, Every Time
       </h1>
       <p className="text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed">
-        Because Every Email Could Be a Threat — Or an Opportunity. At{" "}
+        Because Every Email Could Be a Threat Or an Opportunity. At{" "}
         <span className="font-semibold">Ecotech Global Services</span>, we safeguard your communications with enterprise-grade email protection.
       </p>
       <p className="text-lg mb-8 text-gray-400 max-w-3xl mx-auto">

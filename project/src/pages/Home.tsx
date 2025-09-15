@@ -620,120 +620,146 @@ const Home: React.FC = () => {
 </div>
     </section>
 
-      {/* Testimonial Section */}
-      <section className="testimonials py-20 bg-gradient-to-b from-[#0B1220] to-[#0B0F19]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              What Our Clients Say
-            </h2>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Don't just take our word for it. Hear from the organizations who trust us
-              with their most critical IT infrastructure.
-            </p>
-          </div>
+{/* Testimonial Section */}
+<section className="testimonials py-20 bg-gradient-to-b from-[#0B1220] to-[#0B0F19]">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        What Our Clients Say
+      </h2>
+      <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+        Don't just take our word for it. Hear from the organizations who trust us
+        with their most critical IT infrastructure.
+      </p>
+    </div>
 
-          <div className="testimonial-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {/* Card 1 */}
-            <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-6 shadow-md hover:shadow-blue-500/20 transition-all duration-300">
-              <span className="quote text-4xl text-blue-400 font-serif">❝</span>
-              <p className="text-gray-200 italic mt-4 mb-6">
-                Ecotech Global transformed our entire IT infrastructure. Their
-                expertise in government compliance and security is unmatched.
-              </p>
-              <div className="stars text-yellow-400 mb-4">★★★★★</div>
-              <div className="client flex items-center gap-3">
-                <img 
-                  src="https://i.pravatar.cc/60?img=1" 
-                  alt="Sujit Chandra"
-                  className="w-12 h-12 rounded-full"
-                />
-                <div className="text-sm">
-                  <div className="font-semibold text-white">Sujit Chandra</div>
-                  <div className="text-gray-400">IT Head</div>
-                  <div className="text-blue-400">ST. Xavier's College</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-6 shadow-md hover:shadow-blue-500/20 transition-all duration-300">
-              <span className="quote text-4xl text-blue-400 font-serif">❝</span>
-              <p className="text-gray-200 italic mt-4 mb-6">
-                The cloud migration was seamless, and their 24/7 support has been
-                exceptional. Highly recommend their services.
-              </p>
-              <div className="stars text-yellow-400 mb-4">★★★★★</div>
-              <div className="client flex items-center gap-3">
-                <img 
-                  src="https://i.pravatar.cc/60?img=12" 
-                  alt="Kunal Chakraborty"
-                  className="w-12 h-12 rounded-full"
-                />
-                <div className="text-sm">
-                  <div className="font-semibold text-white">Kunal Chakraborty</div>
-                  <div className="text-gray-400">CTO</div>
-                  <div className="text-blue-400">GKB Opticals</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-6 shadow-md hover:shadow-blue-500/20 transition-all duration-300">
-              <span className="quote text-4xl text-blue-400 font-serif">❝</span>
-              <p className="text-gray-200 italic mt-4 mb-6">
-                Their cybersecurity solutions protected us from multiple threats. The
-                peace of mind is invaluable.
-              </p>
-              <div className="stars text-yellow-400 mb-4">★★★★★</div>
-              <div className="client flex items-center gap-3">
-                <img 
-                  src="https://i.pravatar.cc/60?img=20" 
-                  alt="Satyajit Roy Chowdhury"
-                  className="w-12 h-12 rounded-full"
-                />
-                <div className="text-sm">
-                  <div className="font-semibold text-white">Satyajit Roy Chowdhury</div>
-                  <div className="text-gray-400">CFO</div>
-                  <div className="text-blue-400">Nexval.ai</div>
-                </div>
-              </div>
-            </div>
+    {/* 4 Cards in One Row */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* Card 1 */}
+      <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-5 shadow-md hover:shadow-blue-500/20 transition-all duration-300 text-sm">
+        <span className="quote text-3xl text-blue-400 font-serif">❝</span>
+        <p className="text-gray-200 italic mt-3 mb-4">
+        Waiting for new one.
+        </p>
+        <div className="stars text-yellow-400 mb-3 text-sm">★★★★★</div>
+        <div className="client flex items-center gap-3">
+          <img 
+            src="https://i.pravatar.cc/60?img=1" 
+            alt="Sujit Chandra"
+            className="w-10 h-10 rounded-full"
+          />
+          <div>
+            <div className="font-semibold text-white text-sm">argha</div>
+            <div className="text-gray-400 text-xs">IT Head</div>
+            <div className="text-blue-400 text-xs">ST. Xavier's College</div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Customer Logos Section */}
-    <section className="py-16 bg-black text-white relative overflow-hidden">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-extrabold">Our Valued Customer</h2>
-        <p className="mt-4 text-lg text-gray-300">
-          Trusted by industry leaders across the globe 🌐
+      {/* Card 2 */}
+      <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-5 shadow-md hover:shadow-blue-500/20 transition-all duration-300 text-sm">
+        <span className="quote text-3xl text-blue-400 font-serif">❝</span>
+        <p className="text-gray-200 italic mt-3 mb-4">
+          Ecotech Global transformed our entire IT infrastructure. Their
+          expertise in government compliance and security is unmatched.
         </p>
+        <div className="stars text-yellow-400 mb-3 text-sm">★★★★★</div>
+        <div className="client flex items-center gap-3">
+          <img 
+            src="https://i.pravatar.cc/60?img=1" 
+            alt="Sujit Chandra"
+            className="w-10 h-10 rounded-full"
+          />
+          <div>
+            <div className="font-semibold text-white text-sm">Sujit Chandra</div>
+            <div className="text-gray-400 text-xs">IT Head</div>
+            <div className="text-blue-400 text-xs">ST. Xavier's College</div>
+          </div>
+        </div>
       </div>
 
-      {/* ✅ restrict width to 80% and center */}
-      <div className="max-w-[80%] mx-auto overflow-hidden">
-        <motion.div
-          className="flex w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-        >
-          {[...partners, ...partners].map((partner, idx) => (
-          <div
-            key={idx}
-            className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
-          >
-            <img
-              src={partner.logo}
-              alt={partner.name}
-              className="w-[260px] h-[120px] object-contain"
-            />
+      {/* Card 3 */}
+      <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-5 shadow-md hover:shadow-blue-500/20 transition-all duration-300 text-sm">
+        <span className="quote text-3xl text-blue-400 font-serif">❝</span>
+        <p className="text-gray-200 italic mt-3 mb-4">
+          The cloud migration was seamless, and their 24/7 support has been
+          exceptional. Highly recommend their services.
+        </p>
+        <div className="stars text-yellow-400 mb-3 text-sm">★★★★★</div>
+        <div className="client flex items-center gap-3">
+          <img 
+            src="https://i.pravatar.cc/60?img=12" 
+            alt="Kunal Chakraborty"
+            className="w-10 h-10 rounded-full"
+          />
+          <div>
+            <div className="font-semibold text-white text-sm">Kunal Chakraborty</div>
+            <div className="text-gray-400 text-xs">CTO</div>
+            <div className="text-blue-400 text-xs">GKB Opticals</div>
           </div>
-          ))}
-        </motion.div>
+        </div>
       </div>
-    </section>
+
+      {/* Card 4 */}
+      <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-5 shadow-md hover:shadow-blue-500/20 transition-all duration-300 text-sm">
+        <span className="quote text-3xl text-blue-400 font-serif">❝</span>
+        <p className="text-gray-200 italic mt-3 mb-4">
+          Their cybersecurity solutions protected us from multiple threats. The
+          peace of mind is invaluable.
+        </p>
+        <div className="stars text-yellow-400 mb-3 text-sm">★★★★★</div>
+        <div className="client flex items-center gap-3">
+          <img 
+            src="https://i.pravatar.cc/60?img=20" 
+            alt="Satyajit Roy Chowdhury"
+            className="w-10 h-10 rounded-full"
+          />
+          <div>
+            <div className="font-semibold text-white text-sm">Satyajit Roy Chowdhury</div>
+            <div className="text-gray-400 text-xs">CFO</div>
+            <div className="text-blue-400 text-xs">Nexval.ai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+{/* Customer Logos Section */}
+<section className="py-16 bg-black text-white relative overflow-hidden">
+  <div className="text-center mb-12">
+    <h2 className="text-4xl font-extrabold">Our Valued Customer</h2>
+    <p className="mt-4 text-lg text-gray-300">
+      Trusted by industry leaders across the globe 🌐
+    </p>
+  </div>
+
+  {/* ✅ restrict width to 80% and center */}
+  <div className="max-w-[80%] mx-auto overflow-hidden">
+    <motion.div
+      className="flex w-max"
+      animate={{ x: ["0%", "-50%"] }}
+      transition={{ repeat: Infinity, duration: 100, ease: "linear" }}
+    >
+      {[...partners, ...partners].map((partner, idx) => (
+        <div
+          key={idx}
+          className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+        >
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            className="w-[260px] h-[120px] object-contain"
+          />
+        </div>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
 
       <style>{`
         @keyframes heroFadeIn {

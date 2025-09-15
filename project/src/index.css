@@ -200,3 +200,18 @@
     max-width: 280px;
   }
 }
+/* Animation for scrolling logos */
+/* @keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scroll 40s linear infinite;
+} */
+

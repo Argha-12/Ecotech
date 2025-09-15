@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Lock, Cpu, Wifi, Send, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import nexvalLogo from "../assets/logos/NEXVAL.jpg";
+import nexvalLogo from "../assets/Next Gen firewall/Cisco Firewall.png";
 import dellLogo from "../assets/logos/paharpur.jpg";
 import peerlessLogo from "../assets/logos/peerless.jpg";
 import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
@@ -37,7 +37,7 @@ const NetworkAccessControl: React.FC = () => {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
         >
-          Network Access Control (NAC) — Only the Right Devices, Every Time
+          Network Access Control (NAC)  Only the Right Devices, Every Time
         </motion.h2>
 
         {/* Subheading */}
@@ -136,31 +136,31 @@ const NetworkAccessControl: React.FC = () => {
           </motion.div>
         </div>
 
-{/* Partners Section */}
+{/* Customer Logos Section */}
 <section className="py-16 bg-gray text-white relative overflow-hidden">
   <div className="text-center mb-12">
-    <h2 className="text-4xl font-extrabold">Our Valued Partners</h2>
+    <h2 className="text-4xl font-extrabold">Our Valued Pantners</h2>
     <p className="mt-4 text-lg text-gray-300">
       Trusted by industry leaders across the globe 🌐
     </p>
   </div>
 
-  {/* ✅ Smooth Scrolling Carousel */}
-  <div className="overflow-hidden relative">
+  {/* ✅ restrict width to 80% and center */}
+  <div className="max-w-[80%] mx-auto overflow-hidden">
     <motion.div
-      className="flex gap-8"
-      animate={{ x: ["0%", "-100%"] }}
-      transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+      className="flex w-max"
+      animate={{ x: ["0%", "-50%"] }}
+      transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
     >
       {[...partners, ...partners].map((partner, idx) => (
         <div
           key={idx}
-          className="bg-white p-6 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
+          className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
         >
           <img
             src={partner.logo}
             alt={partner.name}
-            className="max-h-20 object-contain"
+            className="w-[260px] h-[120px] object-contain"
           />
         </div>
       ))}

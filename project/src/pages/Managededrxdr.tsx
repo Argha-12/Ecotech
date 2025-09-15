@@ -12,6 +12,21 @@ import {
   Eye,
 } from "lucide-react";
 
+// ✅ Importing partner logos
+import nexvalLogo from "../assets/EDR & XDR/crowdstrike-1.jpg";
+import paharpurLogo from "../assets/EDR & XDR/escan-antivirus.jpg";
+import peerlessLogo from "../assets/EDR & XDR/Seqririte EDR & XDR.jpg";
+import rsSoftwareLogo from "../assets/EDR & XDR/Sophos-XDR-01-scaled.jpg";
+import alcoveLogo from "../assets/EDR & XDR/Trend-Micro-XDR.jpg";
+
+const partners = [
+  { name: "Cisco Firewall", logo: nexvalLogo },
+  { name: "fortinet-firewall", logo: paharpurLogo },
+  { name: "Paloalto", logo: peerlessLogo },
+  { name: "sonic wall firewall logo", logo: rsSoftwareLogo },
+  { name: "sophos-firewall", logo: alcoveLogo },
+];
+
 const ManagedEDRXDRWithWhyChoose = () => {
   const features = [
     {
@@ -79,7 +94,7 @@ const ManagedEDRXDRWithWhyChoose = () => {
             className="text-center max-w-5xl mx-auto"
           >
             <div className="flex justify-center mb-6">
-              <Shield className="w-20 h-20 text-cyan-400 drop-shadow-lg" />
+
             </div>
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Managed EDR & XDR Solutions
@@ -92,9 +107,9 @@ const ManagedEDRXDRWithWhyChoose = () => {
               Detection & Response (XDR) services powered by leading cybersecurity
               vendors.
             </p>
-            <button className="bg-cyan-500 text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-cyan-400 transition duration-300">
+            {/* <button className="bg-cyan-500 text-black px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-cyan-400 transition duration-300">
               🚀 Get a Free Consultation
-            </button>
+            </button> */}
           </motion.div>
         </div>
       </div>
@@ -134,6 +149,39 @@ const ManagedEDRXDRWithWhyChoose = () => {
           </div>
         </div>
       </div>
+
+      {/* Partners */}
+          <section className="py-16 bg-black text-white relative overflow-hidden">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-extrabold">Our Valued Pantners</h2>
+              <p className="mt-4 text-lg text-gray-300">
+                Trusted by industry leaders across the globe 🌐
+              </p>
+            </div>
+      
+            {/* ✅ restrict width to 80% and center */}
+            <div className="max-w-[80%] mx-auto overflow-hidden">
+              <motion.div
+                className="flex w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+              >
+                {[...partners, ...partners].map((partner, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+                >
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="w-[260px] h-[120px] object-contain"
+                  />
+                </div>
+      
+                ))}
+              </motion.div>
+            </div>
+          </section>
 
       {/* Why Choose Us Section */}
       <div className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative">

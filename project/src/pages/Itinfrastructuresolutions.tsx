@@ -82,7 +82,7 @@ const ITInfrastructurePage: React.FC = () => {
       </div>
 
       {/* Wrapper with Gradient Background */}
-      <div className="bg-gradient-to-r from-black via-gray-900 to-black py-24 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-black via-gray-900 to-black py-10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,200,255,0.15),transparent_60%)]" />
 
         <div className="relative z-10 max-w-6xl mx-auto py-16 px-6">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from "framer-motion";
 import { emailService, EmailTemplates } from '../utils/emailService';
 
 // EmailJS will be loaded via CDN in index.html
@@ -49,7 +50,6 @@ const CareerPage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare email data using the job application template
       const emailData = EmailTemplates.jobApplication({
         name: formData.name,
         phoneNo: formData.phoneNo,
@@ -57,7 +57,6 @@ const CareerPage: React.FC = () => {
         resume: formData.resume
       });
       
-      // Send email using the email service
       const result = await emailService.sendEmail(emailData, 'career', {
         successMessage: '🎉 Application submitted successfully! We\'ll review your application and get back to you soon.',
         errorMessage: '⚠️ Failed to submit application. Please try again or contact us directly.',
@@ -68,7 +67,6 @@ const CareerPage: React.FC = () => {
       if (result.success) {
         alert(result.message);
         
-        // Reset form on success
         setFormData({
           name: '',
           phoneNo: '',
@@ -76,7 +74,6 @@ const CareerPage: React.FC = () => {
           resume: null
         });
         
-        // Clear file input
         const fileInput = document.getElementById('resume') as HTMLInputElement;
         if (fileInput) fileInput.value = '';
       } else {
@@ -101,64 +98,65 @@ const CareerPage: React.FC = () => {
 
       <div className="relative z-10 container mx-auto px-6 py-20">
         
-{/* Top Section - Content */}
-<div className="mb-16">
-  <div className="max-w-4xl mx-auto text-center space-y-8">
-    <div className="space-y-6">
-      <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-        <span className="text-white">Join Our</span>
-        <br />
-        <span className="text-gray-300">Amazing Team</span>
-      </h1>
-      
-      <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-        Build your career with Ecotech Global Services! Join a team of passionate 
-        professionals dedicated to shaping the future of cybersecurity and technology.
-      </p>
-    </div>
-
-    {/* Features Grid */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-      {[
-        { icon: "🚀", title: "Career Growth", desc: "Accelerate your career with mentorship and learning opportunities" },
-        { icon: "💰", title: "Competitive Benefits", desc: "Comprehensive packages with health, dental, and retirement plans" },
-        { icon: "🌍", title: "Remote Flexibility", desc: "Work from anywhere with our flexible remote work policies" },
-        { icon: "🎯", title: "Innovation Focus", desc: "Work on cutting-edge projects that shape the future of cybersecurity" },
-      ].map((item, idx) => (
-        <div
-          key={idx}
-          className="bg-gray-800 rounded-2xl p-6 border border-gray-700"
+        {/* Top Section - Content (with animation demo) */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16"
         >
-        <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
-          <span className="text-white text-2xl">{item.icon}</span>
-        </div>
-        <h3 className="text-white font-semibold text-lg mb-2">{item.title}</h3>
-        <p className="text-white text-base md:text-sm font-semibold">
-          {item.desc}
-        </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="space-y-6">
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="text-white">Join Our</span>
+                <br />
+                <span className="text-gray-300">Amazing Team</span>
+              </h1>
+              
+              <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                Build your career with Ecotech Global Services! Join a team of passionate 
+                professionals dedicated to shaping the future of cybersecurity and technology.
+              </p>
+            </div>
 
+            {/* Features Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+              {[
+                { icon: "🚀", title: "Career Growth", desc: "Accelerate your career with mentorship and learning opportunities" },
+                { icon: "💰", title: "Competitive Benefits", desc: "Comprehensive packages with health, dental, and retirement plans" },
+                { icon: "🌍", title: "Remote Flexibility", desc: "Work from anywhere with our flexible remote work policies" },
+                { icon: "🎯", title: "Innovation Focus", desc: "Work on cutting-edge projects that shape the future of cybersecurity" },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-gray-800 rounded-2xl p-6 border border-gray-700"
+                >
+                  <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white text-2xl">{item.icon}</span>
+                  </div>
+                  <h3 className="text-white font-semibold text-lg mb-2">{item.title}</h3>
+                  <p className="text-white text-base md:text-sm font-semibold">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
         {/* Bottom Section - Application Form */}
         <div className="max-w-2xl mx-auto">
           <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl relative overflow-hidden">
-            
-            {/* Form Background Effects */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-full blur-2xl"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-purple-400/20 to-pink-400/20 rounded-full blur-xl"></div>
             
             <div className="relative z-10">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-white mb-2">
-                  ✨ Application Form
-                </h2>
+                <h2 className="text-3xl font-bold text-white mb-2">✨ Application Form</h2>
                 <p className="text-gray-300">Ready to join our team? Apply now!</p>
               </div>
 
+              {/* Form Fields */}
               <div className="space-y-6">
                 <div className="group">
                   <label className="block text-sm font-semibold text-white/90 mb-2 flex items-center gap-2">
@@ -231,20 +229,21 @@ const CareerPage: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  <p className="text-xs text-gray-400 mt-1">Supported formats: PDF, DOC, DOCX (Max: 5MB)</p>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Supported formats: PDF, DOC, DOCX (Max: 5MB)
+                  </p>
                 </div>
-
                 <button
                   onClick={handleSubmit}
                   disabled={isSubmitting}
                   className={`w-full relative group ${
-                    isSubmitting 
-                      ? 'bg-gradient-to-r from-gray-400 to-gray-500 cursor-not-allowed' 
-                      : 'bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:from-cyan-400 hover:via-purple-400 hover:to-pink-400 transform hover:scale-105'
-                  } text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-purple-500/25 overflow-hidden`}
+                    isSubmitting
+                      ? 'bg-blue-400 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-700 transform hover:scale-105'
+                  } text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-blue-500/25 overflow-hidden`}
                 >
                   {isSubmitting && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-75 animate-pulse"></div>
+                    <div className="absolute inset-0 bg-blue-500 opacity-75 animate-pulse"></div>
                   )}
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {isSubmitting ? (
@@ -253,9 +252,7 @@ const CareerPage: React.FC = () => {
                         Submitting Application...
                       </>
                     ) : (
-                      <>
-                        🚀 Submit My Application
-                      </>
+                      <>🚀 Submit My Application</>
                     )}
                   </span>
                 </button>
@@ -264,40 +261,41 @@ const CareerPage: React.FC = () => {
           </div>
         </div>
       </div>
-{/* Why Work With Us Section */}
-<div className="bg-gray-900 py-20">
-  <div className="container mx-auto px-6">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold text-white mb-6">
-        Why Choose Ecotech as Your Career?
-      </h2>
-      <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-        Join a company that values innovation, growth, and work-life balance. 
-        We invest in our people and their success.
-      </p>
-    </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {[
-        { icon: "🏆", title: "Recognition", desc: "Awards and recognition for outstanding performance" },
-        { icon: "📚", title: "Learning", desc: "Continuous learning opportunities and certifications" },
-        { icon: "🤝", title: "Collaboration", desc: "Work with talented teams across the globe" },
-        { icon: "🌟", title: "Impact", desc: "Make a real difference in cybersecurity" },
-      ].map((item, idx) => (
-        <div key={idx} className="text-center">
-          <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="text-2xl text-white">{item.icon}</span>
+      {/* Why Work With Us Section */}
+      <div className="bg-gray-900 py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Why Choose Ecotech as Your Career?
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Join a company that values innovation, growth, and work-life balance. 
+              We invest in our people and their success.
+            </p>
           </div>
-          <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-          <p className="text-gray-200 text-l font-semibold">
-            {item.desc}
-          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: "🏆", title: "Recognition", desc: "Awards and recognition for outstanding performance" },
+              { icon: "📚", title: "Learning", desc: "Continuous learning opportunities and certifications" },
+              { icon: "🤝", title: "Collaboration", desc: "Work with talented teams across the globe" },
+              { icon: "🌟", title: "Impact", desc: "Make a real difference in cybersecurity" },
+            ].map((item, idx) => (
+              <div key={idx} className="text-center">
+                <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl text-white">{item.icon}</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-gray-200 text-l font-semibold">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
+      </div>
     </div>
-  </div>
-</div>
-</div>
   );
 };
 

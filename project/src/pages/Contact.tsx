@@ -40,7 +40,7 @@ const Contact = () => {
         successMessage: '✅ Message sent successfully! We\'ll respond within 24 hours.',
         errorMessage: '⚠️ Failed to send message. Please try again or contact us directly.',
         enableMailtoFallback: true,
-        fallbackEmail: 'info@ecotechglobal.in'
+        fallbackEmail: 'argharana8@gmail.com'
       });
       
       if (result.success) {

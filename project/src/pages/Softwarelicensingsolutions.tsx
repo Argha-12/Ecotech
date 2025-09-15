@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 
-import nexvalLogo from "../assets/logos/NEXVAL.jpg";
-import dellLogo from "../assets/logos/paharpur.jpg";
-import peerlessLogo from "../assets/logos/peerless.jpg";
-import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
-import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
-import amitLogo from "../assets/logos/Amit Metalics.png";
-import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+import nexvalLogo from "../assets/Software Logo/Adobe logo.png";
+import dellLogo from "../assets/Software Logo/coreldraw.webp";
+import peerlessLogo from "../assets/Software Logo/Eviews.png";
+import rsSoftwareLogo from "../assets/Software Logo/variations-primary.webp";
+import alcoveLogo from "../assets/Software Logo/Microsoft logo.jpg";
+import amitLogo from "../assets/Software Logo/Nitro.jpg";
 
 const partners = [
   { name: "NEXVAL", logo: nexvalLogo },
@@ -18,7 +17,6 @@ const partners = [
   { name: "Juniper Networks", logo: rsSoftwareLogo },
   { name: "AWS", logo: alcoveLogo },
   { name: "Acronis", logo: amitLogo },
-  { name: "Veeam", logo: ashokaLogo },
 ];
 
 const SoftwareLicensingPage: React.FC = () => {

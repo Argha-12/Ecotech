@@ -110,7 +110,6 @@ const WebAppDevelopmentPage: React.FC = () => {
             {intro}
           </p>
         </motion.section>
-
         {/* Services */}
   <section className="mb-20">
   <h2 className="text-4xl font-extrabold mb-12 text-center">

@@ -52,7 +52,7 @@ const ManagedServiceSolutions = () => {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white py-24 px-6">
+      <section className="relative bg-gray-900 text-white py-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
           {/* Heading */}
           <motion.h1
@@ -104,12 +104,6 @@ const ManagedServiceSolutions = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <a
-              href="/contact"
-              className="inline-block bg-white text-gray-900 font-semibold px-8 py-3 rounded-2xl shadow-lg hover:bg-gray-200 transition"
-            >
-              Get Started
-            </a>
           </motion.div>
         </div>
       </section>

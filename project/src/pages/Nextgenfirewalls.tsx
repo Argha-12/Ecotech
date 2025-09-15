@@ -126,7 +126,7 @@ export default function NextGenFirewalls() {
         <motion.div
           className="flex w-max"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
         >
           {[...partners, ...partners].map((partner, idx) => (
           <div
