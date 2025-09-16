@@ -64,9 +64,9 @@ const Footer = () => {
               </p>
               <div className="flex gap-4">
                 {[
-                  { icon: Facebook, href: "https://facebook.com/", color: "blue-600" },
+                  { icon: Facebook, href: "https://www.facebook.com/share/1EKDBiyQxU/", color: "blue-600" },
                   { icon: Twitter, href: "https://twitter.com/", color: "sky-500" },
-                  { icon: Linkedin, href: "https://linkedin.com/", color: "blue-500" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/company/ecotech-global-services/", color: "blue-500" },
                   { icon: Instagram, href: "https://instagram.com/", color: "pink-500" },
                 ].map(({ icon: Icon, href, color }, index) => (
                   <a
@@ -90,6 +90,7 @@ const Footer = () => {
               </h3>
               <ul className="space-y-2">
                 {[
+                  { href: "/Cyber_Security_Solutions", label: "Cyber Security Solutions" },
                   { href: "/cloud_services", label: "Cloud Services" },
                   { href: "/it_infrastructure_solutions", label: "IT Infrastructure Solutions" },
                   { href: "/software_licensing_solutions", label: "Software Licensing Solutions" },

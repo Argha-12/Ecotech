@@ -69,7 +69,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6 text-blue-600" />,
       title: "Our Office",
-      details: ["123 Business District, Tech City", "Mumbai, India 400001"]
+      details: ["C.T.I., BIRADINGI, NETAJIGARH, Howrah, West Bengal, 711108"]
     },
     {
       icon: <Phone className="w-6 h-6 text-blue-600" />,
@@ -269,20 +269,18 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-          {/* Map */}
           <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
             <iframe
-              src="https://www.google.com/maps/place/Millennium+Park/@22.5797688,88.3436765,14.61z/data=!4m6!3m5!1s0x3a0277a2e8448a01:0xfc7031bafe756ae4!8m2!3d22.5728209!4d88.3445493!16zL20vMGJrZzc0?authuser=0&entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
+              src="https://www.google.com/maps/place/Bara+Bazar/@22.5824024,88.3500374,16.06z/data=!4m6!3m5!1s0x3a0277bbe41f2d89:0x8ee1422d5dc856ba!8m2!3d22.580893!4d88.348963!16s%2Fg%2F12hkxxzm6?authuser=0&entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D"
               width="100%"
               height="100%"
               style={{ border: 0 }}
-              allowFullScreen=""
+              allowFullScreen="https://www.google.com/maps/place/Bara+Bazar/@22.5824024,88.3500374,16.06z/data=!4m6!3m5!1s0x3a0277bbe41f2d89:0x8ee1422d5dc856ba!8m2!3d22.580893!4d88.348963!16s%2Fg%2F12hkxxzm6?authuser=0&entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="rounded-lg"
             />
           </div>
-
               {/* Quick Contact */}
               <div className="bg-blue-600 text-white p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Quick Contact</h3>
