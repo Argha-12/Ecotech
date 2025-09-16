@@ -50,6 +50,7 @@ const Header = () => {
         { title: 'Next Gen Firewalls', href: '/security_solutions/next_gen_firewalls' },
         { title: 'Network Access Control', href: '/security_solutions/network_access_control' },
         { title: 'NMS', href: '/security_solutions/network_monitoring' },
+        { title: 'NDR', href: '/security_solutions/NDR_Solutions' },
         { title: 'IT & OT Security', href: '/security_solutions/it_ot_security' },
         { title: 'SIEM, SOAR & SOC Solutions', href: '/security_solutions/siem_soar_soc' },
         { title: 'Security Audits', href: '/security_solutions/security_audits' },

@@ -9,6 +9,8 @@ import peerlessLogo from "../assets/Endpoint Security/K 7 Antivirus.png";
 import rsSoftwareLogo from "../assets/Endpoint Security/seqqrite.jpg";
 import alcoveLogo from "../assets/Endpoint Security/sophos-antivirus.webp";
 import amitLogo from "../assets/Endpoint Security/trendmicro-ogsocial.jpg";
+import Palo from "../assets/Endpoint Security/Palo Alto.png";
+import crowdstrike from "../assets/Endpoint Security/crowdstrike-1.jpg";
 
 
 const partners = [
@@ -18,6 +20,8 @@ const partners = [
   { name: "Juniper Networks", logo: rsSoftwareLogo },
   { name: "AWS", logo: alcoveLogo },
   { name: "Acronis", logo: amitLogo },
+  { name: "Palo Alto", logo: Palo},
+  { name: "crowdstrike-1", logo: crowdstrike },
 ];
 
 const EndpointSecurity = () => {

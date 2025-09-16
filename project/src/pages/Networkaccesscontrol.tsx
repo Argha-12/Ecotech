@@ -3,30 +3,23 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Lock, Cpu, Wifi, Send, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import nexvalLogo from "../assets/Next Gen firewall/Cisco Firewall.png";
-import dellLogo from "../assets/logos/paharpur.jpg";
-import peerlessLogo from "../assets/logos/peerless.jpg";
-import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
-import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
-import amitLogo from "../assets/logos/Amit Metalics.png";
-import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+import nexvalLogo from "../assets/NAC/Aruba ClearPass.png";
+import dellLogo from "../assets/NAC/Cisco Firewall.png";
+import peerlessLogo from "../assets/NAC/ForeScout.jpg";
+
 
 const partners = [
 
-  { name: "NEXVAL", logo: nexvalLogo },
-  { name: "Dell", logo: dellLogo },
-  { name: "Allied Telesis", logo: peerlessLogo },
-  { name: "Juniper Networks", logo: rsSoftwareLogo },
-  { name: "AWS", logo: alcoveLogo },
-  { name: "Acronis", logo: amitLogo },
-  { name: "Veeam", logo: ashokaLogo },
+  { name: "NEXVAruba ClearPass", logo: nexvalLogo },
+  { name: "Cisco Firewall", logo: dellLogo },
+  { name: "ForeScout", logo: peerlessLogo },
 ];
 
 const NetworkAccessControl: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white px-6 py-20 overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(20, 136, 154, 0.15),transparent_70%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto text-center">
         {/* Heading */}
@@ -35,7 +28,7 @@ const NetworkAccessControl: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
+          className="text-3xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
         >
           Network Access Control (NAC)  Only the Right Devices, Every Time
         </motion.h2>
@@ -46,7 +39,7 @@ const NetworkAccessControl: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed italic"
+          className="text-xl mb-6 text-white-300 max-w-3xl mx-auto leading-relaxed italic"
         >
           "Zero Trust Starts at the Door."
         </motion.p>
@@ -150,7 +143,7 @@ const NetworkAccessControl: React.FC = () => {
     <motion.div
       className="flex w-max"
       animate={{ x: ["0%", "-50%"] }}
-      transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+      transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
     >
       {[...partners, ...partners].map((partner, idx) => (
         <div

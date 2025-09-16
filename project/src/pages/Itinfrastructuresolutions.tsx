@@ -2,21 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import acronis from "../assets/IT Infrasture logo/acronis.jpg";
 import allied from "../assets/IT Infrasture logo/allied telesis.png";
-// import dellLogo from "../assets/IT Infrasture logo/Amazon.svg";
 import Cisco from "../assets/IT Infrasture logo/Cisco Firewall.png";
-// import rsSoftwareLogo from "../assets/IT Infrasture logo/Dell_Logo.svg";
-// import alcoveLogo from "../assets/IT Infrasture logo/HP_logo.svg";
+import Dell_Logo from "../assets/IT Infrasture logo/Dell_Logo.png";
+import HP_logo from "../assets/IT Infrasture logo/HP_logo.png";
 import juniper from "../assets/IT Infrasture logo/juniper logo.png";
-import veeam from "../assets/IT Infrasture logo/veeam.png";
 
 const partners = [
-  { name: "acronis", logo: acronis },
   { name: "allied telesis", logo: allied },
   { name: "Cisco Firewall", logo: Cisco },
   { name: "juniper logo", logo: juniper },
-  { name: "veeam", logo: veeam }
+  { name: "HP_logo", logo: HP_logo },
+  { name: "Dell_Logo", logo: Dell_Logo },
 ];
 
 

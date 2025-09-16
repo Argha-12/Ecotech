@@ -3,11 +3,23 @@ import { motion } from "framer-motion";
 import { Activity, Wifi, BarChart3, LayoutDashboard } from "lucide-react";
 import { Link } from "react-router-dom";
 
+
+import nexvalLogo from "../assets/NMS/Everest.png";
+import dellLogo from "../assets/NMS/ManageEngine.png";
+import peerlessLogo from "../assets/NMS/Motadata.png";
+
+
+const partners = [
+
+  { name: "Everest", logo: nexvalLogo },
+  { name: "ManageEngine", logo: dellLogo },
+  { name: "Motadata", logo: peerlessLogo },
+];
 const NetworkMonitoring: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white px-6 py-20 overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(15, 118, 134, 0.15),transparent_70%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto text-center">
         {/* Title */}
@@ -27,7 +39,7 @@ const NetworkMonitoring: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl mb-6 text-white-300 max-w-3xl mx-auto leading-relaxed"
         >
           "Know What’s Happening Before It Becomes a Problem."
         </motion.p>
@@ -115,6 +127,38 @@ const NetworkMonitoring: React.FC = () => {
           </motion.div>
         </div>
 
+        {/* Partners Section */}
+        <section className="py-16 bg-gray text-white relative overflow-hidden">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-extrabold">Our Valued Partners</h2>
+            <p className="mt-4 text-lg text-gray-300">
+              Trusted by industry leaders across the globe 🌐
+            </p>
+          </div>
+        
+          {/* ✅ Smooth Scrolling Carousel */}
+              <div className="max-w-[80%] mx-auto overflow-hidden">
+                <motion.div
+                  className="flex w-max"
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                >
+                  {[...partners, ...partners].map((partner, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+                  >
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="w-[260px] h-[120px] object-contain"
+                    />
+                  </div>
+                  ))}
+                </motion.div>
+              </div>
+            </section>
+
         {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -133,7 +177,7 @@ const NetworkMonitoring: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Link
-                to="/GetQuote"
+                to="/Get-Quote"
                 className="bg-black text-cyan-400 px-8 py-3 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300"
               >
                 📩 Request a Demo

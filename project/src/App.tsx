@@ -33,6 +33,7 @@ import Webappdevelopment from './pages/Webappdevelopment';
 import Managedservicessolutions from './pages/Managedservicessolutions';
 import CaseStudies from './pages/case-studies';
 import Blog from './pages/blog';
+import NDR from './pages/NDR';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -62,6 +63,7 @@ const AppContent: React.FC = () => {
           <Route path="/security_solutions/next_gen_firewalls" element={<Nextgenfirewalls />} />
           <Route path="/security_solutions/network_access_control" element={<Networkaccesscontrol />} />
           <Route path="/security_solutions/network_monitoring" element={<Networkmonitoring />} />
+          <Route path="/security_solutions/NDR_Solutions" element={<NDR />} />
           <Route path="/security_solutions/it_ot_security" element={<Itotsecurity />} />
           <Route path="/security_solutions/siem_soar_soc" element={<SIEMSOARSOC />} />
           <Route path="/security_solutions/security_audits" element={<Securityaudits />} />

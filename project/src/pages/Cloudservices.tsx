@@ -2,6 +2,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import goo from "../assets/cloud/google.png";
+import Microsoft from "../assets/cloud/Microsoft logo.jpg";
+import aw from "../assets/cloud/aws.png";
+
+const partners = [
+ 
+  { name: "google", logo: goo },
+  { name: "Microsoft logo", logo: Microsoft },
+  { name: "aws", logo: aw },
+];
+
 const CloudSolutionsPage: React.FC = () => {
   const cloudProviders = [
     {
@@ -149,6 +160,40 @@ const CloudSolutionsPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+
+      {/* Partners */}
+          <section className="py-16 bg-black text-white relative overflow-hidden">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-extrabold">Our Valued Pantners</h2>
+              <p className="mt-4 text-lg text-gray-300">
+                Trusted by industry leaders across the globe 🌐
+              </p>
+            </div>
+      
+            {/* ✅ restrict width to 80% and center */}
+            <div className="max-w-[80%] mx-auto overflow-hidden">
+              <motion.div
+                className="flex w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+              >
+                {[...partners, ...partners].map((partner, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+                >
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="w-[260px] h-[120px] object-contain"
+                  />
+                </div>
+      
+                ))}
+              </motion.div>
+            </div>
+          </section>
 
       {/* Why Choose Us */}
       <section className="bg-gray-900 py-20 px-4">

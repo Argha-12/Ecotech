@@ -3,11 +3,22 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Activity, Lock, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import nexvalLogo from "../assets/NMS/ForeScout.png";
+import dellLogo from "../assets/NMS/Shieldworks.png";
+
+
+
+const partners = [
+
+  { name: "ForeScout", logo: nexvalLogo },
+  { name: "Shieldworks", logo: dellLogo },
+];
+
 const ITOTSecurity: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a192f] via-[#0f253f] to-[#000000] text-white px-6 py-20 overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(3, 17, 20, 0.15),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9, 67, 80, 0.15),transparent_70%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto text-center">
         {/* Title */}
@@ -27,7 +38,7 @@ const ITOTSecurity: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-xl mb-6 text-gray-300 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl mb-6 text-white-300 max-w-3xl mx-auto leading-relaxed"
         >
           "Industrial and Enterprise Security Under One Roof."
         </motion.p>
@@ -120,6 +131,39 @@ const ITOTSecurity: React.FC = () => {
             </p>
           </motion.div>
         </div>
+
+                {/* Partners Section */}
+                <section className="py-16 bg-gray text-white relative overflow-hidden">
+                  <div className="text-center mb-12">
+                    <h2 className="text-4xl font-extrabold">Our Valued Partners</h2>
+                    <p className="mt-4 text-lg text-gray-300">
+                      Trusted by industry leaders across the globe 🌐
+                    </p>
+                  </div>
+                
+                  {/* ✅ Smooth Scrolling Carousel */}
+                      <div className="max-w-[80%] mx-auto overflow-hidden">
+                        <motion.div
+                          className="flex w-max"
+                          animate={{ x: ["0%", "-50%"] }}
+                          transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+                        >
+                          {[...partners, ...partners].map((partner, idx) => (
+                          <div
+                            key={idx}
+                            className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+                          >
+                            <img
+                              src={partner.logo}
+                              alt={partner.name}
+                              className="w-[260px] h-[120px] object-contain"
+                            />
+                          </div>
+                          ))}
+                        </motion.div>
+                      </div>
+                    </section>
+        
 
         {/* CTA */}
         <motion.div

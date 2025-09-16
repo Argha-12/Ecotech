@@ -5,12 +5,19 @@ import { Link } from "react-router-dom"; // 👈 Import Link for navigation
 
 
 import nexvalLogo from "../assets/Email Security/Sophos.jpg";
-import dellLogo from "../assets/Email Security/trendmicro email-protection.png";
+import dellLogo from "../assets/Email Security/trendmicro-ogsocial.jpg";
+import Barracuda from "../assets/Email Security/Barracuda.png";
+import Check from "../assets/Email Security/Check Point.png";
+import fortinet from "../assets/Email Security/fortinet-firewall.png";
 
 
 const partners = [
   { name: "Sophos", logo: nexvalLogo },
-  { name: "trendmicro email-protection", logo: dellLogo },
+  { name: "trendmicro-ogsocial", logo: dellLogo },
+   { name: "Barracuda", logo: Barracuda },
+  { name: "Check Point", logo: Check },
+    { name: "fortinet-firewall", logo: fortinet },
+
 ];
 
 const EmailSecurity: React.FC = () => {
@@ -145,7 +152,7 @@ const EmailSecurity: React.FC = () => {
         <motion.div
           className="flex w-max"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
+          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
         >
           {[...partners, ...partners].map((partner, idx) => (
           <div
@@ -155,7 +162,7 @@ const EmailSecurity: React.FC = () => {
             <img
               src={partner.logo}
               alt={partner.name}
-              className="max-w-full max-h-full object-contain"
+              className="w-[260px] h-[120px] object-contain"
             />
           </div>
           ))}

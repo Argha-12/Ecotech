@@ -4,14 +4,13 @@ import { Shield, Eye, BarChart3, Settings, Send, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // ✅ Importing partner logos
-import nexvalLogo from "../assets/Next Gen firewall/Cisco Firewall.png";
+
 import paharpurLogo from "../assets/Next Gen firewall/fortinet-firewall.png";
 import peerlessLogo from "../assets/Next Gen firewall/Paloalto.png";
 import rsSoftwareLogo from "../assets/Next Gen firewall/sonic wall firewall logo.png";
 import alcoveLogo from "../assets/Next Gen firewall/sophos-firewall.webp";
 
 const partners = [
-  { name: "Cisco Firewall", logo: nexvalLogo },
   { name: "fortinet-firewall", logo: paharpurLogo },
   { name: "Paloalto", logo: peerlessLogo },
   { name: "sonic wall firewall logo", logo: rsSoftwareLogo },
@@ -49,7 +48,7 @@ export default function NextGenFirewalls() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white px-6 py-20 overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(20, 125, 141, 0.15),transparent_70%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto text-center">
         {/* Heading */}
@@ -163,7 +162,7 @@ export default function NextGenFirewalls() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <Link
-                to="/GetQuote"
+                to="/get-quote"
                 className="inline-flex items-center gap-3 bg-black text-cyan-400 px-8 py-3 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300"
               >
                 <Send className="w-5 h-5 text-cyan-400" />
