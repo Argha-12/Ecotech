@@ -160,7 +160,7 @@ const heroContent = [
   subtitle: "The Most Loved Google Workspace Partner in Your Region — Where Productivity Meets Perfection. Unlock 40% OFF Today!",
   trustIndicators: [
     { icon: <Users className="w-4 h-4 text-blue-500" />, text: "Productivity Boost" },
-    { icon: <Award className="w-8 h-8 text-yellow-300 mr-2 drop-shadow-md animate-bounce" />, text: <span className="font-extrabold">40% OFF Limited</span> },
+    { icon: <Award className="w-8 h-8 text-yellow-300 mr-2 drop-shadow-md animate-bounce" />, text: <span className="font-extrabold">40% Discount (T&C)</span> },
     { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "Instant Setup" }
   ],
   backgroundImage: GW,   // keep the imported video here
@@ -174,7 +174,7 @@ const heroContent = [
     subtitle: "Your Gateway to Scalable, Secure, and Future-Ready AWS Cloud Solutions...",
     trustIndicators: [
       { icon: <Shield className="w-4 h-4 text-blue-500" />, text: "AWS Certified" },
-      { icon: <Cloud className="w-8 h-8 text-yellow-300 mr-4 drop-shadow-md animate-bounce" />, text: <span className="font-extrabold">50% Discount</span> },
+      { icon: <Cloud className="w-8 h-8 text-yellow-300 mr-4 drop-shadow-md animate-bounce" />, text: <span className="font-extrabold">50% Discount (T&C)</span> },
       { icon: <Rocket className="w-4 h-4 text-blue-500" />, text: "Managed Services" }
     ],
     backgroundImage: awsBg,

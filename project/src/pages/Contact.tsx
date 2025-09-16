@@ -74,7 +74,7 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6 text-blue-600" />,
       title: "Phone",
-      details: ["+91 ",]
+      details: ["+91 8327314124",]
     },
     {
       icon: <Mail className="w-6 h-6 text-blue-600" />,
@@ -218,7 +218,6 @@ const Contact = () => {
                       <option value="services">Services</option>
                       <option value="quote">Request a Quote</option>
                       <option value="support">Technical Support</option>
-                      <option value="partnership">Partnership</option>
                     </select>
                   </div>
                 </div>
@@ -270,19 +269,19 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {/* Map */}
-              <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0547729618567!2d72.8776!3d19.0760!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9daf066e5a3%3A0x8c4c0e65a6b9f1f9!2sBandra%20Kurla%20Complex%2C%20Bandra%20East%2C%20Mumbai%2C%20Maharashtra%20400051!5e0!3m2!1sen!2sin!4v1635000000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="rounded-lg"
-                />
-              </div>
+          {/* Map */}
+          <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
+            <iframe
+              src="https://www.google.com/maps/place/Millennium+Park/@22.5797688,88.3436765,14.61z/data=!4m6!3m5!1s0x3a0277a2e8448a01:0xfc7031bafe756ae4!8m2!3d22.5728209!4d88.3445493!16zL20vMGJrZzc0?authuser=0&entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-lg"
+            />
+          </div>
 
               {/* Quick Contact */}
               <div className="bg-blue-600 text-white p-6 rounded-lg">
@@ -296,7 +295,7 @@ const Contact = () => {
                     className="flex items-center space-x-3 hover:text-blue-200 transition-colors"
                   >
                     <Phone className="w-5 h-5" />
-                    <span>+91 98765 43210</span>
+                    <span>+91 832 731 4124</span>
                   </a>
                   <a
                     href="mailto:info@ecotechglobal.in"
@@ -306,7 +305,7 @@ const Contact = () => {
                     <span>info@ecotechglobal.in</span>
                   </a>
                   <a
-                    href="https://wa.me/919876543210"
+                    href="https://wa.me/832 731 4124"
                     className="flex items-center space-x-3 hover:text-blue-200 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"

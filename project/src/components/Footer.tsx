@@ -190,7 +190,7 @@ const Footer = () => {
                   href="tel:+919836044007"
                   className="flex items-center gap-2 text-gray-300 hover:text-green-400 transition"
                 >
-                  <Phone className="w-4 h-4 text-green-400" /> +91 9836044007
+                  <Phone className="w-4 h-4 text-green-400" /> +91 8327314124
                 </a>
                 <a
                   href="mailto:info@ecotechglobal.in"
