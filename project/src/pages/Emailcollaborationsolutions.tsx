@@ -17,22 +17,19 @@ import {
 } from "lucide-react";
 
 
-import nexvalLogo from "../assets/logos/NEXVAL.jpg";
-import dellLogo from "../assets/logos/paharpur.jpg";
-import peerlessLogo from "../assets/logos/peerless.jpg";
-import rsSoftwareLogo from "../assets/logos/RSSoftware.jpg";
-import alcoveLogo from "../assets/logos/Alcove Reality.jpg";
-import amitLogo from "../assets/logos/Amit Metalics.png";
-import ashokaLogo from "../assets/logos/Ashoka Hall.png";
+import nexvalLogo from "../assets/Email  Collaboration Solutions/google.png";
+import dellLogo from "../assets/Email  Collaboration Solutions/Microsoft logo.jpg";
+import peerlessLogo from "../assets/Email  Collaboration Solutions/qlc-logo.png";
+import rsSoftwareLogo from "../assets/Email  Collaboration Solutions/rediff.png";
+import alcoveLogo from "../assets/Email  Collaboration Solutions/zoho.png";
+
 
 const partners = [
-  { name: "NEXVAL", logo: nexvalLogo },
-  { name: "Dell", logo: dellLogo },
-  { name: "Allied Telesis", logo: peerlessLogo },
-  { name: "Juniper Networks", logo: rsSoftwareLogo },
-  { name: "AWS", logo: alcoveLogo },
-  { name: "Acronis", logo: amitLogo },
-  { name: "Veeam", logo: ashokaLogo },
+  { name: "google", logo: nexvalLogo },
+  { name: "Microsoft logo", logo: dellLogo },
+  { name: "qlc-logo", logo: peerlessLogo },
+  { name: "rediff", logo: rsSoftwareLogo },
+  { name: "zoho", logo: alcoveLogo },
 ];
 
 const Emailcollaborationsolutions: React.FC = () => {
@@ -101,14 +98,58 @@ const Emailcollaborationsolutions: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl font-extrabold mb-6">Email Collaboration Solutions</h1>
-          <p className="text-2xl font-bold mb-4 italic">
-            "Empowering Teams. Anywhere. Anytime."
-          </p>
-          <p className="mb-8 text-lg max-w-3xl mx-auto leading-relaxed">
-            At Ecotech Global Services, we deliver secure, scalable, and high-performance email and collaboration platforms to keep your teams connected and productive — wherever they are. Our partnerships with Google Workspace, Microsoft 365, Zoho Email, QLC Email, and Rediffmail enable us to provide solutions that combine enterprise-grade reliability, advanced security, and intuitive user experiences.
-          </p>
+          <h1 className="text-5xl font-extrabold mb-6">
+            Email Collaboration Solutions
+          </h1>
+
+          {/* Animated Content - Line by Line */}
+          <motion.div
+            className="text-lg max-w-3xl mx-auto leading-relaxed space-y-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.4 } },
+            }}
+          >
+            <motion.p
+              className="text-2xl font-bold italic"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
+              "Empowering Teams. Anywhere. Anytime."
+            </motion.p>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
+              At <span className="font-semibold">Ecotech Global Services</span>, we
+              deliver secure, scalable, and high-performance email and collaboration
+              platforms to keep your teams connected and productive — wherever they are.
+            </motion.p>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
+              Our partnerships with{" "}
+              <span className="font-semibold">
+                Google Workspace, Microsoft 365, Zoho Email, QLC Email, and Rediffmail
+              </span>{" "}
+              enable us to provide solutions that combine enterprise-grade reliability,
+              advanced security, and intuitive user experiences.
+            </motion.p>
+          </motion.div>
         </motion.section>
+
 
         {/* Offerings */}
 <section className="mb-20 px-4">
@@ -156,16 +197,17 @@ const Emailcollaborationsolutions: React.FC = () => {
           transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
         >
           {[...partners, ...partners].map((partner, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center min-w-[220px] h-[120px]"
-            >
-              <img
-                src={partner.logo}   // ✅ imported logo used here
-                alt={partner.name}
-                className="max-h-24 md:max-h-28 object-contain"
-              />
-            </div>
+          <div
+            key={idx}
+            className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+          >
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="w-[260px] h-[120px] object-contain"
+            />
+          </div>
+
           ))}
         </motion.div>
       </div>

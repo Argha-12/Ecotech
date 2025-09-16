@@ -1,6 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+import Cisco from "../assets/Audio Visual Solutions/Cisco Firewall.png";
+import dellLogo from "../assets/Audio Visual Solutions/Dell_Logo.png";
+import peer from "../assets/Audio Visual Solutions/Heinrich.jpg";
+import Log from "../assets/Audio Visual Solutions/Logitech.png";
+import People from "../assets/Audio Visual Solutions/People Link.webp";
+import Del from "../assets/Audio Visual Solutions/Delta.webp";
+import al from "../assets/Audio Visual Solutions/LG.webp";
+import Sam from "../assets/Audio Visual Solutions/Samsung.png";
+import Ben from "../assets/Audio Visual Solutions/BenQ.png";
+
+const partners = [
+  { name: "Cisco Firewall", logo: Cisco },
+  { name: "Dell_Logo", logo: dellLogo },
+  { name: "Heinrich", logo: peer },
+  { name: "Logitech", logo: Log },
+  { name: "People Link", logo: People },
+  { name: "Delta", logo: Del },
+  { name: "LG", logo: al },
+  { name: "Samsung", logo: Sam },
+  { name: "BenQ", logo: Ben },
+];
+
 
 
 // AVSolutions Component
@@ -38,39 +60,87 @@ const AVSolutions = () => {
         `}
       </style>
 
-      {/* Hero Section */}
-      <motion.section
-        className="pt-12 pb-8 bg-black text-center relative overflow-hidden"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
-
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
-            Audio Visual Solutions
-          </h1>
-          <div className="text-2xl md:text-3xl font-bold mb-4">
-            Engage. Inspire. Transform.
+        {/* Hero Section */}
+        <motion.section
+          className="pt-12 pb-8 bg-black text-center relative overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              }}
+            />
           </div>
-          <p className="text-xl italic mb-4">
-            "Turning Communication into an Experience."
-          </p>
-          <p className="text-lg max-w-3xl mx-auto leading-relaxed text-gray-200">
-            At Ecotech Global Services, we design and deliver cutting-edge Audio
-            Visual solutions that bring ideas to life, enhance collaboration,
-            and captivate audiences.
-          </p>
-        </div>
-      </motion.section>
+
+          <div className="max-w-4xl mx-auto px-6 relative z-10">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6">
+              Audio Visual Solutions
+            </h1>
+
+            {/* Animated Content - Line by Line */}
+            <motion.div
+              className="text-lg max-w-3xl mx-auto leading-relaxed text-gray-200 space-y-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.4 } },
+              }}
+            >
+              <motion.p
+                className="text-2xl md:text-3xl font-bold"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+              >
+                Engage. Inspire. Transform.
+              </motion.p>
+
+              <motion.p
+                className="text-xl italic"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+              >
+                "Turning Communication into an Experience."
+              </motion.p>
+
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+              >
+                At <span className="font-semibold">Ecotech Global Services</span>, we
+                design and deliver cutting-edge Audio Visual solutions that bring ideas
+                to life, enhance collaboration, and captivate audiences.
+              </motion.p>
+
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+              >
+                Partnering with industry leaders like{" "}
+                <span className="font-semibold">
+                  Cisco, Heinrich, People Link, Logitech, Delta, LG, Samsung, and BenQ
+                </span>
+                , we ensure every project is engineered for clarity, impact, and
+                reliability.
+              </motion.p>
+            </motion.div>
+          </div>
+        </motion.section>
+
 
       {/* Core AV Offerings */}
       <section className="py-20 bg-gray-950 relative">
@@ -116,6 +186,39 @@ const AVSolutions = () => {
         </div>
       </section>
 
+{/* Partners */}
+    <section className="py-16 bg-black text-white relative overflow-hidden">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-extrabold">Our Valued Pantners</h2>
+        <p className="mt-4 text-lg text-gray-300">
+          Trusted by industry leaders across the globe 🌐
+        </p>
+      </div>
+
+      {/* ✅ restrict width to 80% and center */}
+      <div className="max-w-[80%] mx-auto overflow-hidden">
+        <motion.div
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+        >
+          {[...partners, ...partners].map((partner, idx) => (
+          <div
+            key={idx}
+            className="bg-white p-6 mx-4 rounded-2xl shadow-md flex items-center justify-center w-[220px] h-[120px]"
+          >
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="w-[260px] h-[120px] object-contain"
+            />
+          </div>
+
+          ))}
+        </motion.div>
+      </div>
+    </section>
+
       {/* Why Businesses Choose Us */}
       <section className="py-20 bg-gray-900 relative">
         <div className="max-w-5xl mx-auto px-6 text-center">
@@ -142,34 +245,25 @@ const AVSolutions = () => {
               </motion.div>
             ))}
           </div>
-          <blockquote className="text-2xl italic font-semibold">
+          {/* <blockquote className="text-2xl italic font-semibold">
             "From corporate boardrooms to interactive classrooms, our AV solutions make every interaction unforgettable."
-          </blockquote>
+          </blockquote> */}
         </div>
       </section>
 
-      {/* Customer Logos
-      <section className="py-20 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
-              Our Valued Customers
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mt-4 font-light tracking-wide">
-              Trusted by industry leaders across the globe 🌍
-            </p>
-          </motion.div>
-          
-          <CustomerLogos />
-        </div>
-      </section> */}
+              {/* Quote */}
+              <motion.section
+                className="mb-20 text-center"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="bg-gray-900 p-8 rounded-2xl border border-gray-500 max-w-4xl mx-auto">
+                  <blockquote className="text-2xl font-bold mb-4">
+                    "From corporate boardrooms to interactive classrooms, our AV solutions make every interaction unforgettable."
+                  </blockquote>
+                </div>
+              </motion.section>
 
       {/* CTA */}
       <motion.section

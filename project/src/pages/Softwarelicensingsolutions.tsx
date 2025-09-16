@@ -51,21 +51,86 @@ const SoftwareLicensingPage: React.FC = () => {
 
       {/* Wrapper */}
       <div className="relative z-10 max-w-6xl mx-auto py-16 px-6">
-        {/* Hero Section */}
-        <motion.section
-          className="mb-20 text-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+      {/* Hero Section */}
+      <motion.section
+        className="mb-20 text-center"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-5xl font-extrabold mb-6">Software Licensing</h1>
+
+        {/* Animated Paragraphs - Line by Line */}
+        <motion.div
+          className="text-lg max-w-4xl mx-auto leading-relaxed space-y-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.4 } },
+          }}
         >
-          <h1 className="text-5xl font-extrabold mb-6">Software Licensing</h1>
-          <div className="text-2xl font-bold mb-4">Licensing Done Right.</div>
-          <p className="mb-8 text-lg max-w-4xl mx-auto leading-relaxed">
-            Empower your business with genuine, compliant software from {" "}
-            <span className="font-semibold">Microsoft, Adobe, Autodesk</span> and more. {" "}
-            <span className="font-semibold">ISO-certified processes</span> ensure you get the right licenses at the right price.
-          </p>
-        </motion.section>
+          {/* <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+          >
+            Empower your business with genuine, compliant software from{" "}
+            <span className="font-semibold">Microsoft, Adobe, Autodesk</span> and
+            more. <span className="font-semibold">ISO-certified processes</span>{" "}
+            ensure you get the right licenses at the right price.
+          </motion.p> */}
+
+          <motion.p
+            className="font-bold text-xl"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+          >
+            The Right Tools, Licensed Right
+          </motion.p>
+
+          <motion.p
+            className="italic text-lg"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+          >
+            "Empowering Your Business with Genuine, Compliant Software."
+          </motion.p>
+
+          <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+          >
+            At <span className="font-semibold">Ecotech Global Services</span>, we help
+            enterprises access, deploy, and manage the world’s most trusted software
+            solutions — ensuring you have the right licenses, the right compliance,
+            and the right support to maximize productivity.
+          </motion.p>
+
+          <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+          >
+            We partner with global leaders like{" "}
+            <span className="font-semibold">
+              Microsoft, Adobe, Autodesk, EViews, Nitro, and Corel
+            </span>{" "}
+            to deliver authentic, up-to-date, and cost-optimized software licensing
+            solutions for every industry.
+          </motion.p>
+        </motion.div>
+      </motion.section>
+
 
 
 

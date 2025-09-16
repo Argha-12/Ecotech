@@ -86,33 +86,69 @@ const ITInfrastructurePage: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,200,255,0.15),transparent_60%)]" />
 
         <div className="relative z-10 max-w-6xl mx-auto py-16 px-6">
-          {/* Hero Section */}
-          <motion.section
-            className="mb-20 text-center text-white"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+        {/* Hero Section */}
+        <motion.section
+          className="mb-20 text-center text-white"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-5xl font-extrabold mb-6">
+            IT Infrastructure Solutions
+          </h1>
+          <div className="text-2xl font-bold mb-4">
+            "Build, Scale, and Secure Your Enterprise with Precision."
+          </div>
+
+          {/* Animated Paragraph - Line by Line */}
+          <motion.div
+            className="text-lg max-w-4xl mx-auto leading-relaxed space-y-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.4 } }, // stagger each line
+            }}
           >
-            <h1 className="text-5xl font-extrabold mb-6">
-              IT Infrastructure Solutions
-            </h1>
-            <div className="text-2xl font-bold mb-4">
-              "Build, Scale, and Secure Your Enterprise with Precision."
-            </div>
-            <p className="mb-8 text-lg max-w-4xl mx-auto leading-relaxed">
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
               At <span className="font-semibold">Ecotech Global Services</span>, we
-              deliver enterprise-grade IT infrastructure solutions that combine{" "}
+              deliver enterprise-grade IT infrastructure solutions.
+            </motion.p>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
+              Our solutions combine{" "}
               <span className="font-semibold">
                 performance, reliability, and scalability
-              </span>
-              . Partnering with global leaders like{" "}
+              </span>{" "}
+              to empower organizations across industries.
+            </motion.p>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
+              Partnering with global leaders like{" "}
               <span className="font-semibold">
                 Cisco, HP, Dell, Allied Telesis, and Juniper Networks
               </span>
-              , we create robust, future-ready architectures for organizations of
-              all sizes.
-            </p>
-          </motion.section>
+              , we create robust, future-ready architectures tailored for
+              businesses of all sizes.
+            </motion.p>
+          </motion.div>
+        </motion.section>
         </div>
       </div>
 

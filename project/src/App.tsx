@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/WhatsAppButton.tsx';
+import Cyberescuritysolutions from './pages/Cyberescuritysolutions';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -64,6 +65,9 @@ const AppContent: React.FC = () => {
           <Route path="/security_solutions/it_ot_security" element={<Itotsecurity />} />
           <Route path="/security_solutions/siem_soar_soc" element={<SIEMSOARSOC />} />
           <Route path="/security_solutions/security_audits" element={<Securityaudits />} />
+
+          {/* Cloud Services Routes */}
+          <Route path="/Cyber_Security_Solutions" element={<Cyberescuritysolutions />} />
 
           {/* Cloud Services Routes */}
           <Route path="/cloud_services" element={<Cloudservices />} />

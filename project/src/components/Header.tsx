@@ -56,6 +56,10 @@ const Header = () => {
       ]
     },
     {
+      title: 'Cyber Security Solutions',
+      href: '/Cyber_Security_Solutions',
+    },
+    {
       title: 'Cloud Solutions',
       href: '/cloud_services',
     },
