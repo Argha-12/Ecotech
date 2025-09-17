@@ -14,7 +14,7 @@ export interface EmailConfig {
     contact: string;
     quote: string;
   };
-  toEmail: string;
+  toEmail: string | string[];
 }
 
 // Template type for email service
@@ -96,31 +96,61 @@ class EmailService {
       // Initialize EmailJS
       window.emailjs.init(this.config.publicKey);
 
-      // Prepare template parameters
-      const templateParams = {
-        to_email: this.config.toEmail,
-        ...emailData
-      };
+      // Parse comma-separated emails
+      let toEmails: string[];
+      if (typeof this.config.toEmail === 'string') {
+        toEmails = this.config.toEmail.split(',').map(email => email.trim());
+      } else if (Array.isArray(this.config.toEmail)) {
+        toEmails = this.config.toEmail;
+      } else {
+        toEmails = [String(this.config.toEmail)];
+      }
+      
+      // Remove duplicate emails
+      const uniqueEmails = [...new Set(toEmails)];
+      
+      // Log the parsed emails for debugging
+      console.log('Original toEmail:', this.config.toEmail);
+      console.log('Parsed toEmails:', toEmails);
+      console.log('Unique emails:', uniqueEmails);
+      console.log('Number of recipients:', uniqueEmails.length);
+      
+      // Update toEmails to use unique emails only
+      toEmails = uniqueEmails;
 
       // Get the appropriate template ID based on type
       const templateId = this.config.templates[templateType];
       
-      // Send email using EmailJS
-      const result = await window.emailjs.send(
-        this.config.serviceId,
-        templateId,
-        templateParams
-      );
+      // Send email to each recipient
+      const results = [];
+      for (const email of toEmails) {
+        const templateParams = {
+          to_email: email,
+          ...emailData
+        };
+        
+        console.log(`Sending email to: ${email}`);
+        const result = await window.emailjs.send(
+          this.config.serviceId,
+          templateId,
+          templateParams
+        );
+        
+        results.push(result);
+        console.log(`EmailJS Result for ${email}:`, result);
+      }
 
-      console.log('EmailJS Result:', result);
-
-      if (result.status === 200) {
+      // Check if all emails were sent successfully
+      const allSuccessful = results.every(result => result.status === 200);
+      
+      if (allSuccessful) {
         return {
           success: true,
-          message: options.successMessage || 'Email sent successfully!'
+          message: options.successMessage || `Email sent successfully to ${toEmails.length} recipient(s)!`
         };
       } else {
-        throw new Error('Email service failed');
+        const failedCount = results.filter(result => result.status !== 200).length;
+        throw new Error(`${failedCount} out of ${toEmails.length} emails failed to send`);
       }
     } catch (error) {
       console.error('Error sending email:', error);
