@@ -69,7 +69,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6 text-blue-600" />,
       title: "Our Office",
-      details: ["C.T.I., BIRADINGI, NETAJIGARH, Howrah, West Bengal, 711108"]
+      details: ["C.T.I., BIRADINGI, NETAJIGARH, Howrah, West Bengal, 711108",  "REGISTERED ADDRESS",  "4 Fairlie Place, HMP House, 2nd Floor, Room No 228, Kolkata 700001"]
     },
     {
       icon: <Phone className="w-6 h-6 text-blue-600" />,
