@@ -34,6 +34,7 @@ import Managedservicessolutions from './pages/Managedservicessolutions';
 import CaseStudies from './pages/case-studies';
 import Blog from './pages/blog';
 import NDR from './pages/NDR';
+import NotFound from './pages/NotFound';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -98,6 +99,9 @@ const AppContent: React.FC = () => {
           <Route path="/resources/blog" element={<Blog />} />
           <Route path="/resources/events" element={<PlaceholderPage />} />
           <Route path="/resources/certifications" element={<PlaceholderPage />} />
+          
+          {/* Catch-all route for 404 handling */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
