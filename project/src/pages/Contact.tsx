@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from 'lucide-react';
-import { emailService, EmailTemplates } from '../utils/emailService';
+import { backendEmailService } from '../utils/backendEmailService';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,11 +32,8 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare email data using the contact template
-      const emailData = EmailTemplates.contactForm(formData);
-      
-      // Send email using the email service
-      const result = await emailService.sendEmail(emailData, 'contact', {
+      // Send email using the backend service
+      const result = await backendEmailService.sendContactEmail(formData, {
         successMessage: '✅ Message sent successfully! We\'ll respond within 24 hours.',
         errorMessage: '⚠️ Failed to send message. Please try again or contact us directly.',
         enableMailtoFallback: true,

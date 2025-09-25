@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
-import { emailService, EmailTemplates } from '../utils/emailService';
+import { backendEmailService } from '../utils/backendEmailService';
 
 // EmailJS will be loaded via CDN in index.html
 declare global {
@@ -50,14 +50,13 @@ const CareerPage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      const emailData = EmailTemplates.jobApplication({
+      const result = await backendEmailService.sendCareerEmail({
         name: formData.name,
-        phoneNo: formData.phoneNo,
-        emailId: formData.emailId,
-        resume: formData.resume
-      });
-      
-      const result = await emailService.sendEmail(emailData, 'career', {
+        email: formData.emailId,
+        phone: formData.phoneNo,
+        position: 'Job Application',
+        resume: formData.resume ? formData.resume.name : 'No resume uploaded'
+      }, {
         successMessage: '🎉 Application submitted successfully! We\'ll review your application and get back to you soon.',
         errorMessage: '⚠️ Failed to submit application. Please try again or contact us directly.',
         enableMailtoFallback: true,

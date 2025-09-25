@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { emailService, EmailTemplates } from '../utils/emailService';
-
+import { backendEmailService } from '../utils/backendEmailService';
 
 interface FormData {
   name: string;
@@ -36,17 +35,18 @@ const GetQuotePage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare email data using the contact form template with organization appended to name
-      const emailData = EmailTemplates.contactForm({
-        name: `${formData.name} (${formData.organization})`,
+      // Prepare email data for the backend
+      const emailData = {
+        name: formData.name,
         email: formData.email,
         phone: formData.phoneNo,
-        subject: 'Request a Quote',
+        company: formData.organization,
+        service: 'Custom Quote Request',
         message: `Organization: ${formData.organization}\n\nProducts/Services of Interest:\n${formData.products}`
-      });
+      };
       
-      // Send email using the contact template
-      const result = await emailService.sendEmail(emailData, 'contact', {
+      // Send email using the backend service
+      const result = await backendEmailService.sendQuoteEmail(emailData, {
         successMessage: '🎯 Quote request submitted! We\'ll send your custom quote within 24 hours.',
         errorMessage: '⚠️ Failed to submit quote request. Please try again or contact us directly.',
         enableMailtoFallback: true,

@@ -1,0 +1,52 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
+  
+    <!-- Header -->
+    <div style="background: linear-gradient(135deg, #007bff 0%, #6610f2 100%); color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+      <h1 style="margin: 0; font-size: 24px;">🔧 New Quote Request</h1>
+      <p style="margin: 5px 0 0 0; opacity: 0.9;">Ecotech Global Services</p>
+    </div>
+    
+    <!-- Content -->
+    <div style="background-color: white; padding: 30px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+      
+      <h2 style="color: #333; margin-top: 0;">👤 Client Information</h2>
+      
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #666;">Name:</td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee; color: #333;">{{name}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #666;">Email:</td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee; color: #333;">{{email}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #666;">Phone:</td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee; color: #333;">{{phone}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #666;">Company:</td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee; color: #333;">{{company}}</td>
+        </tr>
+      </table>
+      
+      <h2 style="color: #333;">📋 Products & Services of Interest </h2>
+      <div style="background-color: #d1ecf1; padding: 15px; border-radius: 5px; border-left: 4px solid #007bff;">
+        <pre style="font-family: Arial, sans-serif; margin: 0; white-space: pre-wrap; color: #0c5460;">{{message}}</pre>
+      </div>
+      
+      <div style="margin-top: 20px; text-align: center;">
+        <a href="mailto:{{email}}" style="background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 5px;">Reply to Client</a>
+      </div>
+      
+      <p style="text-align: center; color: #666; margin-top: 20px; font-size: 14px;">
+        Submitted on: {{timestamp}} | Quote Response Expected: Within 48 hours
+      </p>
+    </div>
+    
+    <!-- Footer -->
+    <div style="text-align: center; padding: 20px; color: #666; font-size: 14px;">
+      <p style="margin: 0;">Ecotech Global Services - Quote Request Portal</p>
+    </div>
+    
+  </div>
