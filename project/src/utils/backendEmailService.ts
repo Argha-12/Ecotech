@@ -1,9 +1,12 @@
-// Backend Email Service using Node.js API with Resend
+// Backend Email Service using Python FastAPI with Axios
 
 // Email configuration interface
 export interface EmailConfig {
   apiUrl: string;
 }
+
+// Import Axios
+import axios from 'axios';
 
 // Template type for email service
 export type TemplateType = 'contact' | 'career' | 'quote';
@@ -84,15 +87,21 @@ class BackendEmailService {
     } = options;
 
     try {
-      const response = await fetch(`${this.config!.apiUrl}/api/${endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(emailData)
+      const apiKey = import.meta.env.VITE_API_KEY;
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+      
+      // Add API key if available
+      if (apiKey) {
+        headers['x-api-key'] = apiKey;
+      }
+      
+      const response = await axios.post(`${this.config!.apiUrl}/api/${endpoint}`, emailData, {
+        headers
       });
 
-      const result = await response.json();
+      const result = response.data;
 
       if (result.success) {
         return {
@@ -115,6 +124,23 @@ class BackendEmailService {
     } catch (error) {
       console.error('Backend email service error:', error);
 
+      // Handle Axios errors specifically
+      let errorMessageText = errorMessage;
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          // Server responded with error status
+          errorMessageText = error.response.data?.message || errorMessage;
+        } else if (error.request) {
+          // Request made but no response received
+          errorMessageText = 'Network error. Please check your connection.';
+        } else {
+          // Something happened in setting up the request
+          errorMessageText = error.message || errorMessage;
+        }
+      } else {
+        errorMessageText = error instanceof Error ? error.message : 'Unknown error';
+      }
+
       // If network error and fallback is enabled, try mailto
       if (enableMailtoFallback) {
         return this.fallbackToMailto(endpoint, emailData, options);
@@ -122,7 +148,7 @@ class BackendEmailService {
 
       return {
         success: false,
-        message: errorMessage,
+        message: errorMessageText,
         error: error instanceof Error ? error.message : 'Unknown error'
       };
     }
@@ -246,8 +272,8 @@ class BackendEmailService {
     }
 
     try {
-      const response = await fetch(`${this.config!.apiUrl}/health`);
-      return response.ok;
+      const response = await axios.get(`${this.config!.apiUrl}/health`);
+      return response.status === 200;
     } catch (error) {
       console.error('Backend connection test failed:', error);
       return false;
