@@ -160,7 +160,7 @@ const heroContent = [
   subtitle: "The Most Loved Google Workspace Partner in Your Region — Where Productivity Meets Perfection. Unlock 40% OFF Today!",
   trustIndicators: [
     { icon: <Users className="w-4 h-4 text-blue-500" />, text: "Productivity Boost" },
-    { icon: <Award className="w-8 h-8 text-yellow-300 mr-2 drop-shadow-md animate-bounce" />, text: <span className="font-extrabold">40% Discount (T&C)</span> },
+    { icon: <Award className="w-8 h-8 text-yellow-300 mr-2 drop-shadow-md animate-bounce" />, text: <span className="font-extrabold">40% Discount (T&C Applicable)</span> },
     { icon: <Zap className="w-4 h-4 text-blue-500" />, text: "Instant Setup" }
   ],
   backgroundImage: GW,   // keep the imported video here
@@ -174,7 +174,7 @@ const heroContent = [
     subtitle: "Your Gateway to Scalable, Secure, and Future-Ready AWS Cloud Solutions...",
     trustIndicators: [
       { icon: <Shield className="w-4 h-4 text-blue-500" />, text: "AWS Certified" },
-      { icon: <Cloud className="w-8 h-8 text-yellow-300 mr-4 drop-shadow-md animate-bounce" />, text: <span className="font-extrabold">50% Discount (T&C)</span> },
+      { icon: <Cloud className="w-8 h-8 text-yellow-300 mr-4 drop-shadow-md animate-bounce" />, text: <span className="font-extrabold">50% Discount (T&C Applicable)</span> },
       { icon: <Rocket className="w-4 h-4 text-blue-500" />, text: "Managed Services" }
     ],
     backgroundImage: awsBg,
@@ -634,7 +634,7 @@ const Home: React.FC = () => {
     </div>
 
     {/* 4 Cards in One Row */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center">
       {/* Card 1 */}
       <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-5 shadow-md hover:shadow-blue-500/20 transition-all duration-300 text-sm">
         <span className="quote text-3xl text-blue-400 font-serif">❝</span>
@@ -648,23 +648,6 @@ const Home: React.FC = () => {
             <div className="font-semibold text-white text-sm">Suman Banerjee</div>
             <div className="text-gray-400 text-xs">Director</div>
             <div className="text-blue-400 text-xs">Peerless Securities Ltd</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Card 2 */}
-      <div className="testimonial-card bg-[#101828] border border-gray-800 rounded-lg p-5 shadow-md hover:shadow-blue-500/20 transition-all duration-300 text-sm">
-        <span className="quote text-3xl text-blue-400 font-serif">❝</span>
-        <p className="text-gray-200 italic mt-3 mb-4">
-          Ecotech Global transformed our entire IT infrastructure. Their
-          expertise in government compliance and security is unmatched.
-        </p>
-        <div className="stars text-yellow-400 mb-3 text-sm">★★★★★</div>
-        <div className="client flex items-center gap-3">
-          <div>
-            <div className="font-semibold text-white text-sm">Sujit Chandra</div>
-            <div className="text-gray-400 text-xs">IT Head</div>
-            <div className="text-blue-400 text-xs">ST. Xavier's College</div>
           </div>
         </div>
       </div>

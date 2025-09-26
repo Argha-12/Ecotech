@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
 import { Shield, Lock, EyeOff, Server, Zap, ShieldCheck } from 'lucide-react';
 
 
@@ -230,12 +231,23 @@ const EndpointSecurity = () => {
           We make sure it stays locked to threats and open to productivity. Connect with our experts today.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-6">
-          <button className="bg-black text-cyan-400 px-8 py-3 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300">
+        <button>
+          <Link
+            to="/get-quote"
+            className="bg-black text-cyan-400 px-8 py-3 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300 inline-block"
+          >
             📩 Get a Security Assessment
-          </button>
-          <button className="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition duration-300">
-            📞 Talk to a Cybersecurity Expert
-          </button>
+          </Link>
+        </button>
+
+        <button>
+          <Link
+            to="/contact"
+            className="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition duration-300 inline-block"
+          >
+            📞 Speak to a Security Expert
+          </Link>
+        </button>
         </div>
       </div>
     </div>

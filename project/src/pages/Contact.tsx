@@ -66,12 +66,21 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6 text-blue-600" />,
       title: "Our Office",
-      details: ["C.T.I., BIRADINGI, NETAJIGARH, Howrah, West Bengal, 711108",  "REGISTERED ADDRESS",  "4 Fairlie Place, HMP House, 2nd Floor, Room No 228, Kolkata 700001"]
+      details: [
+        "Registered Address:",
+        "C.T.I., BIRADINGI, NETAJIGARH, Howrah, West Bengal, 711108",
+      
+        "City Address:",
+        "4 Fairlie Place, HMP House,",
+        "2nd Floor, Room No 228,",
+        "Kolkata 700001"
+      ]
+      
     },
     {
       icon: <Phone className="w-6 h-6 text-blue-600" />,
       title: "Phone",
-      details: ["+91 8327314124",]
+      details: ["+91 3346034075", "+91 8327314124"]
     },
     {
       icon: <Mail className="w-6 h-6 text-blue-600" />,
@@ -130,7 +139,13 @@ const Contact = () => {
                 {info.title}
               </h3>
               {info.details.map((detail, detailIndex) => (
-                <p key={detailIndex} className="text-gray-800 text-sm font-medium">
+                <p 
+                  key={detailIndex} 
+                  className={`text-gray-800 text-sm ${
+                    detail.includes('Address:') ? 'font-semibold text-blue-600 mt-2' : 
+                    detail === '' ? 'mb-1' : 'font-medium'
+                  }`}
+                >
                   {detail}
                 </p>
               ))}
@@ -266,17 +281,18 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-          <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
+          <div className="bg-gray-200 rounded-lg h-80 flex items-center justify-center">
             <iframe
-              src="https://www.google.com/maps/place/Bara+Bazar/@22.5824024,88.3500374,16.06z/data=!4m6!3m5!1s0x3a0277bbe41f2d89:0x8ee1422d5dc856ba!8m2!3d22.580893!4d88.348963!16s%2Fg%2F12hkxxzm6?authuser=0&entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen="https://www.google.com/maps/place/Bara+Bazar/@22.5824024,88.3500374,16.06z/data=!4m6!3m5!1s0x3a0277bbe41f2d89:0x8ee1422d5dc856ba!8m2!3d22.580893!4d88.348963!16s%2Fg%2F12hkxxzm6?authuser=0&entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-lg"
-            />
+              src="https://maps.google.com/maps?ll=22.5754063,88.3478057&q=Ecotech%20Global%20Services%20Kolkata&z=16&t=m&output=embed"
+               title="Ecotech Global Services Location"
+               width="100%"
+               height="100%"
+               style={{ border: 0 }}
+               allowFullScreen
+               loading="lazy"
+               referrerPolicy="no-referrer-when-downgrade"
+               className="rounded-lg"
+             />
           </div>
               {/* Quick Contact */}
               <div className="bg-blue-600 text-white p-6 rounded-lg">
@@ -286,7 +302,14 @@ const Contact = () => {
                 </p>
                 <div className="space-y-3">
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+913346034075"
+                    className="flex items-center space-x-3 hover:text-blue-200 transition-colors"
+                  >
+                    <Phone className="w-5 h-5" />
+                    <span>+91 33 4603 4075</span>
+                  </a>
+                  <a
+                    href="tel:+918327314124"
                     className="flex items-center space-x-3 hover:text-blue-200 transition-colors"
                   >
                     <Phone className="w-5 h-5" />
@@ -300,7 +323,7 @@ const Contact = () => {
                     <span>info@ecotechglobal.in</span>
                   </a>
                   <a
-                    href="https://wa.me/832 731 4124"
+                    href="https://wa.me/918327314124"
                     className="flex items-center space-x-3 hover:text-blue-200 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"

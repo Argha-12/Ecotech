@@ -214,15 +214,20 @@ const EmailSecurity: React.FC = () => {
           Connect with our experts today and keep your communications threat-free.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-6">
-          <button className="bg-black text-cyan-400 px-8 py-3 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300">
+          {/* Security Assessment Button */}
+          <Link
+            to="/get-quote"
+            className="bg-black text-cyan-400 px-8 py-3 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition duration-300"
+          >
             📩 Get a Security Assessment
-          </button>
+          </Link>
+
           {/* Career Page Button */}
           <Link
             to="/Contact"
             className="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition duration-300"
           >
-            🚀 Explore Career Opportunities
+            🚀 Explore Email Security Opportunities
           </Link>
         </div>
       </div>

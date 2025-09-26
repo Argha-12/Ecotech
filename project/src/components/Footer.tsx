@@ -139,7 +139,7 @@ const Footer = () => {
                     address:
                       "4 Fairlie Place, HMP House, 2nd Floor, Room No 228, Kolkata 700001",
                     mapUrl:
-                      "https://www.google.com/maps?q=4+Fairlie+Place,+HMP+House,+2nd+Floor,+Room+No+228,+Kolkata+700001",
+                      "https://www.google.com/maps/place/Ecotech+Global+Services/@22.5754112,88.3452308,17z/data=!4m6!3m5!1s0x3a0277006d3946e9:0x6bb9477ba87da172!8m2!3d22.5754063!4d88.3478057!16s%2Fg%2F11x_mzjkj7?entry=ttu&g_ep=EgoyMDI1MDkyMy4wIKXMDSoASAFQAw%3D%3D",
                   },
                   {
                     city: "Bengaluru",
@@ -218,7 +218,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-800/50 py-6">
           <p className="text-sm text-gray-400 text-center">
-            © {new Date().getFullYear()} Ecotech Global Services. All rights reserved.
+            {new Date().getFullYear()} Ecotech Global Services. All rights reserved.
           </p>
         </div>
       </div>
